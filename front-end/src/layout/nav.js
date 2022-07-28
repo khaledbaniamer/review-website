@@ -6,10 +6,10 @@ const Navbar = ()=>{
     return(
         <>
 <header className="header_area">
-    <div className="top_menu">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-7">
+    {/* <div className="top_menu"> */}
+      {/* <div className="container"> */}
+        {/* <div className="row"> */}
+          {/* <div className="col-lg-7">
             <div className="float-left">
               <p>Phone: +01 256 25 235</p>
               <p>email: info@eiser.com</p>
@@ -35,16 +35,16 @@ const Navbar = ()=>{
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div> */}
+        {/* </div> */}
+      {/* </div> */}
+    {/* </div> */}
     <div className="main_menu">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light w-100">
          
           <NavLink className="navbar-brand logo_h" to="index.html">
-            <img src="img/logo.png" alt="" />
+            <img src="asset/img/logo.png" to=""/>
           </NavLink>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@ const Navbar = ()=>{
               <div className="col-lg-7 pr-0">
                 <ul className="nav navbar-nav center_nav pull-right">
                   <li className="nav-item active">
-                    <NavLink className="nav-link" to="index.html">Home</NavLink>
+                    <NavLink className="nav-link" to="/">Home</NavLink>
                   </li>
                   <li className="nav-item submenu dropdown">
                     <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
