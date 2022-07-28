@@ -1,7 +1,26 @@
-
+import { NavLink } from 'react-router-dom'
 const SingleProduct = ()=> {
  return (
   <>
+    <section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+          <div
+            class="banner_content d-md-flex justify-content-between align-items-center"
+          >
+            <div class="mb-3 mb-md-0">
+              <h2>Product Details</h2>
+              <p>Very us move be blessed multiply night</p>
+            </div>
+            <div class="page_link">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/singleproduct">Product Details</NavLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div className="product_image_area">
     <div className="container">
       <div className="row s_product_inner">
@@ -131,7 +150,7 @@ const SingleProduct = ()=> {
   <section className="product_description_area">
     <div className="container">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <a
             className="nav-link"
             id="home-tab"
@@ -143,7 +162,7 @@ const SingleProduct = ()=> {
             >Description</a
           >
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a
             className="nav-link"
             id="profile-tab"
@@ -154,8 +173,8 @@ const SingleProduct = ()=> {
             aria-selected="false"
             >Specification</a
           >
-        </li>
-        <li className="nav-item">
+        </li> */}
+        {/* <li className="nav-item">
           <a
             className="nav-link"
             id="contact-tab"
