@@ -1,8 +1,21 @@
+import Footer from "./layout/footer";
+import Navbar from "./layout/nav";
+import {BrowserRouter , Route , Routes} from 'react-router-dom'
+
 function App() {
   return (
-    <div className="App">
-     <h1>app</h1>
-    </div>
+    <>
+    <BrowserRouter>
+    <Navbar />
+
+    <Routes >
+      <Route  />
+    </Routes>
+
+    <Footer />
+    </BrowserRouter>
+
+    </>
   );
 }
 
