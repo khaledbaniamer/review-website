@@ -55,7 +55,7 @@ const Navbar = ()=>{
        
           <div className="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
             <div className="row w-100 mr-0">
-              <div className="col-lg-7 pr-0">
+              <div className="col-lg-8 pr-0">
                 <ul className="nav navbar-nav center_nav pull-right">
                   <li className="nav-item active">
                     <NavLink className="nav-link" to="index.html">Home</NavLink>
@@ -108,10 +108,16 @@ const Navbar = ()=>{
                   <li className="nav-item">
                     <NavLink className="nav-link" to="about">About</NavLink>
                   </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="login">Login</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="register">Register</NavLink>
+                  </li>
                 </ul>
               </div>
 
-              <div className="col-lg-5 pr-0">
+              <div className="col-lg-4 pr-0">
                 <ul className="nav navbar-nav navbar-right right_nav pull-right">
                   <li className="nav-item">
                     <NavLink to="#" className="icons">
