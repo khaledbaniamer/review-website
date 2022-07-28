@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Products from "./components/products";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="register" element={<Register />}/>
       <Route path="business" element={<Business />}/>
       <Route path="business_profile" element={<Business_profile />}/>
+      <Route path="products" element={<Products />}/>
     </Routes>
 
     <Footer />
