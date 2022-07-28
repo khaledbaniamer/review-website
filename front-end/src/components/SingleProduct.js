@@ -1,8 +1,14 @@
 import { NavLink } from 'react-router-dom'
+
 const SingleProduct = ()=> {
+  let stars= [];
+  for (let index = 1; index <= 3; index++) {
+    stars.push('star');
+  }
  return (
-  <>
-    <section class="banner_area">
+   <>
+{   console.log()
+}    <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">
         <div class="container">
           <div
@@ -35,7 +41,7 @@ const SingleProduct = ()=> {
                 <li
                   data-target="#carouselExampleIndicators"
                   data-slide-to="0"
-                  // className="active"
+                  className="active"
                 >
                   <img
                     src="asset/img/product/single-product/s-product-s-2.jpg"
@@ -90,16 +96,14 @@ const SingleProduct = ()=> {
         <div className="col-lg-5 offset-lg-1">
           <div className="s_product_text">
             <h3>Faded SkyBlu Denim Jeans</h3>
-            {/* <h2>$149.99</h2> */}
+            
             <ul className="list">
               <li>
                 <a className="active" href="#Category">
                   <span>Category</span> : Household</a
                 >
               </li>
-              {/* <li>
-                <a href="#Category"> <span>Availibility</span> : In Stock</a>
-              </li> */}
+              
             </ul>
             <p>
               Mill Oil is an innovative oil filled radiator with the most
@@ -107,41 +111,7 @@ const SingleProduct = ()=> {
               make your interior look awesome, and at the same time give you
               the pleasant warm feeling during the winter.
             </p>
-            {/* <div className="product_count">
-              <label for="qty">Quantity:</label>
-              <input
-                type="number"
-                name="qty"
-                id="sst"
-                min="1"
-                
-                title="Quantity:"
-                className="input-text qty"
-              />
-              <button
-                onClick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                className="increase items-count"
-                type="button"
-              >
-                <i className="lnr lnr-chevron-up"></i>
-              </button>
-              <button
-                onClick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                className="reduced items-count"
-                type="button"
-              >
-                <i className="lnr lnr-chevron-down"></i>
-              </button>
-            </div> */}
-            {/* <div className="card_area">
-              <a className="main_btn" href="#Cart">Add to Cart</a>
-              <a className="icon_btn" href="#Cart">
-                <i className="lnr lnr lnr-diamond"></i>
-              </a>
-              <a className="icon_btn" href="#Cart">
-                <i className="lnr lnr lnr-heart"></i>
-              </a>
-            </div> */}
+           
           </div>
         </div>
       </div>
@@ -162,30 +132,7 @@ const SingleProduct = ()=> {
             >Description</a
           >
         </li>
-        {/* <li className="nav-item">
-          <a
-            className="nav-link"
-            id="profile-tab"
-            data-toggle="tab"
-            href="#profile"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="false"
-            >Specification</a
-          >
-        </li> */}
-        {/* <li className="nav-item">
-          <a
-            className="nav-link"
-            id="contact-tab"
-            data-toggle="tab"
-            href="#contact"
-            role="tab"
-            aria-controls="contact"
-            aria-selected="false"
-            >Comments</a
-          >
-        </li> */}
+       
         <li className="nav-item">
           <a
             className="nav-link active"
@@ -395,7 +342,7 @@ const SingleProduct = ()=> {
                   action="contact_process.php"
                   method="post"
                   id="contactForm"
-                  noValidate="noValidate"
+                  noValidate="novalidate"
                 >
                   <div className="col-md-12">
                     <div className="form-group">
@@ -471,63 +418,6 @@ const SingleProduct = ()=> {
                     <h6>(03 Reviews)</h6>
                   </div>
                 </div>
-                {/* <div className="col-6">
-                  <div className="rating_list">
-                    <h3>Based on 3 Reviews</h3>
-                    <ul className="list">
-                      <li>
-                        <a href="#1"
-                          >5 Star
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i> 01</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#2"
-                          >4 Star
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i> 01</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#3"
-                          >3 Star
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i> 01</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#4"
-                          >2 Star
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i> 01</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#5"
-                          >1 Star
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i>
-                          <i className="fa fa-star"></i> 01</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
               </div>
               <div className="review_list">
                 <div className="review_item">
@@ -588,11 +478,9 @@ const SingleProduct = ()=> {
                     </div>
                     <div className="media-body">
                       <h4>Blake Ruiz</h4>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
+                  {
+                    stars.map((star,index) => (<i key={index} className="fa fa-star"></i>))
+                  }
                     </div>
                   </div>
                   <p>
@@ -607,75 +495,28 @@ const SingleProduct = ()=> {
             <div className="col-lg-6">
               <div className="review_box">
                 <h4>Add a Review</h4>
-                <p>Your Rating:</p>
-                <ul className="list">
-                  <li>
-                    <a href="#1">
-                      <i className="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#2">
-                      <i className="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#3">
-                      <i className="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#4">
-                      <i className="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#5">
-                      <i className="fa fa-star"></i>
-                    </a>
-                  </li>
-                </ul>
-                <p>Outstanding</p>
+               
+                {/* <p>Outstanding</p> */}
+                <div class="form-group required">
+         
+        </div>
                 <form
                   className="row contact_form"
                   action="contact_process.php"
                   method="post"
                   id="contactForm"
-                  noValidate="noValidate"
+                  noValidate="novalidate"
                 >
-                  {/* <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        name="name"
-                        placeholder="Your Full name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        placeholder="Email Address"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="number"
-                        name="number"
-                        placeholder="Phone Number"
-                      />
-                    </div>
-                  </div> */}
+                  <p>Your Rating:</p>
+                <ul className="list">
+                     <div className="rating">
+                     <input type="radio" name="rating" value="5" id="5" /><label htmlFor="5">☆</label> 
+                     <input type="radio" name="rating" value="4" id="4" /><label htmlFor="4">☆</label> 
+                     <input type="radio" name="rating" value="3" id="3" /><label htmlFor="3">☆</label> 
+                     <input type="radio" name="rating" value="2" id="2" /><label htmlFor="2">☆</label> 
+                     <input type="radio" name="rating" value="1" id="1" /><label htmlFor="1">☆</label>
+                </div>
+                </ul>
                   <div className="col-md-12">
                     <div className="form-group">
                       <textarea
