@@ -10,6 +10,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Products from "./components/products";
+import Bussines_addForm from "./components/Bussines_addForm";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
     <Routes >
     {/* this is Home */}
     <Route path="/" element={<Index  />} />
+
+    {/* this is Bussines form for add */}
+    <Route path="add" element={<Bussines_addForm />}/>
 
       <Route  />
       <Route path="/singleproduct" element={<SingleProduct />} />
