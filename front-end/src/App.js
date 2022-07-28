@@ -2,6 +2,8 @@ import Footer from "./layout/footer";
 import Navbar from "./layout/nav";
 import SingleProduct from './components/SingleProduct'
 import {BrowserRouter , Route , Routes} from 'react-router-dom'
+import Business from "./components/business_grid";
+import Business_profile from "./components/business_profile";
 import Index from "./components";
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -28,6 +30,8 @@ function App() {
       <Route path="about" element={<About />}/>
       <Route path="login" element={<Login />}/>
       <Route path="register" element={<Register />}/>
+      <Route path="business" element={<Business />}/>
+      <Route path="business_profile" element={<Business_profile />}/>
     </Routes>
 
     <Footer />
