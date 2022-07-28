@@ -29,7 +29,7 @@ const Navbar = ()=>{
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="contact.html">
+                  <NavLink to="contact">
                     Contact Us
                   </NavLink>
                 </li>
@@ -103,7 +103,10 @@ const Navbar = ()=>{
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="contact.html">Contact</NavLink>
+                    <NavLink className="nav-link" to="contact">Contact</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="about">About</NavLink>
                   </li>
                 </ul>
               </div>
