@@ -20,7 +20,6 @@ function Login() {
 
 
            <div className="m-5 col-lg-5 mx-auto">
-            <form action="#">
                     <div className="mt-10">
                         <input type="text" name="email" placeholder="Email Address" required className="single-input" />
                     </div>
@@ -28,9 +27,8 @@ function Login() {
                         <input type="text" name="password" placeholder="Password" required className="single-input" />
                     </div>
                     <div className="d-flex justify-content-center">
-                   <button href="#" className="main_btn col-lg-3 mt-3">Login</button>
+                   <button className="main_btn col-lg-3 mt-3">Login</button>
                    </div>
-                </form>
            </div>
             </>
 
