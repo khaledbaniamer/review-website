@@ -24,9 +24,10 @@ use App\Http\Controllers\UserController;
 */
 
 
-//reviews 
+//reviews
 Route::get('/comments', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
+Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
 
 
 
@@ -39,7 +40,7 @@ Route::post('/comments', [CommentController::class, 'store']);
 
 
 
-Route::post('register',[UserController::Class,'register']);
+Route::post('register',[UserController::class,'register']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

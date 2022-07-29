@@ -12,9 +12,9 @@ export const fetchReviews = createAsyncThunk("reviews/fetchReviews", async (_,th
         throw new Error(response.data.errors)
     }
     if (response.data.status === 200) {
-        const reviews = await response.data.reviews;
+        // const reviews = await response.data.reviews;
         // console.log(response)
-        return reviews;
+        return response.data;
     }
     }catch (error){
       console.error(error);
@@ -34,12 +34,49 @@ export const addReviews = createAsyncThunk("reviews/addReviews", async (reviewDa
     });
     // console.log(response)
     if (response.data.status === 200) {
-        const review = await response.data.review;
-        console.log(review);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        const review = await response.data;
         return review;
     }else{
         // console.log(response.data.errors)
         const errors = JSON.stringify(response.data.errors);
+        throw new Error (errors)
+    }
+    }catch (error){
+      console.error(error);
+      return rejectWithValue(error.message);
+    }
+  });
+
+//deleteReview
+export const deleteReview = createAsyncThunk("reviews/deleteReview", async (reviewId,thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+       const response = await axios({
+        method: 'DELETE',
+        url: `http://127.0.0.1:8000/api/comments/${reviewId}`,
+        headers: { Accept: 'application/json' },
+    });
+    // console.log(response.data)
+    if (response.data.status === 200) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        const review = await response.data;
+        return review;
+    }else{
+        // console.log(response.data.errors)
+        const errors = response.data.errors;
         throw new Error (errors)
     }
     }catch (error){
@@ -56,7 +93,9 @@ const reviewsSlice = createSlice({
         // review: {},
         isEdit : false,
         loading: false,
-    errors: [],
+        overall: null,
+        ratingCount: null,
+    errors: null,
     },
     reducers: {
         showEditForm: (state,action) => {
@@ -77,7 +116,9 @@ const reviewsSlice = createSlice({
       [fetchReviews.fulfilled]: (state, action) => {
         // console.log(action)
         state.loading = false;
-        state.reviews = [...action.payload];
+        state.reviews = [...action.payload.reviews];
+        state.overall = action.payload.overall;
+        state.ratingCount = action.payload.ratingCount;
         // console.log(state.reviews)
         state.errors = null;
       },
@@ -95,16 +136,36 @@ const reviewsSlice = createSlice({
       },
       [addReviews.fulfilled]: (state, action) => {
         state.loading = false;
-        // console.log(action.payload);
-        state.reviews= [action.payload, ...state.reviews]; 
+        console.log(action.payload);
+        // console.log(state.reviews);
+        state.reviews.push(action.payload.review);
+        state.overall = action.payload.overall;
+        state.ratingCount = action.payload.ratingCount;
         state.errors = null;
       },
       [addReviews.rejected]: (state, action) => {
         state.loading = false;
-        
         state.errors = JSON.parse(action.payload);
         
       },
+
+        // Delete a product
+    [deleteReview.pending]: (state, action) => {
+        state.loading = true;
+        state.errors = null;
+      },
+      [deleteReview.fulfilled]: (state, action) => {
+        state.loading = false;
+        // console.log(action.payload)
+        state.overall = action.payload.overall;
+        state.ratingCount = action.payload.ratingCount;
+        state.reviews = state.reviews.filter((review)=> review.id !== action.payload.review.id);
+        state.errors = null;
+      },
+      [deleteReview.rejected]: (state, action) => {
+        state.loading = false;
+        state.errors = action.payload.errors;
+      }
 
     }
 });
