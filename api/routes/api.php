@@ -40,6 +40,7 @@ Route::post('/comments', [CommentController::class, 'store']);
 
 
 Route::post('register',[UserController::Class,'register']);
+Route::post('login',[UserController::Class,'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
