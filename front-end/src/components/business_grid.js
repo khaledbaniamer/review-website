@@ -13,7 +13,7 @@ const Business = ()=>{
   const businesses = useSelector(state=>state.business);
   const allBusiness = businesses.businesses.map(business=>{
     return(
-      <div className="card mb-3" style={{maxWidth: "100%"}}>
+      <div key={business.id} className="card mb-3" style={{maxWidth: "100%"}}>
         <div className="row g-0">
             <div className="col-md-3">
                     <img
