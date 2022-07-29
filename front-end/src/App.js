@@ -9,6 +9,8 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import UserProfile from "./components/userProfile";
+import BussnisRegister from "./components/bussnisRegister";
 import Products from "./components/products";
 import Bussines_addForm from "./components/Bussines_addForm";
 
@@ -31,7 +33,10 @@ function App() {
       <Route path="about" element={<About />}/>
       <Route path="login" element={<Login />}/>
       <Route path="register" element={<Register />}/>
+      <Route path="bussnisRegister" element={<BussnisRegister />}/>
       <Route path="business" element={<Business />}/>
+      <Route path="userprofile" element={<UserProfile />}/>
+
       <Route path="business_profile" element={<Business_profile />}/>
       <Route path="products" element={<Products />}/>
     </Routes>
