@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {getCategory} from "../Store/Slices/categorySlice";
+import { addProducts } from "../Store/Slices/productSlice";
 
 
 
@@ -10,13 +12,23 @@ function Bussines_addForm() {
 
     const dispatch = useDispatch();
 
-    const fetchcategory = async()=>{
-        const resp = await fetch(`http://127.0.0.1:8000/api/category`)
-           const respdata = await resp.json()
-           console.log(respdata)
-       }
+   useEffect(() => {
+     
+   
+   dispatch(getCategory())
+   }, [dispatch])
 
-       const [productData , setProductData] = useState({product_name:"" , product_description:"" , product_image:null})
+   const category = useSelector(state=>state.category)
+  //  console.log(category)
+
+   const allCategory = category.categories.map(category=>{
+    return (
+      <option value={category.id}>{category.category_name}</option>
+    )
+   })
+   
+
+       const [productData , setProductData] = useState({'business_id':'1'})
        const handleChange = (e)=>{
         e.preventDefault()
         const value = e.target.value;
@@ -44,12 +56,17 @@ function Bussines_addForm() {
             ...productData,
         })
 
+          console.log(productData)
         const formData = new FormData();
         formData.append('product_name', productData.product_name)
         formData.append('product_image', productData.product_image)
         formData.append('product_description', productData.product_description)
+        formData.append('catrgory_id', productData.catrgory_id)
+        formData.append('business_id', productData.business_id)
+
+       dispatch(addProducts(formData))
         
-        dispatch(fetchcategory(formData));
+        
   
     }
 
@@ -106,14 +123,14 @@ function Bussines_addForm() {
                    
                     <div class="col-12">
                     <label style={{ color: 'black'}}>Select category:</label>
-                      <select name="category_id"
+                      <select name="category_id" 
+                      onChange={handleChange}
                         class="form-control"
                         aria-label="Default select example"
                       >
                         <option selected>Select category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {allCategory}
+                      
                       </select>
                       
                     </div>
