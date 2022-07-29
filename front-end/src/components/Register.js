@@ -2,6 +2,13 @@ import {React,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
+
+      
     const [user_name,setName] = useState("");
     const [user_email,setEmail] = useState("");
     const [user_password,setPassword] = useState("");
@@ -23,6 +30,7 @@ function Register() {
         result =await result.json();
         localStorage.setItem("user-info",JSON.stringify(result));
         navigate('/');
+        refreshPage();
     }
 
     return ( 
@@ -65,7 +73,7 @@ function Register() {
                    <button onClick={signUp} className="main_btn col-lg-3 mt-3">Register</button>
                    </div>
 
-                    
+
            </div>
 
         </>

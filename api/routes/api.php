@@ -28,11 +28,26 @@ use App\Http\Controllers\UserController;
 //reviews
 Route::get('/comments', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
+Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
+
+
+
+
+<<<<<<< HEAD
+Route::post('register',[UserController::class,'register']);
+=======
+
+
+
+
 
 
 
 
 Route::post('register',[UserController::class,'register']);
+Route::post('register',[UserController::class,'register']);
+Route::post('login',[UserController::class,'login']);
+>>>>>>> 837f7c08354d1a881156e0bc23fa45d0fe830a40
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

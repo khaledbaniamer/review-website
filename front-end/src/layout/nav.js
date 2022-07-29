@@ -1,44 +1,19 @@
 import { NavLink } from "react-router-dom";
 
-
-
 const Navbar = ()=>{
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
+
+    function logOut() {
+    localStorage.clear();
+    refreshPage();
+    }
+
     return(
         <>
 <header className="header_area">
-    {/* <div className="top_menu"> */}
-      {/* <div className="container"> */}
-        {/* <div className="row"> */}
-          {/* <div className="col-lg-7">
-            <div className="float-left">
-              <p>Phone: +01 256 25 235</p>
-              <p>email: info@eiser.com</p>
-            </div>
-          </div>
-          <div className="col-lg-5">
-            <div className="float-right">
-              <ul className="right_side">
-                <li>
-                  <NavLink to="cart.html">
-                    gift card
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="tracking.html">
-                    track order
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="contact">
-                    Contact Us
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-          </div> */}
-        {/* </div> */}
-      {/* </div> */}
-    {/* </div> */}
     <div className="main_menu">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light w-100">
@@ -95,10 +70,10 @@ const Navbar = ()=>{
                       aria-expanded="false">Pages</NavLink>
                     <ul className="dropdown-menu">
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="tracking.html">Tracking</NavLink>
+                        <NavLink className="nav-link" to="">Tracking</NavLink>
                       </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="elements.html">Elements</NavLink>
+                        <NavLink className="nav-link" to="">Elements</NavLink>
                       </li>
                     </ul>
                   </li>
@@ -111,40 +86,31 @@ const Navbar = ()=>{
                   <li className="nav-item">
                     <NavLink className="nav-link" to="about">About</NavLink>
                   </li>
+                 {
+                  (!localStorage.getItem('user-info'))?
+                  <>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="login">Login</NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="register">Register</NavLink>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="col-lg-4 pr-0">
-                <ul className="nav navbar-nav navbar-right right_nav pull-right">
-                  <li className="nav-item">
-                    <NavLink to="#" className="icons">
-                      <i className="ti-search" aria-hidden="true"></i>
-                    </NavLink>
-                  </li>
-
-                  <li className="nav-item">
-                    <NavLink to="#" className="icons">
-                      <i className="ti-shopping-cart"></i>
-                    </NavLink>
-                  </li>
-
-                  <li className="nav-item">
-                    <NavLink to="#" className="icons">
-                      <i className="ti-user" aria-hidden="true"></i>
-                    </NavLink>
-                  </li>
-
-                  <li className="nav-item">
-                    <NavLink to="#" className="icons">
-                      <i className="ti-heart" aria-hidden="true"></i>
-                    </NavLink>
-                  </li>
+                  <NavLink className="nav-link" to="login">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="register">Register</NavLink>
+                </li>
+                  </>
+                :
+                 <li className="nav-item submenu dropdown">
+                 <NavLink to="#" className="icons mt-2">
+                    <i className="ti-user fa-2x" aria-hidden="true"></i>
+                </NavLink>
+                 <ul className="dropdown-menu">
+                   <li className="nav-item">
+                     <NavLink className="nav-link" to="tracking.html">Accout</NavLink>
+                   </li>
+                   <li className="nav-item">
+                     <NavLink onClick={logOut} className="nav-link" to="/">Logout</NavLink>
+                   </li>
+                 </ul>
+               </li>
+                 }
                 </ul>
               </div>
             </div>
