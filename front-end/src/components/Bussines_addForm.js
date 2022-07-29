@@ -1,6 +1,47 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 function Bussines_addForm() {
+
+    const [productName,setProductName]=useState('');
+    const [description,setDescription]=useState('');
+    const [productImage,setProductImage]=useState('');
+
+  
+    const handleInputname=(e)=>{
+        setProductName(e.target.value);
+    }
+  
+    const handleInputdescription=(e)=>{
+        setDescription(e.target.value);
+    }
+  
+
+    const handleChangeImage=(e)=>{
+        setProductImage(
+           { ...productImage,
+            image: e.target.files[0]}
+        )
+    }
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+
+
+        // navigate("/add_product", { replace: true });
+    }
+ 
+
+ 
+
+
+
+
   return (
     <>
       <section class="banner_area">
@@ -28,7 +69,7 @@ function Bussines_addForm() {
                 {/* <h2 class="contact-title"></h2> */}
               </div>
               <div class="col-lg-8 mb-4 mb-lg-0">
-                <form
+                <form onSubmit={handleSubmit}
                   class="form-contact contact_form"
                   action="contact_process.php"
                   method="post"
@@ -36,11 +77,7 @@ function Bussines_addForm() {
                   novalidate="novalidate"
                 >
                   <div class="row">
-                    {/* <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" placeholder="Enter Message"></textarea>
-                        </div>
-                    </div> */}
+                   
                     <div class="col-sm-12">
                       <div class="form-group">
                       <label style={{ color: 'black'}}>Product name:</label>
@@ -49,20 +86,13 @@ function Bussines_addForm() {
                           name="product_name"
                           id="name"
                           type="text"
+                          value={productName}
+                          onChange={handleInputname}
                           placeholder="Enter product name"
                         />
                       </div>
                     </div>
-                    {/* <div class="col-sm-6">
-                      <div class="form-group">
-                        <input
-                          class="form-control"
-                          name="product_price"
-                          type="number"
-                          placeholder="Enter product price"
-                        />
-                      </div>
-                    </div> */}
+                   
                     <div class="col-12">
                     <label style={{ color: 'black'}}>Select category:</label>
                       <select name="category_id"
@@ -86,6 +116,8 @@ function Bussines_addForm() {
                           name="product_image"
                           id="subject"
                           type="file"
+                          
+                          onChange={handleChangeImage}
                           placeholder="Enter image"
                         />
                       </div>
@@ -100,6 +132,8 @@ function Bussines_addForm() {
                           cols="30"
                           rows="9"
                           placeholder="Enter description"
+                          value={setDescription}
+                          onChange={handleInputdescription}
                         ></textarea>
                       </div>
                     </div>
@@ -112,48 +146,7 @@ function Bussines_addForm() {
                 </form>
               </div>
 
-              {/* <div class="col-lg-4">
-                <div class="media contact-info">
-                  <span class="contact-info__icon">
-                    <i class="ti-home"></i>
-                  </span>
-                  <div class="media-body">
-                    <h3>Jordan, Irbid.</h3>
-                    <p>0096277809091</p>
-                  </div>
-                </div>
-                <div class="media contact-info">
-                  <span class="contact-info__icon">
-                    <i class="ti-tablet"></i>
-                  </span>
-                  <div class="media-body">
-                    <h3>
-                      <a href="tel:454545654">00 (440) 9865 562</a>
-                    </h3>
-                    <p>Mon to Fri 9am to 6pm</p>
-                  </div>
-                </div>
-                <div class="media contact-info">
-                  <span class="contact-info__icon">
-                    <i class="ti-email"></i>
-                  </span>
-                  <div class="media-body">
-                    <h3>
-                      <a href="mailto:support@colorlib.com">
-                        support@colorlib.com
-                      </a>
-                    </h3>
-                    <p>Send us your query anytime!</p>
-                  </div>
-                </div>
-                <a
-                  href="mailto:someone@example.com"
-                  type="submit"
-                  class="main_btn"
-                >
-                  Direct Email
-                </a> */}
-              {/* </div> */}
+          
             </div>
           </div>
         </div>

@@ -1,11 +1,18 @@
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { getBusinesses, getSingleBusiness } from "../Store/Slices/businessSlice";
 
 const Business_profile = ()=>{
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getBusinesses())
+  // }, [dispatch])
+  
+  // const singleBusiness = useSelector(state=>state.business);
+  // console.log(singleBusiness)
     return(
         <>
-
-
-
 <div className="row py-5 px-4">
     <div className="col-xl-11 col-md-6 col-sm-10 mx-auto">
 

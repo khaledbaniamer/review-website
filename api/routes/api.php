@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // {  add product form from bussiness owner}
 Route::post('add_product',[ProductController::class ,'ownerAddProduct']);
+Route::get('business' , [BusinessController::class ,'getBusiness']);
+Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
