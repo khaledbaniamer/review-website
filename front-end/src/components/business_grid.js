@@ -100,7 +100,7 @@ const Business = ()=>{
                         <small className="text-muted">Last updated 3 mins ago</small>
                         </p>
                     </div>
-                    <NavLink to="/business_profile" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+                    <NavLink to="/business_profile/1" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
                     </div>
                 </div>
                 </div>
