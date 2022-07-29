@@ -1,17 +1,21 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {reviewsActions} from '../Store/Slices/ReviewsSlice';
-import { fetchReviews } from '../Store/Slices/ReviewsSlice';
+import { fetchReviews, deleteReview } from '../Store/Slices/ReviewsSlice';
 import { addReviews, cancelEditForm } from '../Store/Slices/ReviewsSlice';
+import Swal from 'sweetalert2';
 const SingleProduct = () => {
   const [bodyReview,setBodyReview] = useState('');
   const [rate,setRate] = useState();
-
+  
   const isEdit = useSelector((state) => state.reviews.isEdit);
   const  loading  = useSelector((state) => state.reviews.loading);
   const  errors = useSelector((state) => state.reviews.errors);
   const  reviews = useSelector((state) => state.reviews.reviews);
+  const  ratingCount = useSelector((state) => state.reviews.ratingCount);
+  const  overall = useSelector((state) => state.reviews.overall);
+  // console.log(errors)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,7 +36,10 @@ const SingleProduct = () => {
       // product_id: product_id,
 
     }
-    dispatch(addReviews(reviewData))
+
+    dispatch(addReviews(reviewData));
+    setBodyReview('');
+    setRate();
   }
 
 
@@ -43,6 +50,24 @@ const SingleProduct = () => {
   }
   const cancleHandler = () => {
     dispatch(reviewsActions.cancelEditForm())
+  }
+  const deleteHandler = (reviewId) => {
+    // console.log(reviewId)
+    dispatch(deleteReview(reviewId))
+    // Swal.fire({
+    //   title: 'Do you want to save the changes?',
+    //   showDenyButton: true,
+    //   showCancelButton: true,
+    //   confirmButtonText: 'Save',
+    //   denyButtonText: `Don't save`,
+    // }).then((result) => {
+    //   /* Read more about isConfirmed, isDenied below */
+    //   if (result.isConfirmed) {
+    //     Swal.fire('Saved!', '', 'success')
+    //   } else if (result.isDenied) {
+    //     Swal.fire('Changes are not saved', '', 'info')
+    //   }
+    // })
   }
 
 
@@ -230,7 +255,7 @@ const SingleProduct = () => {
               role="tabpanel"
               aria-labelledby="review-tab"
             >
-               {errors && <div className="alret alert-danger text-center p-2 my-2" role="alert">{errors.validation_errors}</div>}
+               {/* {errors && <div className="alret alert-danger text-center p-2 my-2" role="alert">{errors}</div>} */}
               { loading ? (
           <span>Loading...</span> 
         ) :
@@ -240,16 +265,27 @@ const SingleProduct = () => {
                     <div className="col-6">
                       <div className="box_total">
                         <h5>Overall</h5>
-                        <h4>4.0</h4>
-                        <h6>(03 Reviews)</h6>
+                        <h4>
+                        {
+                              (() => {
+                                const stars = [];
+                                for (let i = 1; i <= Math.round(overall); i++) {
+                                  stars.push(
+                                        <i className="fa fa-star"></i>
+                                    );
+                                }
+                                return stars;
+                            })()}
+                          </h4>
+                        <h6>({ratingCount} Reviews)</h6>
                       </div>
                     </div>
                   </div>
                   <div className="review_list">
-                    {!isEdit ? (
-                      reviews.map((review)=> (
-
-                      
+                    
+                    {reviews.length<=0 && <span className="d-block my-5">There is no reviews</span>}
+                  { reviews.length>0 && reviews.map((review)=> (
+                    !isEdit ? 
                       <div key={review.id} className="review_item mt-3">
                         <div className="media">
                           <div className="d-flex">
@@ -285,11 +321,12 @@ const SingleProduct = () => {
                                 <button className="dropdown-item" onClick={EditHandler}>
                                   Edit
                                 </button>
-                                <button className="dropdown-item" >
+                                <button className="dropdown-item" onClick={() =>deleteHandler(review.id)}>
                                   Delete
                                 </button>
                               </div>
                             </div>
+                                
                             {/* <a className="reply_btn" href="#">Edit</a> */}
                           </div>
                         </div>
@@ -297,10 +334,11 @@ const SingleProduct = () => {
                         {review.comment_body}
                         </p>
                       </div>
-                      ))
-                    ) : (
+                      
+                     : 
                       // edit section
-                      <div className="review_item mt-3">
+                      
+                      <div key={review.id} className="review_item mt-3">
                         <div className="media">
                           <div className="d-flex">
                             <img
@@ -309,8 +347,8 @@ const SingleProduct = () => {
                             />
                           </div>
                           <div className="media-body">
-                            <h4>Blake Ruiz</h4>
-                            <h5>12th Feb, 2017 at 05:56 pm</h5>
+                            {/* <h4>Blake Ruiz</h4>
+                            <h5>12th Feb, 2017 at 05:56 pm</h5> */}
 
                             <form
                               className="row contact_form"
@@ -321,43 +359,19 @@ const SingleProduct = () => {
                             >
                               <p>Your Rating:</p>
                               <ul className="list">
-                                <div className="rating">
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    value="5"
-                                    id="5"
-                                  />
-                                  <label htmlFor="5">☆</label>
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    value="4"
-                                    id="4"
-                                  />
-                                  <label htmlFor="4">☆</label>
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    value="3"
-                                    id="3"
-                                  />
-                                  <label htmlFor="3">☆</label>
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    value="2"
-                                    id="2"
-                                  />
-                                  <label htmlFor="2">☆</label>
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    value="1"
-                                    id="1"
-                                  />
-                                  <label htmlFor="1">☆</label>
-                                </div>
+                              <div className="rating my-2">
+                          <input type="radio" name="review_rate" onChange={()=>setRate(5)} value="5" id="5" />
+                          <label htmlFor="5">☆</label>
+                          <input type="radio" name="review_rate" onChange={()=>setRate(4)} value="4" id="4" />
+                          <label htmlFor="4">☆</label>
+                          <input type="radio" name="review_rate" onChange={()=>setRate(3)} value="3" id="3" />
+                          <label htmlFor="3">☆</label>
+                          <input type="radio" name="review_rate" onChange={()=>setRate(2)} value="2" id="2" />
+                          <label htmlFor="2">☆</label>
+                          <input type="radio" name="review_rate" onChange={()=>setRate(1)} value="1" id="1" />
+                          <label htmlFor="1">☆</label>
+                          
+                        </div>
                               </ul>
                               <div className="col-md-12">
                                 <div className="form-group">
@@ -367,12 +381,7 @@ const SingleProduct = () => {
                                     id="message"
                                     rows="7"
                                     placeholder="Review"
-                                    value="Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip
-                                    ex ea commodo"
+                                    value={review.comment_body}
                                   >
                                    
                                   </textarea>
@@ -389,7 +398,7 @@ const SingleProduct = () => {
                                 <button
                                   type="button"
                                   value="submit"
-                                  className="btn submit_btn"
+                                  className="btn submit_btn mx-1"
                                   onClick={cancleHandler}
                                 >
                                   Cancle
@@ -398,7 +407,7 @@ const SingleProduct = () => {
                             </form>
                           </div>
                         </div>
-                      </div>
+                      </div>)
                     )}
 
                     {/* reply section */}

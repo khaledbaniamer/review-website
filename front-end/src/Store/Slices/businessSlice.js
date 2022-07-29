@@ -1,4 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const getBusinesses = createAsyncThunk(
     'business/getBusinesses',
@@ -19,6 +21,24 @@ export const getBusinesses = createAsyncThunk(
 //         return response;
 //     }
 // )
+
+export const addBusiness = createAsyncThunk(
+    'business/addBusiness',
+    async (args ,thunkAPI)=>{
+        
+        const response = await axios.post('http://127.0.0.1:8000/api/addbusiness',args)
+       
+        if(response.status==200){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Business Has been added Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })}
+        
+    }
+)
 
 
 const businessSlice = createSlice({
@@ -49,6 +69,18 @@ const businessSlice = createSlice({
         // [getSingleBusiness.rejected]:(state , action)=>{
         //     state.status = null
         // }
+        [addBusiness.fulfilled]:(state , action)=>{
+            // state.businesses = action.payload;
+            state.status = true
+            state.businesses.push(action.payload);
+        },
+        [addBusiness.pending]:(state , action)=>{
+            state.status = false
+        },
+        [addBusiness.rejected]:(state , action)=>{
+            state.status = null
+        },
+
     }
 })
 

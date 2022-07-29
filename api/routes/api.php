@@ -28,12 +28,23 @@ use App\Http\Controllers\UserController;
 //reviews
 Route::get('/comments', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
+Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
 
 
 
 
-Route::post('register',[UserController::Class,'register']);
-Route::post('login',[UserController::Class,'login']);
+Route::post('register',[UserController::class,'register']);
+
+
+
+
+
+
+
+
+Route::post('register',[UserController::class,'register']);
+Route::post('register',[UserController::class,'register']);
+Route::post('login',[UserController::class,'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -44,6 +55,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('add_product',[ProductController::class ,'ownerAddProduct']);
 Route::get('business' , [BusinessController::class ,'getBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
+Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
 
 //category api
 Route::get('category' , [CategoryController::class , 'category']);
