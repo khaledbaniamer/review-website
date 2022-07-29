@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const getCategory = createAsyncThunk(
+export const getCategory = createAsyncThunk(
     'category/getCategory',
     async ()=>{
         const api = await fetch('http://127.0.0.1:8000/api/category');

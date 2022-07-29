@@ -1,8 +1,33 @@
 import {Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
-import React from 'react'
+import React, { useEffect } from 'react'
+import { getCategory } from '../Store/Slices/categorySlice';
 
 function Index() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategory())
+  }, [dispatch])
+
+  const categories = useSelector(state=>state.category);
+  console.log(categories.categories)
+  const allcategory = categories.categories.map(category=>{
+    return (
+    <div className="col-lg-4 col-md-6">
+      <div className="single-product">
+        <div className="product-img">
+          <img className="img-fluid w-100" src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
+        </div>
+        <div className="product-btm">
+          <Link to="#" className="d-block">
+            <h3>{category.category_name}</h3>
+          </Link>
+        </div>
+      </div>
+    </div>
+    )
+  })
   return (
     <>
     
@@ -86,89 +111,9 @@ function Index() {
       </div>
 
       <div className="row">
-        <div className="col-lg-4 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/feature-product/f-p-1.jpg" alt="" />
-              {/* <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div> */}
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h3>Latest men’s sneaker</h3>
-              </Link>
-              {/* <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div> */}
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/feature-product/f-p-2.jpg" alt="" />
-              {/* <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div> */}
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h3>Red women purses</h3>
-              </Link>
-              {/* <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div> */}
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/feature-product/f-p-3.jpg" alt="" />
-              {/* <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div> */}
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h3>Men stylist Smart</h3>
-              </Link>
-              {/* <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div> */}
-            </div>
-          </div>
-        </div>
+        {allcategory}
+        
+        
       </div>
     </div>
   </section>
