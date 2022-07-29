@@ -21,8 +21,8 @@ function BussnisRegister() {
             <div className="m-5 col-lg-5 mx-auto">
             <form action="#">
                     <div className="mt-4">
-                    <label for="" class="form-label">Full Name</label>
-                        <input type="text" name="owner_name" placeholder="Enter Your Name" required className="single-input" />
+                    <label for="" className="form-label ">Full Name</label>
+                        <input type="text" name="owner_name" placeholder="Enter Your Name" required className="single-input " />
                     </div>
                     <div className="mt-4">
                     <label for="" class="form-label">Email</label>

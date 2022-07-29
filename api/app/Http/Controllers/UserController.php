@@ -19,7 +19,13 @@ class UserController extends Controller
         return $user;
     }
 
-    function login() {
-        return "login";
+    function login(Request $request) {
+       $user = User::where('user_email',$request->user_email)->first();
+       
+       if (!$user || !Hash::check($request->user_password, $user->user_password)){
+        return "ERROR!";
+       }
+       
+       return $user;
     }
 }

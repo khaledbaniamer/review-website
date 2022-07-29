@@ -35,9 +35,10 @@ function App() {
       <Route path="register" element={<Register />}/>
       <Route path="bussnisRegister" element={<BussnisRegister />}/>
       <Route path="business" element={<Business />}/>
+
       <Route path="userprofile" element={<UserProfile />}/>
 
-      <Route path="business_profile" element={<Business_profile />}/>
+      <Route path="business_profile/:id" element={<Business_profile />}/>
       <Route path="products" element={<Products />}/>
     </Routes>
 
