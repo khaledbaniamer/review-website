@@ -159,7 +159,6 @@ function Bussines_addForm() {
                 </form>
               </div>
 
-          
             </div>
           </div>
         </div>
