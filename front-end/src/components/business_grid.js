@@ -13,26 +13,28 @@ const Business = ()=>{
   const businesses = useSelector(state=>state.business);
   const allBusiness = businesses.businesses.map(business=>{
     return(
+      <div className="card mb-3" style={{maxWidth: "100%"}}>
         <div className="row g-0">
             <div className="col-md-3">
                     <img
-                        src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                        src={'http://localhost:8000/profile_photo/'+business.profile_photo}
                         alt="Trendy Pants and Shoes"
                         className="img-fluid rounded-start"
                         />
                   </div>
                   <div className="col-md-8  d-flex ">
                   <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
+                        <h5 className="card-title">{business.owner_name}</h5>
                         <p className="card-text">
-
+                        {business.description}
                         </p>
                         <p className="card-text">
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-muted">{business.created_at}</small>
                         </p>
                   </div>
-                    <NavLink to="/business_profile" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+                    <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
               </div>
+          </div>
           </div>
 
     );
@@ -81,29 +83,7 @@ const Business = ()=>{
             </div>
             
             <div className="latest_product_inner">
-            <div className="card mb-3" style={{maxWidth: "100%"}}>
-                <div className="row g-0">
-                    <div className="col-md-3">
-                    <img
-                        src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-                        alt="Trendy Pants and Shoes"
-                        className="img-fluid rounded-start"
-                    />
-                    </div>
-                    <div className="col-md-8  d-flex ">
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">
-
-                        </p>
-                        <p className="card-text">
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                        </p>
-                    </div>
-                    <NavLink to="/business_profile/1" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
-                    </div>
-                </div>
-                </div>
+              {allBusiness}
             </div>
           </div>
 
