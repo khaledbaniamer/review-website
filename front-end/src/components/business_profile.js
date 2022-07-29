@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getBusinesses, getSingleBusiness } from "../Store/Slices/businessSlice";
 
 const Business_profile = ()=>{
@@ -11,8 +11,9 @@ const Business_profile = ()=>{
   
   // const singleBusiness = useSelector(state=>state.business);
   // console.log(singleBusiness)
+  const {id} = useParams();
     return(
-        <>
+    
 <div className="row py-5 px-4">
     <div className="col-xl-11 col-md-6 col-sm-10 mx-auto">
 
@@ -78,12 +79,7 @@ const Business_profile = ()=>{
                       </div>
                       <div class="review_item">
                     <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/review-3.png"
-                          alt=""
-                        />
-                      </div>
+
                     </div>
                       <div class="mt-1 d-flex justify-content-between align-items-center">
                       <div class="small-ratings mt-3">
@@ -117,12 +113,6 @@ const Business_profile = ()=>{
                       </div>
                       <div class="review_item">
                     <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/review-3.png"
-                          alt=""
-                        />
-                      </div>
                     </div>
                       <div class="mt-1 d-flex justify-content-between align-items-center">
                       <div class="small-ratings mt-3">
@@ -156,12 +146,7 @@ const Business_profile = ()=>{
                       </div>
                       <div class="review_item">
                     <div class="media">
-                      <div class="d-flex">
-                        <img
-                          src="img/product/single-product/review-3.png"
-                          alt=""
-                        />
-                      </div>
+
                     </div>
                       <div class="mt-1 d-flex justify-content-between align-items-center">
                       <div class="small-ratings mt-3">
@@ -200,7 +185,7 @@ const Business_profile = ()=>{
     </div>
 </div>
 
-        </>
+
     )
 }
 
