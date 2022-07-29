@@ -3603,23 +3603,23 @@ h6 {
   color: #797979;
 }
 .review_item .media .media-body .reply_btn {
-  border: 1px solid #e0e0e0;
-  padding: 0px 28px;
+  /* border: 1px solid #e0e0e0; */
+  /* padding: 0px 28px; */
   display: inline-block;
-  line-height: 32px;
-  border-radius: 16px;
-  font-size: 14px;
+  /* line-height: 32px; */
+  /* border-radius: 16px; */
+  /* font-size: 14px; */
   font-family: "Roboto", sans-serif;
-  color: #2a2a2a;
+  /* color: #2a2a2a; */
   position: absolute;
   right: 0px;
   top: 14px;
 }
-.review_item .media .media-body .reply_btn:hover {
+/* .review_item .media .media-body .reply_btn:hover {
   background: #71cd14;
   border-color: #71cd14;
   color: #fff;
-}
+} */
 .review_item p {
   padding-top: 10px;
   margin-bottom: 0px;

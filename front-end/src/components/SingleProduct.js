@@ -183,225 +183,7 @@ const SingleProduct = ()=> {
             person creating less
           </p>
         </div>
-        <div
-          className="tab-pane fade"
-          id="profile"
-          role="tabpanel"
-          aria-labelledby="profile-tab"
-        >
-          <div className="table-responsive">
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>
-                    <h5>Width</h5>
-                  </td>
-                  <td>
-                    <h5>128mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Height</h5>
-                  </td>
-                  <td>
-                    <h5>508mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Depth</h5>
-                  </td>
-                  <td>
-                    <h5>85mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Weight</h5>
-                  </td>
-                  <td>
-                    <h5>52gm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Quality checking</h5>
-                  </td>
-                  <td>
-                    <h5>yes</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Freshness Duration</h5>
-                  </td>
-                  <td>
-                    <h5>03days</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>When packeting</h5>
-                  </td>
-                  <td>
-                    <h5>Without touch of hand</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Each Box contains</h5>
-                  </td>
-                  <td>
-                    <h5>60pcs</h5>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          className="tab-pane fade"
-          id="contact"
-          role="tabpanel"
-          aria-labelledby="contact-tab"
-        >
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="comment_list">
-                <div className="review_item">
-                  <div className="media">
-                    <div className="d-flex">
-                      <img
-                        src="asset/img/product/single-product/review-1.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
-                      <a className="reply_btn" href="#Reply">Reply</a>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div className="review_item reply">
-                  <div className="media">
-                    <div className="d-flex">
-                      <img
-                        src="asset/img/product/single-product/review-2.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
-                      <a className="reply_btn" href="#Reply">Reply</a>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div className="review_item">
-                  <div className="media">
-                    <div className="d-flex">
-                      <img
-                        src="asset/img/product/single-product/review-3.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
-                      <a className="reply_btn" href="#Reply">Reply</a>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="review_box">
-                <h4>Post a comment</h4>
-                <form
-                  className="row contact_form"
-                  action="contact_process.php"
-                  method="post"
-                  id="contactForm"
-                  noValidate="novalidate"
-                >
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        name="name"
-                        placeholder="Your Full name"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        placeholder="Email Address"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="number"
-                        name="number"
-                        placeholder="Phone Number"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <textarea
-                        className="form-control"
-                        name="message"
-                        id="message"
-                        rows="1"
-                        placeholder="Message"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div className="col-md-12 text-right">
-                    <button
-                      type="submit"
-                      value="submit"
-                      className="btn submit_btn"
-                    >
-                      Submit Now
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <div
           className="tab-pane fade show active"
           id="review"
@@ -420,55 +202,8 @@ const SingleProduct = ()=> {
                 </div>
               </div>
               <div className="review_list">
-                <div className="review_item">
-                  <div className="media">
-                    <div className="d-flex">
-                      <img
-                        src="asset/img/product/single-product/review-1.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div className="review_item">
-                  <div className="media">
-                    <div className="d-flex">
-                      <img
-                        src="asset/img/product/single-product/review-2.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                      <i className="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div className="review_item">
+
+                {true ? <div className="review_item mt-3">
                   <div className="media">
                     <div className="d-flex">
                       <img
@@ -478,9 +213,29 @@ const SingleProduct = ()=> {
                     </div>
                     <div className="media-body">
                       <h4>Blake Ruiz</h4>
+                      <h5>12th Feb, 2017 at 05:56 pm</h5>
                   {
                     stars.map((star,index) => (<i key={index} className="fa fa-star"></i>))
                   }
+                  <div class="btn-group reply_btn">
+  <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+  Edit
+  </button>
+  <div class="dropdown-menu">
+    <button class="dropdown-item" href="#">Edit</button>
+    <button class="dropdown-item" href="#">Delete</button>
+  </div>
+</div>
+                 {/* <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu">
+    
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div> */}
+                        {/* <a class="reply_btn" href="#">Edit</a> */}
                     </div>
                   </div>
                   <p>
@@ -489,7 +244,92 @@ const SingleProduct = ()=> {
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo
                   </p>
+                </div> : 
+                // edit section
+                <div className="review_item mt-3">
+                  <div className="media">
+                    <div className="d-flex">
+                      <img
+                        src="asset/img/product/single-product/review-3.png"
+                        alt=""
+                      />
+                    </div>
+                    <div className="media-body">
+                      <h4>Blake Ruiz</h4>
+                      <h5>12th Feb, 2017 at 05:56 pm</h5>
+
+                      <form
+                  className="row contact_form"
+                  action="contact_process.php"
+                  method="post"
+                  id="contactForm"
+                  noValidate="novalidate"
+                >
+                  <p>Your Rating:</p>
+                <ul className="list">
+                     <div className="rating">
+                     <input type="radio" name="rating" value="5" id="5" /><label htmlFor="5">☆</label> 
+                     <input type="radio" name="rating" value="4" id="4" /><label htmlFor="4">☆</label> 
+                     <input type="radio" name="rating" value="3" id="3" /><label htmlFor="3">☆</label> 
+                     <input type="radio" name="rating" value="2" id="2" /><label htmlFor="2">☆</label> 
+                     <input type="radio" name="rating" value="1" id="1" /><label htmlFor="1">☆</label>
                 </div>
+                </ul>
+                  <div className="col-md-12">
+                    <div className="form-group">
+                      <textarea
+                        className="form-control"
+                        name="message"
+                        id="message"
+                        rows="7"
+                        placeholder="Review"
+                      >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo
+                      </textarea>
+                    </div>
+                  </div>
+                  <div className="col-md-12 text-right">
+                    <button
+                      type="submit"
+                      value="submit"
+                      className="btn submit_btn"
+                    >
+                      Submit Now
+                    </button>
+                  </div>
+                </form>
+                    </div>
+                  </div>
+                 
+                </div>
+                }
+                
+                {/* reply section */}
+                {/* <div class="review_item reply">
+                    <div class="media">
+                      <div class="d-flex">
+                        <img
+                          src="asset/img/product/single-product/review-2.png"
+                          alt=""
+                        />
+                      </div>
+                      <div class="media-body">
+                        <h4>Blake Ruiz</h4>
+                        <h5>12th Feb, 2017 at 05:56 pm</h5>
+                        <a class="reply_btn" href="#">Reply</a>
+                      </div>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo
+                    </p>
+                  </div> */}
+
               </div>
             </div>
             <div className="col-lg-6">
