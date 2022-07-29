@@ -8,39 +8,50 @@ import { useNavigate } from "react-router-dom";
 
 function Bussines_addForm() {
 
-    const [productName,setProductName]=useState('');
-    const [description,setDescription]=useState('');
-    const [productImage,setProductImage]=useState('');
+    const dispatch = useDispatch();
 
-  
-    const handleInputname=(e)=>{
-        setProductName(e.target.value);
+    const fetchcategory = async()=>{
+        const resp = await fetch(`http://127.0.0.1:8000/api/category`)
+           const respdata = await resp.json()
+           console.log(respdata)
+       }
+
+       const [productData , setProductData] = useState({product_name:"" , product_description:"" , product_image:null})
+       const handleChange = (e)=>{
+        e.preventDefault()
+        const value = e.target.value;
+        setProductData({
+          ...productData,
+          [e.target.name]: value
+        })
     }
-  
-    const handleInputdescription=(e)=>{
-        setDescription(e.target.value);
-    }
-  
 
     const handleChangeImage=(e)=>{
-        setProductImage(
-           { ...productImage,
+        setProductData(
+           { ...productData,
             image: e.target.files[0]}
         )
     }
 
+
     const handleSubmit=(e)=>{
-        e.preventDefault();
 
 
-        // navigate("/add_product", { replace: true });
+
+        e.preventDefault()
+        const value = e.target.value;
+        setProductData({
+            ...productData,
+        })
+
+        const formData = new FormData();
+        formData.append('product_name', productData.product_name)
+        formData.append('product_image', productData.product_image)
+        formData.append('product_description', productData.product_description)
+        
+        dispatch(fetchcategory(formData));
+  
     }
- 
-
- 
-
-
-
 
   return (
     <>
@@ -86,8 +97,8 @@ function Bussines_addForm() {
                           name="product_name"
                           id="name"
                           type="text"
-                          value={productName}
-                          onChange={handleInputname}
+                          value={productData.productName}
+                          onChange={handleChange}
                           placeholder="Enter product name"
                         />
                       </div>
@@ -114,6 +125,7 @@ function Bussines_addForm() {
                         <input
                           class="form-control"
                           name="product_image"
+                          
                           id="subject"
                           type="file"
                           
@@ -128,12 +140,13 @@ function Bussines_addForm() {
                         <textarea
                           class="form-control w-100"
                           name="product_description"
+                          type="text"
                           id="message"
                           cols="30"
                           rows="9"
                           placeholder="Enter description"
-                          value={setDescription}
-                          onChange={handleInputdescription}
+                          value={productData.productDescription}
+                          onChange={handleChange}
                         ></textarea>
                       </div>
                     </div>
