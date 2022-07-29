@@ -1,26 +1,64 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {reviewsActions} from '../Store/Slices/ReviewsSlice'
+import {reviewsActions} from '../Store/Slices/ReviewsSlice';
+import { fetchReviews } from '../Store/Slices/ReviewsSlice';
+import { addReviews, cancelEditForm } from '../Store/Slices/ReviewsSlice';
 const SingleProduct = () => {
+  const [bodyReview,setBodyReview] = useState('');
+  const [rate,setRate] = useState();
+
   const isEdit = useSelector((state) => state.reviews.isEdit);
+  const  loading  = useSelector((state) => state.reviews.loading);
+  const  errors = useSelector((state) => state.reviews.errors);
+  const  reviews = useSelector((state) => state.reviews.reviews);
   const dispatch = useDispatch();
-  let stars = [];
-  for (let index = 1; index <= 3; index++) {
-    stars.push("star");
+
+  useEffect(() => {
+    dispatch(fetchReviews())
   }
+  ,[dispatch])
+
+
+  const addReviewHandler = (e) => {
+    e.preventDefault();
+    // console.log(rate)
+    const reviewData = {
+      review_body: bodyReview,
+      review_rate: rate,
+      user_id : 1,
+      product_id: 1,
+      // user_id : (JSON.parse(localStorage.getItem('user-info').id)),
+      // product_id: product_id,
+
+    }
+    dispatch(addReviews(reviewData))
+  }
+
+
+
+
+  const EditHandler = () => {
+    dispatch(reviewsActions.showEditForm())
+  }
+  const cancleHandler = () => {
+    dispatch(reviewsActions.cancelEditForm())
+  }
+
+
+
+
   return (
     <>
-      {console.log()}{" "}
-      <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
-          <div class="container">
-            <div class="banner_content d-md-flex justify-content-between align-items-center">
-              <div class="mb-3 mb-md-0">
+      <section className="banner_area">
+        <div className="banner_inner d-flex align-items-center">
+          <div className="container">
+            <div className="banner_content d-md-flex justify-content-between align-items-center">
+              <div className="mb-3 mb-md-0">
                 <h2>Product Details</h2>
                 <p>Very us move be blessed multiply night</p>
               </div>
-              <div class="page_link">
+              <div className="page_link">
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/singleproduct">Product Details</NavLink>
               </div>
@@ -192,6 +230,10 @@ const SingleProduct = () => {
               role="tabpanel"
               aria-labelledby="review-tab"
             >
+               {errors && <div className="alret alert-danger text-center p-2 my-2" role="alert">{errors.validation_errors}</div>}
+              { loading ? (
+          <span>Loading...</span> 
+        ) :
               <div className="row">
                 <div className="col-lg-6">
                   <div className="row total_rate">
@@ -204,50 +246,58 @@ const SingleProduct = () => {
                     </div>
                   </div>
                   <div className="review_list">
-                    {isEdit ? (
-                      <div className="review_item mt-3">
+                    {!isEdit ? (
+                      reviews.map((review)=> (
+
+                      
+                      <div key={review.id} className="review_item mt-3">
                         <div className="media">
                           <div className="d-flex">
+                            {/* {review.user_image} */}
                             <img
-                              src="asset/img/product/single-product/review-3.png"
+                              src={review.user_image}
                               alt=""
                             />
                           </div>
                           <div className="media-body">
-                            <h4>Blake Ruiz</h4>
-                            <h5>12th Feb, 2017 at 05:56 pm</h5>
-                            {stars.map((star, index) => (
-                              <i key={index} className="fa fa-star"></i>
-                            ))}
-                            <div class="btn-group reply_btn">
+                            <h4>{review.user_name}</h4>
+                            <h5>{review.created_at}</h5>
+                            {
+                              (() => {
+                                const stars = [];
+                                for (let i = 1; i <= review.comment_rate; i++) {
+                                  stars.push(
+                                        <i className="fa fa-star"></i>
+                                    );
+                                }
+                                return stars;
+                            })()}
+                            <div className="btn-group reply_btn">
                               <button
-                                class="btn btn-light btn-sm dropdown-toggle"
+                                className="btn btn-light btn-sm dropdown-toggle"
                                 type="button"
                                 data-toggle="dropdown"
                                 aria-expanded="false"
                               >
                                 Edit
                               </button>
-                              <div class="dropdown-menu">
-                                <button class="dropdown-item" href="#">
+                              <div className="dropdown-menu">
+                                <button className="dropdown-item" onClick={EditHandler}>
                                   Edit
                                 </button>
-                                <button class="dropdown-item" href="#">
+                                <button className="dropdown-item" >
                                   Delete
                                 </button>
                               </div>
                             </div>
-                            {/* <a class="reply_btn" href="#">Edit</a> */}
+                            {/* <a className="reply_btn" href="#">Edit</a> */}
                           </div>
                         </div>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Ut enim ad minim veniam, quis
-                          nostrud exercitation ullamco laboris nisi ut aliquip
-                          ex ea commodo
+                        {review.comment_body}
                         </p>
                       </div>
+                      ))
                     ) : (
                       // edit section
                       <div className="review_item mt-3">
@@ -317,13 +367,14 @@ const SingleProduct = () => {
                                     id="message"
                                     rows="7"
                                     placeholder="Review"
-                                  >
-                                    Lorem ipsum dolor sit amet, consectetur
+                                    value="Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua.
                                     Ut enim ad minim veniam, quis nostrud
                                     exercitation ullamco laboris nisi ut aliquip
-                                    ex ea commodo
+                                    ex ea commodo"
+                                  >
+                                   
                                   </textarea>
                                 </div>
                               </div>
@@ -335,6 +386,14 @@ const SingleProduct = () => {
                                 >
                                   Submit Now
                                 </button>
+                                <button
+                                  type="button"
+                                  value="submit"
+                                  className="btn submit_btn"
+                                  onClick={cancleHandler}
+                                >
+                                  Cancle
+                                </button>
                               </div>
                             </form>
                           </div>
@@ -343,18 +402,18 @@ const SingleProduct = () => {
                     )}
 
                     {/* reply section */}
-                    {/* <div class="review_item reply">
-                    <div class="media">
-                      <div class="d-flex">
+                    {/* <div className="review_item reply">
+                    <div className="media">
+                      <div className="d-flex">
                         <img
                           src="asset/img/product/single-product/review-2.png"
                           alt=""
                         />
                       </div>
-                      <div class="media-body">
+                      <div className="media-body">
                         <h4>Blake Ruiz</h4>
                         <h5>12th Feb, 2017 at 05:56 pm</h5>
-                        <a class="reply_btn" href="#">Reply</a>
+                        <a className="reply_btn" href="#">Reply</a>
                       </div>
                     </div>
                     <p>
@@ -371,38 +430,43 @@ const SingleProduct = () => {
                     <h4>Add a Review</h4>
 
                     {/* <p>Outstanding</p> */}
-                    <div class="form-group required"></div>
+                    <div className="form-group required"></div>
                     <form
                       className="row contact_form"
-                      action="contact_process.php"
-                      method="post"
+                      onSubmit={addReviewHandler}
                       id="contactForm"
-                      noValidate="novalidate"
+                      
                     >
                       <p>Your Rating:</p>
                       <ul className="list">
                         <div className="rating">
-                          <input type="radio" name="rating" value="5" id="5" />
+                          <input type="radio" name="review_rate" onChange={()=>setRate(5)} value="5" id="5" />
                           <label htmlFor="5">☆</label>
-                          <input type="radio" name="rating" value="4" id="4" />
+                          <input type="radio" name="review_rate" onChange={()=>setRate(4)} value="4" id="4" />
                           <label htmlFor="4">☆</label>
-                          <input type="radio" name="rating" value="3" id="3" />
+                          <input type="radio" name="review_rate" onChange={()=>setRate(3)} value="3" id="3" />
                           <label htmlFor="3">☆</label>
-                          <input type="radio" name="rating" value="2" id="2" />
+                          <input type="radio" name="review_rate" onChange={()=>setRate(2)} value="2" id="2" />
                           <label htmlFor="2">☆</label>
-                          <input type="radio" name="rating" value="1" id="1" />
+                          <input type="radio" name="review_rate" onChange={()=>setRate(1)} value="1" id="1" />
                           <label htmlFor="1">☆</label>
+                          
                         </div>
                       </ul>
+                          <span className="text-danger">{errors && errors.review_rate }</span>
                       <div className="col-md-12">
                         <div className="form-group">
                           <textarea
                             className="form-control"
-                            name="message"
+                            name="review_body"
                             id="message"
                             rows="1"
                             placeholder="Review"
+                            onChange={(e)=>setBodyReview(e.target.value)}
+                            value={bodyReview}
+                            
                           ></textarea>
+                          <span className="text-danger">{errors && errors.review_body}</span>
                         </div>
                       </div>
                       <div className="col-md-12 text-right">
@@ -418,6 +482,7 @@ const SingleProduct = () => {
                   </div>
                 </div>
               </div>
+              }
             </div>
           </div>
         </div>
