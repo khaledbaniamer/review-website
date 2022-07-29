@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('user_image')->nullable()->default('avater.png');
             $table->string('user_email');
             $table->string('user_password');
-            $table->tinyInteger('user_role');
-            $table->tinyInteger('user_status');
+            $table->tinyInteger('user_role')->nullable()->default(0);
+            $table->tinyInteger('user_status')->nullable()->default(0);
             $table->timestamps();
         });
     }

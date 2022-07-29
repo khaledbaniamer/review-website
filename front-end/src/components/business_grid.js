@@ -1,7 +1,44 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getBusinesses } from "../Store/Slices/businessSlice";
 
 
 const Business = ()=>{
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBusinesses())
+  }, [dispatch])
+  
+  const businesses = useSelector(state=>state.business);
+  const allBusiness = businesses.businesses.map(business=>{
+    return(
+        <div className="row g-0">
+            <div className="col-md-3">
+                    <img
+                        src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                        alt="Trendy Pants and Shoes"
+                        className="img-fluid rounded-start"
+                        />
+                  </div>
+                  <div className="col-md-8  d-flex ">
+                  <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">
+
+                        </p>
+                        <p className="card-text">
+                        <small className="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                  </div>
+                    <NavLink to="/business_profile" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+              </div>
+          </div>
+
+    );
+  });
+  // console.log(allBusiness)
+  
     return(
         <>
 
@@ -63,7 +100,7 @@ const Business = ()=>{
                         <small className="text-muted">Last updated 3 mins ago</small>
                         </p>
                     </div>
-                    <NavLink to="" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+                    <NavLink to="/business_profile" className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
                     </div>
                 </div>
                 </div>
