@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function Login() {
     
@@ -16,6 +17,7 @@ function Login() {
 
 
     useEffect(()=>{
+        
         if(localStorage.getItem('user-info')){
             navigate('/');
         }
@@ -33,6 +35,7 @@ function Login() {
         })
         result = await result.json();
         localStorage.setItem("user-info",JSON.stringify(result));
+        
         navigate('/');
         refreshPage();
     }

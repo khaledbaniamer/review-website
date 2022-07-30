@@ -1,5 +1,6 @@
 import {React,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+ import Swal from 'sweetalert2';
 
 function Register() {
 
@@ -27,10 +28,38 @@ function Register() {
             }
         })
 
-        result =await result.json();
+        result = await result.json();
         localStorage.setItem("user-info",JSON.stringify(result));
-        navigate('/');
-        refreshPage();
+        if(user_name.length===0){
+            Swal.fire({
+                icon: 'error',
+                text: 'Confirm your name',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#71cd14',
+            })
+        }
+        else if(user_email.length===0){
+            Swal.fire({
+                icon: 'error',
+                text: 'Confirm your email',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#71cd14',
+            })
+        }
+        else if(user_password.length===0){
+            Swal.fire({
+                icon: 'error',
+                text: 'Confirm your password',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#71cd14',
+            })
+        } else {
+            navigate('/');
+            refreshPage();
+        }
+       
+       
+        
     }
 
     return ( 
