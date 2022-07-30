@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {useParams} from 'react-router';
 
 function UserProfile() {
   const [data, setData]= useState()
 
+  const {id} = useParams();
   useEffect(()=>{
 
     const getUser = async()=>{
-    const response= await fetch('http://127.0.0.1:8000/api/viewuser/1')
+    const response= await fetch(`http://127.0.0.1:8000/api/viewuser/${id}`)
     const res = await response.json()
     setData(res)
       
@@ -50,7 +52,7 @@ function UserProfile() {
                   </div>
                 </div>
               </div>
-              <div className="card mb-4 mb-lg-0">
+              {/* <div className="card mb-4 mb-lg-0">
                 <div className="card-body p-0">
                   <ul className="list-group list-group-flush rounded-3">
                     <li className="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -75,7 +77,7 @@ function UserProfile() {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
              
             <div className="col-lg-8">
@@ -104,30 +106,30 @@ function UserProfile() {
                       <p className="mb-0">Phone</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">(097) 234-5678</p>
+                      <p className="text-muted mb-0">0778080123</p>
                     </div>
                   </div>
-                  <hr />
-                  <div className="row">
+                  {/* <hr /> */}
+                  {/* <div className="row">
                     <div className="col-sm-3">
                       <p className="mb-0">Mobile</p>
                     </div>
                     <div className="col-sm-9">
                       <p className="text-muted mb-0">(098) 765-4321</p>
                     </div>
-                  </div>
+                  </div> */}
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
                       <p className="mb-0">Address</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                      <p className="text-muted mb-0">Amman , Jordan</p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="row">
+              </div><br/><br/><br/><br/><br/><br/>
+              {/* <div className="row">
                 <div className="col-md-6">
                   <div className="card mb-4 mb-md-0">
                     <div className="card-body">
@@ -184,7 +186,7 @@ function UserProfile() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
