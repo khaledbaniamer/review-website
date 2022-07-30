@@ -1,22 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {reviewsActions} from '../Store/Slices/ReviewsSlice';
-import { fetchReviews, deleteReview } from '../Store/Slices/ReviewsSlice';
+import { fetchReviews, deleteReview,updateReview } from '../Store/Slices/ReviewsSlice';
 import { addReviews, cancelEditForm } from '../Store/Slices/ReviewsSlice';
 import Swal from 'sweetalert2';
 const SingleProduct = () => {
   const [bodyReview,setBodyReview] = useState('');
   const [rate,setRate] = useState();
-  
+  const [EditReviewBody,setEditReviewBody] = useState();
+  const [EditReviewId,setEditReviewId] = useState();
   const isEdit = useSelector((state) => state.reviews.isEdit);
+  const editReviewId = useSelector((state) => state.reviews.editReviewId);
+  // const editUserId = useSelector((state) => state.reviews.editUserId);
   const  loading  = useSelector((state) => state.reviews.loading);
   const  errors = useSelector((state) => state.reviews.errors);
   const  reviews = useSelector((state) => state.reviews.reviews);
+  const  product = useSelector((state) => state.reviews.product);
   const  ratingCount = useSelector((state) => state.reviews.ratingCount);
   const  overall = useSelector((state) => state.reviews.overall);
-  // console.log(errors)
+  // console.log(editReviewId)
   const dispatch = useDispatch();
+  const {id} = useParams();
+  // console.log(id)
 
   useEffect(() => {
     dispatch(fetchReviews())
@@ -30,9 +36,9 @@ const SingleProduct = () => {
     const reviewData = {
       review_body: bodyReview,
       review_rate: rate,
-      user_id : 1,
-      product_id: 1,
-      // user_id : (JSON.parse(localStorage.getItem('user-info').id)),
+      // user_id : 1,
+      user_id : (JSON.parse(localStorage.getItem('user-info')).id),
+      product_id: +id,
       // product_id: product_id,
 
     }
@@ -42,32 +48,72 @@ const SingleProduct = () => {
     setRate();
   }
 
-
-
-
-  const EditHandler = () => {
-    dispatch(reviewsActions.showEditForm())
+  // Edit Review
+   const EditHandler = (reviewId) => {
+    dispatch(reviewsActions.showEditForm(reviewId))
   }
+  useEffect(() => {
+    if (isEdit) {
+      const review = reviews.find((review) => review.id === editReviewId);
+      console.log(review)
+      setEditReviewBody(review.comment_body)
+      setEditReviewId(review.id)
+    }  
+  }, [isEdit])
+
+
+  const updateHandler =(e)=>{
+    e.preventDefault();
+    const reviewData = {
+      review_body: EditReviewBody,
+      review_rate: rate,
+      id: EditReviewId,
+    }
+    Swal.fire({
+      title: 'Do you want to update the review?',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Update',
+      confirmButtonColor: '#71cd14',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch(updateReview(reviewData));
+        
+        // Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+    setEditReviewBody()
+    // setEditReviewId()
+    setRate()
+  }
+
   const cancleHandler = () => {
     dispatch(reviewsActions.cancelEditForm())
   }
+  
   const deleteHandler = (reviewId) => {
     // console.log(reviewId)
-    dispatch(deleteReview(reviewId))
-    // Swal.fire({
-    //   title: 'Do you want to save the changes?',
-    //   showDenyButton: true,
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Save',
-    //   denyButtonText: `Don't save`,
-    // }).then((result) => {
-    //   /* Read more about isConfirmed, isDenied below */
-    //   if (result.isConfirmed) {
-    //     Swal.fire('Saved!', '', 'success')
-    //   } else if (result.isDenied) {
-    //     Swal.fire('Changes are not saved', '', 'info')
-    //   }
-    // })
+    Swal.fire({
+      title: 'Do you want to delete the review?',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Delete',
+      confirmButtonColor: '#f00',
+      denyButtonText: `Cancel`,
+      denyButtonColor: `#71cd14`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch(deleteReview(reviewId))
+        // Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 
 
@@ -101,55 +147,25 @@ const SingleProduct = () => {
                   className="carousel slide"
                   data-ride="carousel"
                 >
-                  <ol className="carousel-indicators">
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="0"
-                      className="active"
-                    >
-                      <img
-                        src="asset/img/product/single-product/s-product-s-2.jpg"
-                        alt=""
-                      />
-                    </li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="1"
-                    >
-                      <img
-                        src="asset/img/product/single-product/s-product-s-3.jpg"
-                        alt=""
-                      />
-                    </li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="2"
-                    >
-                      <img
-                        src="asset/img/product/single-product/s-product-s-4.jpg"
-                        alt=""
-                      />
-                    </li>
-                  </ol>
                   <div className="carousel-inner">
                     <div className="carousel-item active">
                       <img
                         className="d-block w-100"
-                        src="asset/img/product/single-product/s-product-1.jpg"
+                        src={"http://localhost:8000/business_image/" + product.product_image}
                         alt="First slide"
                       />
                     </div>
                     <div className="carousel-item">
                       <img
                         className="d-block w-100"
-                        src="asset/img/product/single-product/s-product-s-3.jpg"
+                        src={"http://localhost:8000/business_image/" + product.product_image}
                         alt="Second slide"
                       />
                     </div>
                     <div className="carousel-item">
                       <img
                         className="d-block w-100"
-                        src="asset/img/product/single-product/s-product-s-4.jpg"
+                        src={"http://localhost:8000/business_image/" + product.product_image}
                         alt="Third slide"
                       />
                     </div>
@@ -159,20 +175,17 @@ const SingleProduct = () => {
             </div>
             <div className="col-lg-5 offset-lg-1">
               <div className="s_product_text">
-                <h3>Faded SkyBlu Denim Jeans</h3>
+                <h3>{product.product_name}</h3>
 
                 <ul className="list">
                   <li>
-                    <a className="active" href="#Category">
-                      <span>Category</span> : Household
-                    </a>
+                    <NavLink className="active" to="/category">
+                      <span>Category:</span>{product.category_name}
+                    </NavLink>
                   </li>
                 </ul>
                 <p>
-                  Mill Oil is an innovative oil filled radiator with the most
-                  modern technology. If you are looking for something that can
-                  make your interior look awesome, and at the same time give you
-                  the pleasant warm feeling during the winter.
+                 {product.product_description}
                 </p>
               </div>
             </div>
@@ -218,34 +231,7 @@ const SingleProduct = () => {
               aria-labelledby="home-tab"
             >
               <p>
-                Beryl Cook is one of Britain’s most talented and amusing artists
-                .Beryl’s pictures feature women of all shapes and sizes enjoying
-                themselves .Born between the two world wars, Beryl Cook
-                eventually left Kendrick School in Reading at the age of 15,
-                where she went to secretarial school and then into an insurance
-                office. After moving to London and then Hampton, she eventually
-                married her next door neighbour from Reading, John Cook. He was
-                an officer in the Merchant Navy and after he left the sea in
-                1956, they bought a pub for a year before John took a job in
-                Southern Rhodesia with a motor company. Beryl bought their young
-                son a box of watercolours, and when showing him how to use it,
-                she decided that she herself quite enjoyed painting. John
-                subsequently bought her a child’s painting set for her birthday
-                and it was with this that she produced her first significant
-                work, a half-length portrait of a dark-skinned lady with a
-                vacant expression and large drooping breasts. It was aptly named
-                ‘Hangover’ by Beryl’s husband and
-              </p>
-              <p>
-                It is often frustrating to attempt to plan meals that are
-                designed for one. Despite this fact, we are seeing more and more
-                recipe books and Internet websites that are dedicated to the act
-                of cooking for one. Divorce and the death of spouses or grown
-                children leaving for college are all reasons that someone
-                accustomed to cooking for more than one would suddenly need to
-                learn how to adjust all the cooking practices utilized before
-                into a streamlined plan of cooking that is more efficient for
-                one person creating less
+              {product.product_description}
               </p>
             </div>
 
@@ -285,65 +271,15 @@ const SingleProduct = () => {
                     
                     {reviews.length<=0 && <span className="d-block my-5">There is no reviews</span>}
                   { reviews.length>0 && reviews.map((review)=> (
-                    !isEdit ? 
-                      <div key={review.id} className="review_item mt-3">
-                        <div className="media">
-                          <div className="d-flex">
-                            {/* {review.user_image} */}
-                            <img
-                              src={review.user_image}
-                              alt=""
-                            />
-                          </div>
-                          <div className="media-body">
-                            <h4>{review.user_name}</h4>
-                            <h5>{review.created_at}</h5>
-                            {
-                              (() => {
-                                const stars = [];
-                                for (let i = 1; i <= review.comment_rate; i++) {
-                                  stars.push(
-                                        <i className="fa fa-star"></i>
-                                    );
-                                }
-                                return stars;
-                            })()}
-                            <div className="btn-group reply_btn">
-                              <button
-                                className="btn btn-light btn-sm dropdown-toggle"
-                                type="button"
-                                data-toggle="dropdown"
-                                aria-expanded="false"
-                              >
-                                Edit
-                              </button>
-                              <div className="dropdown-menu">
-                                <button className="dropdown-item" onClick={EditHandler}>
-                                  Edit
-                                </button>
-                                <button className="dropdown-item" onClick={() =>deleteHandler(review.id)}>
-                                  Delete
-                                </button>
-                              </div>
-                            </div>
-                                
-                            {/* <a className="reply_btn" href="#">Edit</a> */}
-                          </div>
-                        </div>
-                        <p>
-                        {review.comment_body}
-                        </p>
-                      </div>
-                      
-                     : 
-                      // edit section
-                      
-                      <div key={review.id} className="review_item mt-3">
+                    isEdit && editReviewId === review.id && (JSON.parse(localStorage.getItem('user-info')).id) === review.user_id ? 
+// edit section
+<div key={review.id} className="review_item mt-3">
                         <div className="media">
                           <div className="d-flex">
                             <img
-                              src="asset/img/product/single-product/review-3.png"
+                              src={"http://localhost:8000/profile_photo/" + review.user_image}
                               alt=""
+                              width="50"
                             />
                           </div>
                           <div className="media-body">
@@ -352,8 +288,7 @@ const SingleProduct = () => {
 
                             <form
                               className="row contact_form"
-                              action="contact_process.php"
-                              method="post"
+                              onSubmit={updateHandler}
                               id="contactForm"
                               noValidate="novalidate"
                             >
@@ -373,6 +308,7 @@ const SingleProduct = () => {
                           
                         </div>
                               </ul>
+                        <span className="text-danger">{errors && errors.review_rate }</span>
                               <div className="col-md-12">
                                 <div className="form-group">
                                   <textarea
@@ -381,10 +317,11 @@ const SingleProduct = () => {
                                     id="message"
                                     rows="7"
                                     placeholder="Review"
-                                    value={review.comment_body}
+                                    value={EditReviewBody}
+                                    onChange={(e)=>setEditReviewBody(e.target.value)}
                                   >
-                                   
                                   </textarea>
+                                  <span className="text-danger">{errors && errors.review_body}</span>
                                 </div>
                               </div>
                               <div className="col-md-12 text-right">
@@ -407,7 +344,68 @@ const SingleProduct = () => {
                             </form>
                           </div>
                         </div>
-                      </div>)
+                      </div>
+
+
+
+
+                     
+                      
+                     : 
+                      
+                       <div key={review.id} className="review_item mt-3">
+                        <div className="media">
+                          <div className="d-flex">
+                            {/* {review.user_image} */}
+                            <img
+                              src={"http://localhost:8000/profile_photo/" + review.user_image}
+                              alt=""
+                              width="50"
+                            />
+                          </div>
+                          <div className="media-body">
+                            <h4>{review.user_name}</h4>
+                            <h5>{review.updated_at}</h5>
+                            {
+                              (() => {
+                                const stars = [];
+                                for (let i = 1; i <= review.comment_rate; i++) {
+                                  stars.push(
+                                        <i className="fa fa-star"></i>
+                                    );
+                                }
+                                return stars;
+                            })()}
+                            {(JSON.parse(localStorage.getItem('user-info')).id) === review.user_id && 
+                             <div className="btn-group reply_btn">
+                              <button
+                                className="btn btn-light btn-sm dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Edit
+                              </button>
+                              <div className="dropdown-menu">
+                                <button className="dropdown-item" onClick={()=>EditHandler(review.id)}>
+                                  Edit
+                                </button>
+                                <button className="dropdown-item" onClick={() =>deleteHandler(review.id)}>
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                            }
+                           
+                                
+                            {/* <a className="reply_btn" href="#">Edit</a> */}
+                          </div>
+                        </div>
+                        <p>
+                        {review.comment_body}
+                        </p>
+                      </div>
+                      )
                     )}
 
                     {/* reply section */}
@@ -434,6 +432,8 @@ const SingleProduct = () => {
                   </div> */}
                   </div>
                 </div>
+                {(JSON.parse(localStorage.getItem('user-info'))) !== null &&
+                
                 <div className="col-lg-6">
                   <div className="review_box">
                     <h4>Add a Review</h4>
@@ -490,6 +490,7 @@ const SingleProduct = () => {
                     </form>
                   </div>
                 </div>
+                }
               </div>
               }
             </div>

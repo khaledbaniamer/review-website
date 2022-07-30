@@ -26,8 +26,9 @@ use App\Http\Controllers\UserController;
 
 
 //reviews
-Route::get('/comments', [CommentController::class, 'index']);
+Route::get('/comments/{id}', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
+Route::put('/comments/{comment}' , [CommentController::class , 'update']);
 Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
 
 
