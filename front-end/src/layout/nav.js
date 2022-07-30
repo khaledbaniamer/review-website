@@ -43,7 +43,7 @@ const Navbar = ()=>{
                         <NavLink className="nav-link" to="category.html">Shop Category</NavLink>
                       </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="single-product.html">Product Details</NavLink>
+                        <NavLink className="nav-link" to="/singleproduct/3">Product Details</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="checkout.html">Product Checkout</NavLink>

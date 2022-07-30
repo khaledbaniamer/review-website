@@ -28,8 +28,9 @@ use App\Http\Controllers\UserController;
 Route::get('viewuser/{id}', [ProfileController::class, 'getUser']);
 
 //reviews
-Route::get('/comments', [CommentController::class, 'index']);
+Route::get('/comments/{id}', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
+Route::put('/comments/{comment}' , [CommentController::class , 'update']);
 Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
 
 
@@ -50,6 +51,9 @@ Route::get('business' , [BusinessController::class ,'getBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
 
+
+Route::get('singlebusiness_products/{id}' , [ProductController::class, 'products_business']);
+
 //category api
 Route::get('category' , [CategoryController::class , 'category']);
 Route::post('addcategory' , [CategoryController::class , 'addcategory']);
@@ -61,3 +65,5 @@ Route::post('deletecategory/{id}' , [CategoryController::class , 'deletecategory
 // Route::post('/getUser/{id}',[UserController::class,'getUser']);
 
 
+Route::get('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
+Route::get('singlecategory/{id}' , [CategoryController::class , 'single_category']);

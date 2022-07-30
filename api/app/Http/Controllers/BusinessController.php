@@ -21,19 +21,23 @@ class BusinessController extends Controller
     
     public function addBusiness(Request $request)
     {
+        // return $request->all();
     $validator = Validator::make($request->all(),[
+            // 'credential_photo'=>'required|image|max:2048',
+            // 'profile_photo'=>'required|image|max:2048',
             'owner_name'=>'required',
             'owner_email'=>'required',
             'description'=>'required',
             'password'=>'required',
             'address'=>'required',
             'category_id'=>'required',
-            'credential_photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'profile_photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'credential_photo'=>'required|image|max:2048',
+            'profile_photo'=>'required|image|max:2048',
+
     ]);
 
     if($validator->fails()){
-        return response()->json(['errors'=>$validator->errors()]);
+        return response()->json(['errors'=>$validator->errors(),'status'=>400]);
     }
         $business = new Business();
         $business->owner_name = $request->owner_name;
