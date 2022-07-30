@@ -376,7 +376,7 @@ const SingleProduct = () => {
                                 }
                                 return stars;
                             })()}
-                            {(JSON.parse(localStorage.getItem('user-info')).id) === review.user_id && 
+                            {(JSON.parse(localStorage.getItem('user-info'))) !== null && (JSON.parse(localStorage.getItem('user-info')).id) === review.user_id && 
                              <div className="btn-group reply_btn">
                               <button
                                 className="btn btn-light btn-sm dropdown-toggle"
