@@ -1,17 +1,66 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getBusinesses, getSingleBusiness } from "../Store/Slices/businessSlice";
+import { getBusinesses, getProductsForSingleBusiness, getSingleBusiness } from "../Store/Slices/businessSlice";
+import { getSingleCategory } from "../Store/Slices/categorySlice";
 
 const Business_profile = ()=>{
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getBusinesses())
-  // }, [dispatch])
-  
-  // const singleBusiness = useSelector(state=>state.business);
-  // console.log(singleBusiness)
+  const dispatch = useDispatch();
+  const singleBusiness = useSelector(state=>state.business);
+//  const [data , setData] = useState([]);
   const {id} = useParams();
+  useEffect(() => {
+    dispatch(getProductsForSingleBusiness(id))
+    
+  }, [dispatch])
+
+  // dispatch(getProductsForSingleBusiness(id))
+  
+
+ 
+  
+const allProducts = singleBusiness.products.map(product=>{
+  return(
+    
+    <div class="col-lg-4 col-md-6">
+    <div class="single-product">
+      <div class="product-img">
+        <img
+          class="card-img"
+          src={"http://localhost:8000/category_image/" + product.product_image}
+          alt=""
+        />
+      </div>
+      <div class="product-btm">
+        <a href="#" class="d-block">
+          <span>{product.product_name}</span>
+        </a>
+        <div class="mt-3">
+          <h4 class="mr-4">{product.product_description}</h4>
+          
+        </div>
+        <div class="review_item">
+      <div class="media">
+
+      </div>
+        <div class="mt-1 d-flex justify-content-between align-items-center">
+        <div class="small-ratings mt-3">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+          </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  )
+})
+
+  
+  // console.log(id)
     return(
     
 <div className="row py-5 px-4">
@@ -25,27 +74,46 @@ const Business_profile = ()=>{
                     <div className="media-body mb-5 text-white ">
                         <div className="row container-fluid">
                             <div className="col-xl-5 col-md-6 col-sm-10 m-2">
-                                <h1>Name</h1>
-                                <h3>Test</h3>
+                            <h2>
+                                <span style={{color:"black"}}>Name:</span>
+                               
+                                <span className="mx-2" style={{color:"#71cd14"}}>{singleBusiness.products[0].owner_name}</span>
+                        
+                              </h2> 
                             </div>
                             <div className="col-xl-5 col-md-6 col-sm-10 m-2">
-                                <h1>Name</h1>
-                                <h3>Test</h3>
+                            <h2>
+                                <span style={{color:"black"}}>Email:</span>
+                                
+                                  <span className="mx-2" style={{color:"#71cd14"}}>{singleBusiness.products[0].owner_email}</span>
+                        
+                              </h2> 
                             </div>
+                            <div className="col-xl-5 col-md-6 col-sm-10 m-2">
+                              <h2>
+                                <span style={{color:"black"}}>Phone:</span>
+                               
+                                <span className="mx-2" style={{color:"#71cd14"}}>{singleBusiness.products[0].address}</span>
+                        
+                              </h2>  
+                            </div>
+                            <div className="col-xl-5 col-md-6 col-sm-10 m-2">
+                              <h2>
+                                <span style={{color:"black"}}>Category Name :</span>
+                               
+                                <span className="mx-2" style={{color:"#71cd14"}}>{singleBusiness.products[0].category_name}</span>
+                        
+                              </h2>  
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="bg-light p-4 d-flex justify-content-end text-center">
-                <ul className="list-inline mb-0">
-                    <li className="list-inline-item">
-                        <h5 className="font-weight-bold mb-0 d-block">241</h5><small className="text-muted"> <i className="fa fa-picture-o mr-1"></i>Photos</small>
-                    </li>
-                    <li className="list-inline-item">
-                        <h5 className="font-weight-bold mb-0 d-block">84K</h5><small className="text-muted"> <i className="fa fa-user-circle-o mr-1"></i>Followers</small>
-                    </li>
-                </ul>
+            <div className="bg-light p-4 justify-content-start text-start">
+                <h3>Description :</h3>
+                <h4>{singleBusiness.products[0].description}</h4>
             </div>
 
             <div className="py-4 px-4">
@@ -59,7 +127,7 @@ const Business_profile = ()=>{
             <div class="latest_product_inner">
               <div class="row">
 
-
+              {allProducts}
                 <div class="col-lg-4 col-md-6">
                   <div class="single-product">
                     <div class="product-img">

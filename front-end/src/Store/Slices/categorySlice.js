@@ -10,6 +10,17 @@ export const getCategory = createAsyncThunk(
 
         return response;
     }
+);
+
+export const getSingleCategory = createAsyncThunk(
+    'category/getSingleCategory',
+    async (id)=>{
+    // console.log(id)
+    const api = await fetch(`http://127.0.0.1:8000/api/singlecategory/${id}`);
+    const response = await api.json();
+
+    return response;
+}
 )
 
 export const addCategory = createAsyncThunk(
@@ -112,7 +123,7 @@ const categorySlice = createSlice({
         [updateCategory.fulfilled]:(state , action)=>{
             state.status = 'success update data';
             const {id} = action.payload;
-            const item = state.items.find((item)=>item.id == id);
+            const item = state.categories.find((item)=>item.id == id);
             item.name = action.payload.name;
             item.description = action.payload.description;
             item.image = action.payload.image;
@@ -140,6 +151,19 @@ const categorySlice = createSlice({
         },
         [deleteCategory.rejected]:(state )=>{
             state.status = 'rejected delete data';
+        },
+        //get single category 
+        [getSingleCategory.fulfilled]:(state , action)=>{
+            state.status = 'success get getSingleCategory';
+            state.categories = action.payload
+            
+        },
+        [getSingleCategory.pending]:(state  )=>{
+            state.status = 'pending get getSingleCategory';
+            
+        },
+        [getSingleCategory.rejected]:(state )=>{
+            state.status = 'rejected get getSingleCategory';
         },
 
     }
