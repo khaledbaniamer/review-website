@@ -1,4 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 function UserProfile() {
+  const [data, setData]= useState()
+
+  useEffect(()=>{
+
+    const getUser = async()=>{
+    const response= await fetch('http://127.0.0.1:8000/api/viewuser/1')
+    const res = await response.json()
+    setData(res)
+      
+    }
+    
+    getUser()
+    
+  },[])
+    console.log(data)
+
     return (
 
       <section style={{backgroundColor: '#eee'}}>
@@ -15,16 +34,19 @@ function UserProfile() {
             </div>
           </div>
           <div className="row">
+           
+
+           
             <div className="col-lg-4">
               <div className="card mb-4">
                 <div className="card-body text-center">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" className="rounded-circle img-fluid" style={{width: '150px'}} />
-                  <h5 className="my-3">John Smith</h5>
-                  <p className="text-muted mb-1">Full Stack Developer</p>
-                  <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                  <h5 className="my-3"></h5>
+                  <p className="text-muted mb-1">{data && data.user_name}</p>
+                  <p className="text-muted mb-4"></p>
                   <div className="d-flex justify-content-center mb-2">
-                    <button type="button" className="btn btn-primary">Follow</button>
-                    <button type="button" className="btn btn-outline-primary ms-1">Message</button>
+                    {/* <button type="button" className="btn btn-primary">Follow</button>
+                    <button type="button" className="btn btn-outline-primary ms-1">Message</button> */}
                   </div>
                 </div>
               </div>
@@ -55,6 +77,7 @@ function UserProfile() {
                 </div>
               </div>
             </div>
+             
             <div className="col-lg-8">
               <div className="card mb-4">
                 <div className="card-body">
@@ -63,7 +86,7 @@ function UserProfile() {
                       <p className="mb-0">Full Name</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">Johnatan Smith</p>
+                      <p className="text-muted mb-0">{data && data.user_name}</p>
                     </div>
                   </div>
                   <hr />
@@ -72,7 +95,7 @@ function UserProfile() {
                       <p className="mb-0">Email</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">example@example.com</p>
+                      <p className="text-muted mb-0">{data && data.user_email}</p>
                     </div>
                   </div>
                   <hr />
