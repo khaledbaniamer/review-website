@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -24,6 +25,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('viewuser/{id}', [ProfileController::class, 'getUser']);
 
 //reviews
 Route::get('/comments/{id}', [CommentController::class, 'index']);
@@ -34,16 +36,7 @@ Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
 
 
 
-Route::post('register',[UserController::class,'register']);
 
-
-
-
-
-
-
-
-Route::post('register',[UserController::class,'register']);
 Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
 
@@ -65,5 +58,12 @@ Route::get('singlebusiness_products/{id}' , [ProductController::class, 'products
 Route::get('category' , [CategoryController::class , 'category']);
 Route::post('addcategory' , [CategoryController::class , 'addcategory']);
 Route::post('updatecategory/{id}' , [CategoryController::class , 'updatecategory']);
+Route::post('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
+
+// user profile
+// Route::get('user_profile',[UserController::class,'UserProfile']);
+// Route::post('/getUser/{id}',[UserController::class,'getUser']);
+
+
 Route::get('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
 Route::get('singlecategory/{id}' , [CategoryController::class , 'single_category']);
