@@ -49,4 +49,5 @@ Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::get('category' , [CategoryController::class , 'category']);
 Route::post('addcategory' , [CategoryController::class , 'addcategory']);
 Route::post('updatecategory/{id}' , [CategoryController::class , 'updatecategory']);
-Route::post('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
+Route::get('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
+Route::get('singlecategory/{id}' , [CategoryController::class , 'singlecategory']);

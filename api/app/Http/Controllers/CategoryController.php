@@ -46,6 +46,12 @@ class CategoryController extends Controller
 
         $category->save();
     }
+    public function singlecategory($id)
+    {
+        $category =Category::find($id);
+
+        return $category;
+    }
     public function deletecategory($id)
     {
         $category =Category::find($id);
