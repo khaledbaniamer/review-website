@@ -52,4 +52,10 @@ class CategoryController extends Controller
 
         $category->delete();
     }
+
+    public function single_category($id)
+    {
+        $category = Category::find($id);
+        return $category;
+    }
 }

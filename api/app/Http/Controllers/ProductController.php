@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -28,5 +29,15 @@ class ProductController extends Controller
 
     ]);
     return $product;
+    }
+
+    public function products_business($id)
+    {
+        // $assoc = Association::select('associations.*', 'managers.manager_name')
+        // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
+        $products = Product::select('products.*', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
+
+        
+        return $products;
     }
 }

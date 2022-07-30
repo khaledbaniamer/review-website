@@ -8,6 +8,8 @@ function BussnisRegister() {
 
     const dispatch = useDispatch();
     const Navigate = useNavigate()
+    const errors = useSelector(state=>state.business.errors)
+    console.log(errors)
     useEffect(() => {
     
     dispatch(getCategory())
@@ -18,7 +20,7 @@ function BussnisRegister() {
  
     const allCategories = categories.categories.map(category=>{
         return(
-            <option value={category.id}>{category.category_name}</option>
+            <option key={category.id} value={category.id}>{category.category_name}</option>
         )
     })
     const [business , setBusiness] = useState({
@@ -52,20 +54,20 @@ function BussnisRegister() {
         setBusiness({
             ...business,
         })
-        console.log(business);
+        // console.log(business);
         const formData = new FormData();
-        formData.append('owner_name', business.owner_name)
-        formData.append('owner_email', business.owner_email)
-        formData.append('description', business.description)
-        formData.append('password', business.password)
-        formData.append('address', business.address)
+        formData.append('owner_name', business.owner_name?business.owner_name:"")
+        formData.append('owner_email', business.owner_email?business.owner_email:"")
+        formData.append('description', business.description?business.description:"")
+        formData.append('password', business.password?business.password:"")
+        formData.append('address', business.address?business.address:"")
         formData.append('credential_photo', business.credential_photo);
         formData.append('profile_photo', business.profile_photo);
-        formData.append('category_id',parseInt(business.category_id));
+        formData.append('category_id',parseInt(business.category_id)?parseInt(business.category_id):"");
 
         dispatch(addBusiness(formData));
 
-        Navigate('/business')
+        // Navigate('/business')
     }
     // console.log(business)
 
@@ -96,11 +98,12 @@ function BussnisRegister() {
                         type="text" 
                         name="owner_name" 
                         placeholder="Enter Your Name" 
-                        required 
+                         
                         className="single-input" 
                         value={business.owner_name}
                         onChange={handleChange}
                         />
+                        <span className="text-danger">{errors && errors.owner_name}</span>
                     </div>
                     <div className="mt-4">
                     <label >Select category:</label>
@@ -111,7 +114,7 @@ function BussnisRegister() {
                         <option >Select category</option>
                             {allCategories}
                       </select>
-                      
+                      <span className="text-danger">{errors && errors.category_id}</span>
                     </div>
                     <div className="mt-4">
                     <label for="" className="form-label">Email</label>
@@ -120,11 +123,12 @@ function BussnisRegister() {
                         type="email" 
                         name="owner_email" 
                         placeholder="Enter Your Email" 
-                        required 
+                         
                         className="single-input" 
                         value={business.owner_email}
                         onChange={handleChange}
                         />
+                        <span className="text-danger">{errors && errors.owner_email}</span>
                     </div>
                     <div className="mt-4">
                     <label for="" className="form-label">Password</label>
@@ -133,11 +137,12 @@ function BussnisRegister() {
                         type="password" 
                         name="password" 
                         placeholder="Enter Your Password" 
-                        required 
+                         
                         className="single-input" 
                         value={business.password}
                         onChange={handleChange}
                         />
+                        <span className="text-danger">{errors && errors.password}</span>
                     </div>
                     <div className="mt-4">
                     <label for="" className="form-label">Address</label>
@@ -146,11 +151,12 @@ function BussnisRegister() {
                         type="text" 
                         name="address" 
                         placeholder="Enter Your Address" 
-                        required 
+                         
                         className="single-input"
                         value={business.address}
                         onChange={handleChange}
                         />
+                        <span className="text-danger">{errors && errors.address}</span>
                     </div>
                     <div className="mt-4">
                     <label for="" className="form-label">Credential Photo</label>
@@ -159,12 +165,13 @@ function BussnisRegister() {
                         type="file" 
                         name="credential_photo" 
                         placeholder="Enter Your Address" 
-                        required 
+                         
                         className="single-input"
                         // value={business}
                         onChange={handleChangeImage1}
                         />
                     </div>
+                    <span className="text-danger">{errors && errors.credential_photo}</span>
                     <div className="mt-4">
                     <label for="" className="form-label">Profile Photo</label>
 
@@ -172,11 +179,12 @@ function BussnisRegister() {
                         type="file" 
                         name="profile_photo" 
                         placeholder="Enter Your Address" 
-                        required 
+                         
                         className="single-input" 
                         // value={business}
                         onChange={handleChangeImage2}
                         />
+                        <span className="text-danger">{errors && errors.profile_photo}</span>
                     </div>
 
                     <div className="mt-4">
@@ -188,6 +196,7 @@ function BussnisRegister() {
                 value={business.description}
                 onChange={handleChange}
                 ></textarea>
+                <span className="text-danger">{errors && errors.description}</span>
                     </div>
                    <div className="d-flex justify-content-start">
                    <button href="#" className="main_btn col-lg-3 mt-3">Register</button>
