@@ -1,46 +1,55 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-
-
+import { getCategory } from "../Store/Slices/categorySlice";
+import { addProducts } from "../Store/Slices/productSlice";
 
 function Bussines_addForm() {
+  const dispatch = useDispatch();
 
-    const [productName,setProductName]=useState('');
-    const [description,setDescription]=useState('');
-    const [productImage,setProductImage]=useState('');
+  useEffect(() => {
+    dispatch(getCategory());
+  }, [dispatch]);
 
-  
-    const handleInputname=(e)=>{
-        setProductName(e.target.value);
-    }
-  
-    const handleInputdescription=(e)=>{
-        setDescription(e.target.value);
-    }
-  
+  const category = useSelector((state) => state.category);
+  //  console.log(category)
 
-    const handleChangeImage=(e)=>{
-        setProductImage(
-           { ...productImage,
-            image: e.target.files[0]}
-        )
-    }
+  const allCategory = category.categories.map((category) => {
+    return <option value={category.id}>{category.category_name}</option>;
+  });
 
-    const handleSubmit=(e)=>{
-        e.preventDefault();
+  const [productData, setProductData] = useState({ business_id: "1" });
+  const handleChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setProductData({
+      ...productData,
+      [e.target.name]: value,
+    });
+  };
 
+  const handleChangeImage = (e) => {
+    setProductData({ ...productData, image: e.target.files[0] });
+  };
 
-        // navigate("/add_product", { replace: true });
-    }
- 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setProductData({
+      ...productData,
+    });
 
- 
+    console.log(productData);
+    const formData = new FormData();
+    formData.append("product_name", productData.product_name);
+    formData.append("product_image", productData.product_image);
+    formData.append("product_description", productData.product_description);
+    formData.append("catrgory_id", productData.catrgory_id);
+    formData.append("business_id", productData.business_id);
 
-
-
+    dispatch(addProducts(formData));
+  };
 
   return (
     <>
@@ -65,11 +74,10 @@ function Bussines_addForm() {
         <div class="container">
           <div class="d-none d-sm-block mb-5 pb-4">
             <div class="row">
-              <div class="col-12">
-                {/* <h2 class="contact-title"></h2> */}
-              </div>
+              <div class="col-12">{/* <h2 class="contact-title"></h2> */}</div>
               <div class="col-lg-8 mb-4 mb-lg-0">
-                <form onSubmit={handleSubmit}
+                <form
+                  onSubmit={handleSubmit}
                   class="form-contact contact_form"
                   action="contact_process.php"
                   method="post"
@@ -77,46 +85,43 @@ function Bussines_addForm() {
                   novalidate="novalidate"
                 >
                   <div class="row">
-                   
                     <div class="col-sm-12">
                       <div class="form-group">
-                      <label style={{ color: 'black'}}>Product name:</label>
+                        <label style={{ color: "black" }}>Product name:</label>
                         <input
                           class="form-control"
                           name="product_name"
                           id="name"
                           type="text"
-                          value={productName}
-                          onChange={handleInputname}
+                          value={productData.productName}
+                          onChange={handleChange}
                           placeholder="Enter product name"
                         />
                       </div>
                     </div>
-                   
+
                     <div class="col-12">
-                    <label style={{ color: 'black'}}>Select category:</label>
-                      <select name="category_id"
+                      <label style={{ color: "black" }}>Select category:</label>
+                      <select
+                        name="category_id"
+                        onChange={handleChange}
                         class="form-control"
                         aria-label="Default select example"
                       >
                         <option selected>Select category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        {allCategory}
                       </select>
-                      
                     </div>
-                    
+
                     <div class="col-12">
-                        <br/>
-                        <label style={{ color: 'black'}}>Enter image:</label>
+                      <br />
+                      <label style={{ color: "black" }}>Enter image:</label>
                       <div class="form-group">
                         <input
                           class="form-control"
                           name="product_image"
                           id="subject"
                           type="file"
-                          
                           onChange={handleChangeImage}
                           placeholder="Enter image"
                         />
@@ -124,16 +129,19 @@ function Bussines_addForm() {
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                      <label style={{ color: 'black'}}>Enter description:</label>
+                        <label style={{ color: "black" }}>
+                          Enter description:
+                        </label>
                         <textarea
                           class="form-control w-100"
                           name="product_description"
+                          type="text"
                           id="message"
                           cols="30"
                           rows="9"
                           placeholder="Enter description"
-                          value={setDescription}
-                          onChange={handleInputdescription}
+                          value={productData.productDescription}
+                          onChange={handleChange}
                         ></textarea>
                       </div>
                     </div>
@@ -145,7 +153,6 @@ function Bussines_addForm() {
                   </div>
                 </form>
               </div>
-
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ function App() {
     <Route path="add" element={<Bussines_addForm />}/>
 
       <Route  />
-      <Route path="/singleproduct" element={<SingleProduct />} />
+      <Route path="/singleproduct/:id" element={<SingleProduct />} />
       <Route path="contact" element={<Contact />}/>
       <Route path="about" element={<About />}/>
       <Route path="login" element={<Login />}/>
