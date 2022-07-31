@@ -16,7 +16,9 @@ function Bussines_addForm() {
   //  console.log(category)
 
   const allCategory = category.categories.map((category) => {
-    return <option value={category.id}>{category.category_name}</option>;
+    return (
+    <option value={category.id}>{category.category_name}</option>
+    )
   });
 
   const [productData, setProductData] = useState({ business_id: "1" });
@@ -111,12 +113,12 @@ function Bussines_addForm() {
                     <div class="col-sm-12">
                       <label style={{ color: "black" }}>Select category:</label>
                       <select
-                        name="category_id"
+                        name="catrgory_id"
                         onChange={handleChange}
                         class="form-control my-2 mb-3"
-                        aria-label="Default select example"
+                        
                       >
-                        <option selected>Select category</option>
+                        <option >Select category</option>
                         {allCategory}
                       </select>
                     </div>

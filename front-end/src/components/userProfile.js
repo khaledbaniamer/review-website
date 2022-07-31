@@ -1,21 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {useParams} from 'react-router';
+import {Link} from 'react-router-dom';
+
+
 
 function UserProfile() {
+
   const [data, setData]= useState()
 
-  const {id} = useParams();
   useEffect(()=>{
-
-    const getUser = async()=>{
-    const response= await fetch(`http://127.0.0.1:8000/api/viewuser/${id}`)
-    const res = await response.json()
-    setData(res)
+    if (localStorage.getItem('user-info') !== null) {
       
+      const id = (JSON.parse(localStorage.getItem('user-info'))).id;
+      const getUser = async()=>{
+      const response= await fetch(`http://127.0.0.1:8000/api/viewuser/${id}`)
+      const res = await response.json()
+      setData(res)
+        
+      }
+      
+      getUser()
     }
-    
-    getUser()
+
     
   },[])
     console.log(data)
@@ -126,8 +133,11 @@ function UserProfile() {
                     <div className="col-sm-9">
                       <p className="text-muted mb-0">Amman , Jordan</p>
                     </div>
-                  </div>
+                    
+                  </div><br/>
+                  <a href="" className="btn btn-secondary">Edit</a>
                 </div>
+                
               </div><br/><br/><br/><br/><br/><br/>
               {/* <div className="row">
                 <div className="col-md-6">
