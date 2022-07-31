@@ -17,7 +17,7 @@ function Index() {
     <div className="col-lg-4 col-md-6">
       <div className="single-product">
         <div className="product-img">
-          <img className="img-fluid w-100" src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
+          <img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
         </div>
         <div className="product-btm">
           <Link to="#" className="d-block">
@@ -34,7 +34,7 @@ function Index() {
     <body>
 
   {/* <!--================Home Banner Area =================--> */}
-  <section className="home_banner_area mb-40">
+  <section className="home_banner_area mb-40 techno">
     <div className="banner_inner d-flex align-items-center">
       <div className="container">
         <div className="banner_content row">

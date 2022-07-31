@@ -414,12 +414,16 @@ ul {
   margin-top: -6px;
   right: 20px;
 }
+.techno{
+  height: 500px !important;
+}
 .home_banner_area {
   background: url(../img/banner/banner-bg.jpg) no-repeat center bottom;
   background-size: cover;
   position: relative;
   z-index: 1;
   min-height: 790px;
+  height: 500px !important;
 }
 @media (max-width: 767px) {
   .home_banner_area {
