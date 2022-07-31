@@ -1571,7 +1571,7 @@ ul {
   }
 }
 .form-contact .form-control {
-  border: 1px solid #f0e9ff;
+  border: 1px solid #39383da9;
   border-radius: 5px;
   height: 48px;
   padding-left: 18px;
@@ -2248,10 +2248,11 @@ h6 {
   color: #777777;
 }
 .single-input {
+  border: 1px solid #39383da9;
   display: block;
   width: 100%;
   line-height: 40px;
-  border: none;
+  border-radius: 5px;
   outline: none;
   background: #f6f6f6;
   padding: 0 20px;
