@@ -31,7 +31,7 @@ function Index() {
       <div className="col-lg-4 col-md-6">
           <div className="single-blog">
             <div className="thumb">
-              <img className="img-fluid" src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/>
+              <img className="img-fluid" style={{ width: '325px', height : '300px' }} src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/>
             </div>
             <div className="short_details">
                 <h3>{product.product_name}</h3>
@@ -43,10 +43,8 @@ function Index() {
               <div className="small-ratings mt-3">
         {
         (() => {
-          console.log(index)
 
-            // console.log(avaRate[j])
-            if (avaRate[index]){
+            if(avaRate[index] != null){
             if (product.id == avaRate[index].prod_id) {
               const stars = [];
               for (let i = 1; i <= Math.round(avaRate[index].ava_rate); i++) {
