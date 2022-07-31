@@ -21,7 +21,7 @@ function Bussines_addForm() {
     )
   });
 
-  const [productData, setProductData] = useState({ business_id: "1" });
+  const [productData, setProductData] = useState({ business_id: "3" });
   const handleChange = (e) => {
     e.preventDefault();
     const value = e.target.value;

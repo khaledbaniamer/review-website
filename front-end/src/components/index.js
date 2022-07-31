@@ -46,7 +46,7 @@ function Index() {
           console.log(index)
 
             // console.log(avaRate[j])
-            
+            if (avaRate[index]){
             if (product.id == avaRate[index].prod_id) {
               const stars = [];
               for (let i = 1; i <= Math.round(avaRate[index].ava_rate); i++) {
@@ -56,7 +56,7 @@ function Index() {
               }
               return stars;
           }
-          
+        }
           })()}
           </div>
               <Link to={"/singleproduct/"+product.id} className="blog_btn">Continue reading <span className="ml-2 ti-arrow-right"></span></Link>
