@@ -14,7 +14,7 @@ class CommentController extends Controller
         $product = Product::where('products.id', $id)->join('categories', 'products.catrgory_id', '=', 'categories.id')->get(['categories.category_name','products.*'])->first();
         // return $product;
         if(Comment::exists()){
-              $reviews = Comment::join('users', 'comments.user_id', '=', 'users.id')->get(['users.user_name','users.user_image','comments.*']);
+              $reviews = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.product_id', $id)->get(['users.user_name','users.user_image','comments.*']);
         $ratingSum = Comment::pluck('comment_rate')->sum();
         $ratingCount = Comment::pluck('comment_rate')->count();
         $overall = $ratingSum/$ratingCount;
@@ -78,8 +78,8 @@ class CommentController extends Controller
         // return $request;
         // return $comment;
         $validator = Validator::make($request->all(),[
-            'review_rate' => 'required',
-            'review_body' => 'required',
+            'review_rate_edit' => 'required',
+            'review_body_edit' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -88,8 +88,8 @@ class CommentController extends Controller
         }else {
             // return $request->all();
 
-            $comment->comment_body = $request->review_body;
-            $comment->comment_rate = $request->review_rate;
+            $comment->comment_body = $request->review_body_edit;
+            $comment->comment_rate = $request->review_rate_edit;
             $comment->update();
             // return $comment->id;
             $reviewUpdate = Comment::where('comments.id', $comment->id)->join('users', 'comments.user_id', '=', 'users.id')->select(['users.user_name','users.user_image','comments.*'])->first();
