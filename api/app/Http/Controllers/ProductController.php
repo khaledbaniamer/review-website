@@ -64,14 +64,36 @@ class ProductController extends Controller
 
         if(count($products)==0){
             $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
-            
+
             return $business;
-        }   
+        }
 
         return $products;
     }
 
+    public function allproducts_business()
+    {
+        // $assoc = Association::select('associations.*', 'managers.manager_name')
+        // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
+        $products = Product::select('products.*', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->get();
+
+        if(count($products)==0){
+            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->get();
+
+            return $business;
+        }
+
+        return $products;
+    }
+
+
     public function allProducts(){
         return Product::all();
+    }
+    public function deleteproduct($id)
+    {
+        $Product =Product::find($id);
+
+        $Product->delete();
     }
 }

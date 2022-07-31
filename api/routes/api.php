@@ -50,11 +50,14 @@ Route::post('add_product',[ProductController::class ,'ownerAddProduct']);
 Route::get('business' , [BusinessController::class ,'getBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
-// get all user*************************
+Route::get('deleteproductt/{id}' , [ProductController::class , 'deleteproduct']);
+
 Route::get('allproducts' , [ProductController::class ,'allProducts']);
-// get all user*************************
+
 
 Route::get('singlebusiness_products/{id}' , [ProductController::class, 'products_business']);
+Route::get('allbusiness_products' , [ProductController::class, 'allproducts_business']);
+
 
 //category api
 Route::get('category' , [CategoryController::class , 'category']);
@@ -62,10 +65,12 @@ Route::post('addcategory' , [CategoryController::class , 'addcategory']);
 Route::post('updatecategory/{id}' , [CategoryController::class , 'updatecategory']);
 Route::get('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
 Route::get('singlecategory/{id}' , [CategoryController::class , 'singlecategory']);
-Route::post('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
+// Route::post('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
 
 // user profile
-// Route::get('user_profile',[UserController::class,'UserProfile']);
+Route::get('alluser',[ProfileController::class,'allUser']);
+Route::get('deleteUser/{id}' , [ProfileController::class , 'deleteUser']);
+
 // Route::post('/getUser/{id}',[UserController::class,'getUser']);
 
 
