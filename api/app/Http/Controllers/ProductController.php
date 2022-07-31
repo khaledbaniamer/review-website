@@ -67,8 +67,13 @@ class ProductController extends Controller
 
         $comment_array = [];
         foreach ($comment_product as  $comm_prr) {
+            $count = Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->count();
+            if($count ==0){
+                break;
+            }else{
+                $comment_array[] = ['prod_id'=> $comm_prr->id ,'ava_rate'=>Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->sum()/$count];
+            }
 
-            $comment_array[] = ['prod_id'=> $comm_prr->id ,'ava_rate'=>Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->sum()/Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->count()];
             
         }
 
@@ -112,11 +117,12 @@ class ProductController extends Controller
     public function getLastesProducts()
     {
         $products = Product::latest()->take(3)->get();
+        
         $comment_array = [];
         foreach ($products as  $comm_prr) {
             $count = Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->count();
             if($count ==0){
-                break;
+                continue;
             }else{
                 $comment_array[] = ['prod_id'=> $comm_prr->id ,'ava_rate'=>Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->sum()/$count];
             }

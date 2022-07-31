@@ -43,12 +43,8 @@ function Index() {
               <div className="small-ratings mt-3">
         {
         (() => {
-          console.log(index)
 
-            // console.log(avaRate[j])
-            if(avaRate[index]){
-
-            
+            if(avaRate[index] != null){
             if (product.id == avaRate[index].prod_id) {
               const stars = [];
               for (let i = 1; i <= Math.round(avaRate[index].ava_rate); i++) {

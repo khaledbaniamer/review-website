@@ -136,7 +136,7 @@ const businessSlice = createSlice({
 
         //get index products with rate
         [indexProducts.fulfilled]:(state , action)=>{
-            // console.log(action)
+            console.log(action)
             state.products = action.payload[0];
             state.ava_rate = action.payload[1];
             state.status = true

@@ -53,6 +53,8 @@ const allProducts = singleBusiness.map((product , index)=>{
           console.log(index)
 
             // console.log(avaRate[j])
+            if(avaRate[index]){
+
             
             if (product.prodID == avaRate[index].prod_id) {
               const stars = [];
@@ -63,7 +65,7 @@ const allProducts = singleBusiness.map((product , index)=>{
               }
               return stars;
           }
-          
+        }
           })()}
           </div>
           </div>
