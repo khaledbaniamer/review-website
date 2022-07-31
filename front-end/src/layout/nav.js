@@ -40,7 +40,7 @@ const Navbar = ()=>{
                       aria-expanded="false">Shop</NavLink>
                     <ul className="dropdown-menu">
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="category.html">Shop Category</NavLink>
+                        <NavLink className="nav-link" to="business">Shop Category</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="/singleproduct/3">Product Details</NavLink>

@@ -25,7 +25,7 @@ const SingleProduct = () => {
   // console.log(id)
 
   useEffect(() => {
-    dispatch(fetchReviews())
+    dispatch(fetchReviews(+id))
   }
   ,[dispatch])
 
@@ -55,7 +55,7 @@ const SingleProduct = () => {
   useEffect(() => {
     if (isEdit) {
       const review = reviews.find((review) => review.id === editReviewId);
-      console.log(review)
+      // console.log(review)
       setEditReviewBody(review.comment_body)
       setEditReviewId(review.id)
     }  
@@ -65,8 +65,8 @@ const SingleProduct = () => {
   const updateHandler =(e)=>{
     e.preventDefault();
     const reviewData = {
-      review_body: EditReviewBody,
-      review_rate: rate,
+      review_body_edit: EditReviewBody,
+      review_rate_edit: rate,
       id: EditReviewId,
     }
     Swal.fire({
@@ -120,7 +120,9 @@ const SingleProduct = () => {
 
 
   return (
-    <>
+   
+    <> {product ? 
+      <>
       <section className="banner_area">
         <div className="banner_inner d-flex align-items-center">
           <div className="container">
@@ -131,7 +133,7 @@ const SingleProduct = () => {
               </div>
               <div className="page_link">
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/singleproduct">Product Details</NavLink>
+                <NavLink to={`/singleproduct/${+id}`}>Product Details</NavLink>
               </div>
             </div>
           </div>
@@ -147,6 +149,43 @@ const SingleProduct = () => {
                   className="carousel slide"
                   data-ride="carousel"
                 >
+                  <ol class="carousel-indicators">
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="0"
+                    class="active"
+                  >
+                    <img
+                      src={"http://localhost:8000/business_image/" + product.product_image}
+                      alt=""
+                      width="60"
+                      height="60"
+                    />
+                  </li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="1"
+                  >
+                    <img
+                      src={"http://localhost:8000/business_image/" + product.product_image}
+                      alt=""
+                      width="60"
+                      height="60"
+                    />
+                  </li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="2"
+                    
+                  >
+                    <img
+                      src={"http://localhost:8000/business_image/" + product.product_image}
+                      alt=""
+                      width="60"
+                      height="60"
+                    />
+                  </li>
+                </ol>
                   <div className="carousel-inner">
                     <div className="carousel-item active">
                       <img
@@ -292,9 +331,10 @@ const SingleProduct = () => {
                               id="contactForm"
                               noValidate="novalidate"
                             >
+                              <div className="px-3 form-group">
                               <p>Your Rating:</p>
                               <ul className="list">
-                              <div className="rating my-2">
+                              <div className="rating">
                           <input type="radio" name="review_rate" onChange={()=>setRate(5)} value="5" id="5" />
                           <label htmlFor="5">☆</label>
                           <input type="radio" name="review_rate" onChange={()=>setRate(4)} value="4" id="4" />
@@ -308,7 +348,9 @@ const SingleProduct = () => {
                           
                         </div>
                               </ul>
-                        <span className="text-danger">{errors && errors.review_rate }</span>
+                              
+                        </div>
+                        <p className="text-danger">{errors && errors.review_rate_edit }</p>
                               <div className="col-md-12">
                                 <div className="form-group">
                                   <textarea
@@ -321,7 +363,7 @@ const SingleProduct = () => {
                                     onChange={(e)=>setEditReviewBody(e.target.value)}
                                   >
                                   </textarea>
-                                  <span className="text-danger">{errors && errors.review_body}</span>
+                                  <span className="text-danger">{errors && errors.review_body_edit}</span>
                                 </div>
                               </div>
                               <div className="col-md-12 text-right">
@@ -384,7 +426,7 @@ const SingleProduct = () => {
                                 data-toggle="dropdown"
                                 aria-expanded="false"
                               >
-                                Edit
+                                <i class="fa-solid fa-pen-to-square"></i>
                               </button>
                               <div className="dropdown-menu">
                                 <button className="dropdown-item" onClick={()=>EditHandler(review.id)}>
@@ -497,7 +539,11 @@ const SingleProduct = () => {
           </div>
         </div>
       </section>
-    </>
+      </>
+    : <>
+      <p className="alret alert-danger text-center text-dark p-2 my-2" role="alert">There is no product with that name</p>
+      </>}
+    </> 
   );
 };
 

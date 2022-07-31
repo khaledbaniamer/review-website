@@ -20,6 +20,8 @@ return (
          <a href="index.html" className="nav-item nav-link active"><i className="fa fa-tachometer-alt me-2" />Dashboard</a>
       
          <a href="products" className="nav-item nav-link"><i className="fa fa-list-alt me-2" />Products</a>
+         <a href="categories" className="nav-item nav-link"><i className="fa fa-list-alt me-2" />Categories</a>
+
          <a href="users" className="nav-item nav-link"><i className="fa fa-users me-2" />Users</a>
          <a href="business" className="nav-item nav-link"><i className="fa fa-table me-2" />Business </a>
         

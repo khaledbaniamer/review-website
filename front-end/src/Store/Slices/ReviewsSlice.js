@@ -6,7 +6,7 @@ import axios from 'axios';
 export const fetchReviews = createAsyncThunk("reviews/fetchReviews", async (productId,thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-       const response = await axios('http://127.0.0.1:8000/api/comments/3');
+       const response = await axios(`http://127.0.0.1:8000/api/comments/${productId}`);
       //  console.log(response)
     // if (response.data.status === 400) {
     //     throw new Error(response.data.errors)
@@ -26,7 +26,7 @@ export const fetchReviews = createAsyncThunk("reviews/fetchReviews", async (prod
 export const addReviews = createAsyncThunk("reviews/addReviews", async (reviewData,thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      console.log(reviewData)
+      // console.log(reviewData)
        const response = await axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/api/comments',
@@ -59,7 +59,7 @@ export const addReviews = createAsyncThunk("reviews/addReviews", async (reviewDa
 export const updateReview = createAsyncThunk("reviews/updateReview", async (reviewData,thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      console.log(reviewData)
+      // console.log(reviewData)
        const response = await axios({
         method: 'PUT',
         url: `http://127.0.0.1:8000/api/comments/${reviewData.id}`,
@@ -199,8 +199,8 @@ const reviewsSlice = createSlice({
         // console.log(state.reviews);
         const { id } = action.payload.review;
           const existingReview = state.reviews.find((review) => review.id === id);
-          console.log(existingReview)
-          console.log(action.payload)
+          // console.log(existingReview)
+          // console.log(action.payload)
           if (existingReview) {
             existingReview.comment_rate = action.payload.review.comment_rate;
             existingReview.comment_body = action.payload.review.comment_body;
