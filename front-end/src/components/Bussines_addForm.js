@@ -30,7 +30,13 @@ function Bussines_addForm() {
   };
 
   const handleChangeImage = (e) => {
-    setProductData({ ...productData, image: e.target.files[0] });
+    setProductData({ ...productData, product_image: e.target.files[0] });
+  };
+  const handleChangeImage1 = (e) => {
+    setProductData({ ...productData, product_image1: e.target.files[0] });
+  };
+  const handleChangeImage2 = (e) => {
+    setProductData({ ...productData, product_image2: e.target.files[0] });
   };
 
   const handleSubmit = (e) => {
@@ -44,9 +50,11 @@ function Bussines_addForm() {
     const formData = new FormData();
     formData.append("product_name", productData.product_name);
     formData.append("product_image", productData.product_image);
+    formData.append("product_image1", productData.product_image1);
+    formData.append("product_image2", productData.product_image2);
     formData.append("product_description", productData.product_description);
-    formData.append("catrgory_id", productData.catrgory_id);
-    formData.append("business_id", productData.business_id);
+    formData.append("catrgory_id", parseInt(productData.catrgory_id));
+    formData.append("business_id", parseInt(productData.business_id));
 
     dispatch(addProducts(formData));
   };
@@ -100,12 +108,12 @@ function Bussines_addForm() {
                       </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-sm-12">
                       <label style={{ color: "black" }}>Select category:</label>
                       <select
                         name="category_id"
                         onChange={handleChange}
-                        class="form-control"
+                        class="form-control my-2 mb-3"
                         aria-label="Default select example"
                       >
                         <option selected>Select category</option>
@@ -113,9 +121,9 @@ function Bussines_addForm() {
                       </select>
                     </div>
 
-                    <div class="col-12">
-                      <br />
-                      <label style={{ color: "black" }}>Enter image:</label>
+                    <div class="col-sm-12">
+                      
+                      <label style={{ color: "black" }}>Enter image :</label>
                       <div class="form-group">
                         <input
                           class="form-control"
@@ -127,7 +135,35 @@ function Bussines_addForm() {
                         />
                       </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-sm-12">
+                      
+                      <label style={{ color: "black" }}>Enter image:</label>
+                      <div class="form-group">
+                        <input
+                          class="form-control"
+                          name="product_image1"
+                          id="subject"
+                          type="file"
+                          onChange={handleChangeImage1}
+                          placeholder="Enter image"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      
+                      <label style={{ color: "black" }}>Enter image:</label>
+                      <div class="form-group">
+                        <input
+                          class="form-control"
+                          name="product_image2"
+                          id="subject"
+                          type="file"
+                          onChange={handleChangeImage2}
+                          placeholder="Enter image"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
                       <div class="form-group">
                         <label style={{ color: "black" }}>
                           Enter description:
