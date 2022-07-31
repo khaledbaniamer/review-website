@@ -18,13 +18,6 @@ export const getProductsForSingleBusiness = createAsyncThunk(
         const api = await fetch(`http://127.0.0.1:8000/api/singlebusiness_products/${id}`);
         const response = await api.json();
         
-        // if(response.status==200){
-        //     setTimeout(() => {
-        //         console.log('setTimeout')
-        //         console.log(api)
-
-        //     }, 2000);
-        // }
         return response;
     }
 );
@@ -72,12 +65,22 @@ export const addBusiness = createAsyncThunk(
           return rejectWithValue(error.message);
         }
     }
-)
+);
+
+export const indexProducts = createAsyncThunk(
+    'business/indexProducts',
+    async ()=>{
+        const api = await fetch(`http://127.0.0.1:8000/api/lastest_products`);
+        const response = await api.json();
+
+        return response;
+    }
+);
 
 
 const businessSlice = createSlice({
     name:'business',
-    initialState:{businesses:[] , status:null , errors:null , products:[]},
+    initialState:{businesses:[] , status:null , errors:null , products:[] , ava_rate:[]},
     extraReducers:{
         //get all bsuiness 
         [getBusinesses.fulfilled]:(state , action)=>{
@@ -119,13 +122,29 @@ const businessSlice = createSlice({
 
         //get products for single business
         [getProductsForSingleBusiness.fulfilled]:(state , action)=>{
-            state.products = action.payload;
+            // console.log(action)
+            state.products = action.payload[0];
+            state.ava_rate = action.payload[1];
             state.status = true
         },
         [getProductsForSingleBusiness.pending]:(state , action)=>{
             state.status = false
         },
         [getProductsForSingleBusiness.rejected]:(state , action)=>{
+            state.status = null
+        },
+
+        //get index products with rate
+        [indexProducts.fulfilled]:(state , action)=>{
+            // console.log(action)
+            state.products = action.payload[0];
+            state.ava_rate = action.payload[1];
+            state.status = true
+        },
+        [indexProducts.pending]:(state , action)=>{
+            state.status = false
+        },
+        [indexProducts.rejected]:(state , action)=>{
             state.status = null
         },
 

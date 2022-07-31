@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
@@ -60,7 +61,16 @@ class ProductController extends Controller
     {
         // $assoc = Association::select('associations.*', 'managers.manager_name')
         // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
-        $products = Product::select('products.*', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
+        $products = Product::select('products.*' ,'products.id as prodID', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
+
+        $comment_product = Product::where('business_id' , $id)->get();
+
+        $comment_array = [];
+        foreach ($comment_product as  $comm_prr) {
+
+            $comment_array[] = ['prod_id'=> $comm_prr->id ,'ava_rate'=>Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->sum()/Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->count()];
+            
+        }
 
         if(count($products)==0){
             $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
@@ -68,7 +78,7 @@ class ProductController extends Controller
             return $business;
         }
 
-        return $products;
+        return [$products , $comment_array];
     }
 
     public function allproducts_business()
@@ -95,5 +105,19 @@ class ProductController extends Controller
         $Product =Product::find($id);
 
         $Product->delete();
+    }
+
+
+
+    public function getLastesProducts()
+    {
+        $products = Product::latest()->take(3)->get();
+        $comment_array = [];
+        foreach ($products as  $comm_prr) {
+
+            $comment_array[] = ['prod_id'=> $comm_prr->id ,'ava_rate'=>Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->sum()/Comment::where('product_id', $comm_prr->id)->pluck('comment_rate')->count()];
+            
+        }
+        return [$products , $comment_array];
     }
 }
