@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 
 
 function Singlecategory() {
     const {id} = useParams();
-    const [data, setdata] = useState([]);
+    const [data, setData] = useState({});
+    const [category_name,setName]=useState();
+    const [category_image,setFile]=useState('');
  
     useEffect(  ()=> {
         fetch(`http://127.0.0.1:8000/api/singlecategory/${id}`) 
       .then((response)=> response.json())
-      .then(data => {setdata(data);
-          console.log(data);
+      .then(data => {setData(data);
+        setName(data.category_name);
+          // console.log(data);
           });
           },[]);
 
-          const [category_name,setName]=useState('');
-          const [category_image,setFile]=useState('');
-         async function addCategory(){
+ console.log(data);
+ const navigation=useNavigate()
+         async function addCategory(e){
+          e.preventDefault();
             console.warn(category_name,category_image)
             const formData=new FormData();
         
@@ -28,8 +32,13 @@ function Singlecategory() {
                 method: 'POST',
                 body:formData
             });
-            alert('Added category successfully')
+            alert('Edit category successfully')
+             navigation('/categories');
           }
+           
+        //  console.log(data.category_name);
+        //  console.log(category_name);
+
   return (
     <div className="content">
       <div className="container-fluid pt-4 px-4">
@@ -54,7 +63,7 @@ function Singlecategory() {
                     <input
                       type="text"
                       className="form-control"
-                      value={data.category_name}
+                      value={category_name}
                       onChange={(e)=>{setName(e.target.value)}}
                     />
                      <label htmlFor="formFile" className="form-label">
