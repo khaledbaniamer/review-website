@@ -39,8 +39,8 @@ function Index() {
       <div className="container">
         <div className="banner_content row">
           <div className="col-lg-12">
-            <p className="sub text-uppercase">men Collection</p>
-            <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
+            <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>men Collection</h3></p>
+            {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
             <h4>Fowl saw dry which a above together place.</h4>
             <Link className="main_btn mt-40" to="#">View Collection</Link>
           </div>
@@ -120,7 +120,7 @@ function Index() {
   {/* <!--================ End Feature Product Area =================--> */}
 
   {/* <!--================ Offer Area =================--> */}
-  <section className="offer_area">
+  {/* <section className="offer_area">
     <div className="container">
       <div className="row justify-content-center">
         <div className="offset-lg-4 col-lg-6 text-center">
@@ -133,7 +133,7 @@ function Index() {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* <!--================ End Offer Area =================--> */}
 
   {/* <!--================ New Product Area =================--> */}

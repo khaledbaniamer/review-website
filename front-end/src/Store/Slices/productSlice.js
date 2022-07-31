@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const addProducts = createAsyncThunk("product/addProducts", async (args) => {
+export const addProducts = createAsyncThunk(
+  "product/addProducts", 
+  async (args) => {
+  console.log(args)
   const api = await axios.post("http://127.0.0.1:8000/api/add_product", args);
-  
-
-  
+    
 });
 
 const productSlice = createSlice({
