@@ -50,7 +50,9 @@ Route::post('add_product',[ProductController::class ,'ownerAddProduct']);
 Route::get('business' , [BusinessController::class ,'getBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
-
+// get all user*************************
+Route::get('allproducts' , [ProductController::class ,'allProducts']);
+// get all user*************************
 
 Route::get('singlebusiness_products/{id}' , [ProductController::class, 'products_business']);
 

@@ -1,13 +1,15 @@
+import { useState } from "react"
 
 
 
 
 function Products(){
-  const deleteCategorie=(id)=>{
-    fetch(`http://127.0.0.1:8000/api/deletecategory/${id}`)
-    
-    //  getData()
-     alert("Delete category successfully")
+
+  const [data, setData]= useState([]);
+  async function getData(){
+    const api = await fetch("http://127.0.0.1:8000/api/allproducts");
+    const allData = await api.json();
+    setData(allData);
   }
     return (
         <div className="content">
@@ -25,11 +27,11 @@ function Products(){
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Country</th>
-                  <th scope="col">ZIP</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Image 1</th>
+                  <th scope="col">Product Image 2</th>
+                  <th scope="col">Product Image 3</th>
+                  <th scope="col">Product description</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>

@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function ownerAddProduct(Request $request){
 
-        
+
         $validator = Validator::make($request->all(),[
             // 'credential_photo'=>'required|image|max:2048',
             // 'profile_photo'=>'required|image|max:2048',
@@ -64,5 +64,9 @@ class ProductController extends Controller
 
 
         return $products;
+    }
+
+    public function allProducts(){
+        return Product::all();
     }
 }
