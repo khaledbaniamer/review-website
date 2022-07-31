@@ -37,7 +37,11 @@ class ProductController extends Controller
         // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
         $products = Product::select('products.*', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
 
-        
+        if(count($products)==0){
+            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
+            
+            return $business;
+        }   
         return $products;
     }
 }
