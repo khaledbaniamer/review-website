@@ -10,11 +10,11 @@ class About extends React.Component {
                     <div className="banner_content d-md-flex justify-content-between align-items-center">
                         <div className="mb-3 mb-md-0">
                         <h2>About Us</h2>
-                        <p>Know more about us</p>
+                        {/* <h4>Know more about us</h4> */}
                         </div>
                         <div className="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="contact.html">Contact Us</a>
+                        <a style={{fontWeight: 900 , color: 'black'}} href="/">Home</a>
+                        <a style={{fontWeight: 900 , color: 'black'}} href="About">About Us</a>
                         </div>
                     </div>
                     </div>

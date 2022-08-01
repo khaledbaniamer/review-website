@@ -29,7 +29,7 @@ const Business = ()=>{
                         {business.description}
                         </p>
                         <p className="card-text">
-                        <small className="text-muted">{business.created_at}</small>
+                        <small className="text-muted">{(new Date(business.created_at)).toLocaleString()}</small>
                         </p>
                   </div>
                     <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
@@ -54,9 +54,9 @@ const Business = ()=>{
               <p>Very us move be blessed multiply night</p>
             </div>
             <div className="page_link">
-              <NavLink to="index.html">Home</NavLink>
-              <NavLink to="category.html">Shop</NavLink>
-              <NavLink to="category.html">Women Fashion</NavLink>
+              <NavLink style={{fontWeight: 900 , color: 'black'}} to="/">Home</NavLink>
+              <NavLink style={{fontWeight: 900 , color: 'black'}} to="">Business profiles</NavLink>
+              {/* <NavLink to="category.html">Women Fashion</NavLink> */}
             </div>
           </div>
         </div>

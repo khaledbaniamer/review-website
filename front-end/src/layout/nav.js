@@ -46,9 +46,9 @@ const Navbar = ()=>{
                       <li className="nav-item">
                         <NavLink className="nav-link" to="business">Members</NavLink>
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <NavLink className="nav-link" to="/singleproduct/3">Product Reviwes</NavLink>
-                      </li>
+                      </li> */}
                       {/* <li className="nav-item">
                         <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
                       </li> */}
@@ -93,6 +93,9 @@ const Navbar = ()=>{
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="about">About</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="bussnisRegister">For Business</NavLink>
                   </li>
                  {
                   (!localStorage.getItem('user-info'))?

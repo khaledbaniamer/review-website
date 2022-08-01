@@ -78,8 +78,8 @@ function Bussines_addForm() {
                 {/* <p>Very us move be blessed multiply night</p> */}
               </div>
               <div class="page_link">
-                <a href="/">Home</a>
-                <a href="/">Add product</a>
+                <a  style={{fontWeight: 900 , color: 'black'}} href="/">Home</a>
+                <a style={{fontWeight: 900 , color: 'black'}} href="/">Add product</a>
               </div>
             </div>
           </div>
