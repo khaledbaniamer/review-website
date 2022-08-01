@@ -27,7 +27,7 @@ function Register() {
                 "Accept":'application/json'
             }
         })
-
+        
         result = await result.json();
         localStorage.setItem("user-info",JSON.stringify(result));
         if(user_name.length===0){
@@ -84,17 +84,14 @@ function Register() {
             <div className="m-5 col-lg-5 mx-auto">
       
                     <div className="mt-4">
-                    <label htmlFor="name" className="form-label">Full Name</label>
                         <input type="text" value={user_name} onChange={(e) => setName(e.target.value)} name="user_name" placeholder="Enter Your Full Name" required className="single-input" id='name' />
                     </div>
 
                     <div className="mt-4">
-                    <label htmlFor='email' className="form-label">Email</label>
                         <input type="text" value={user_email} onChange={(e) => setEmail(e.target.value)} name="user_email" placeholder="Enter Your Email" required className="single-input" id='email'/>
                     </div>
 
                     <div className="mt-4">
-                    <label htmlFor='password' className="form-label">Password</label>
                         <input type="password" value={user_password} onChange={(e) => (setPassword(e.target.value))} name="user_password" placeholder="Enter Your Password" required className="single-input" id='password' />
                     </div>
 
@@ -104,7 +101,6 @@ function Register() {
 
 
            </div>
-
         </>
 
      );
