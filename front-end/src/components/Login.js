@@ -16,8 +16,7 @@ function Login() {
       }
 
 
-    useEffect(()=>{
-        
+    useEffect(() => {
         if(localStorage.getItem('user-info')){
             navigate('/');
         }
@@ -34,14 +33,19 @@ function Login() {
             body:JSON.stringify(user)
         })
         result = await result.json();
+        if(true) {
+            Swal.fire({
+                icon: 'error',
+                text: 'Confirm your password',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#71cd14',
+            })
+        }
         localStorage.setItem("user-info",JSON.stringify(result));
-        
+       
         navigate('/');
         refreshPage();
     }
-
-
-
     return ( 
         <>
         <section className="banner_area">
