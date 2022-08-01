@@ -161,7 +161,7 @@ ul {
   margin-right: 45px;
 }
 .header_area .navbar .nav .nav-item .nav-link {
-  font: 400 13px/80px "Heebo", sans-serif;
+  font: 400 14px/80px "Heebo", sans-serif;
   text-transform: uppercase;
   color: #2a2a2a;
   padding: 0px;
@@ -418,7 +418,7 @@ ul {
   height: 500px !important;
 }
 .home_banner_area {
-  background: url(../img/banner/banner-bg.jpg) no-repeat center bottom;
+  background: url(../img/banner/mai.jpg) no-repeat center bottom;
   background-size: cover;
   position: relative;
   z-index: 1;

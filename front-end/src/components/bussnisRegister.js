@@ -82,8 +82,7 @@ function BussnisRegister() {
                         <h2><p>Create an account in our website</p></h2>
                         </div>
                         <div className="page_link">
-                        <a style={{fontWeight: 900 , color: 'black'}} href="/">Home</a>
-                        <a style={{fontWeight: 900 , color: 'black'}} href="bussnisRegister">Register</a>
+                       
                         </div>
                     </div>
                     </div>

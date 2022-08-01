@@ -9,19 +9,17 @@ class About extends React.Component {
                     <div className="container">
                     <div className="banner_content d-md-flex justify-content-between align-items-center">
                         <div className="mb-3 mb-md-0">
-                        <h2>About Us</h2>
+                        <h1>About Us</h1>
+                        <h2><p>Revs connects people with great local businesses.</p></h2>
                         {/* <h4>Know more about us</h4> */}
                         </div>
-                        <div className="page_link">
-                        <a style={{fontWeight: 900 , color: 'black'}} href="/">Home</a>
-                        <a style={{fontWeight: 900 , color: 'black'}} href="About">About Us</a>
-                        </div>
+                       
                     </div>
                     </div>
                 </div>
-            </section>
+            </section><br /> <br />   
 
-            <div>
+            {/* <div>
               <div className="container py-5">
                 <div className="row h-100 align-items-center py-5">
                   <div className="col-lg-6">
@@ -33,7 +31,7 @@ class About extends React.Component {
                   <div className="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid" /></div>
                 </div>
               </div>
-          </div>
+          </div> */}
 
     <div>
       <div className=" container">
