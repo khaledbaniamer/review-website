@@ -31,10 +31,10 @@ function Index() {
       <div className="col-lg-4 col-md-6">
           <div className="single-blog">
             <div className="thumb">
-             <Link to='business'><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
+             <Link to={"/singleproduct/"+product.id}><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
             </div>
             <div className="short_details">
-              <Link to='business'><h3>{product.product_name}</h3></Link>  
+              <Link to={"/singleproduct/"+product.id}><h3>{product.product_name}</h3></Link>  
               <div className="text-wrap">
                 <p>
                   {product.product_description}
@@ -66,10 +66,10 @@ function Index() {
 
   const allcategory = categories.categories.map(category=>{
     return (
-    <div className="col-lg-4 col-md-6">
+    <div className="col-lg-4 col-md-6 qut ">
       <div className="single-product">
-        <div className="product-img">
-          <img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
+        <div className="thumb">
+        <Link to='business'><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
         </div>
         <div className="product-btm">
           <Link to="business" className="d-block">

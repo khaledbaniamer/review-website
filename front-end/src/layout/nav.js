@@ -37,14 +37,21 @@ const Navbar = ()=>{
                 </li>
                   <li className="nav-item submenu dropdown">
                     <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Shop</NavLink>
+                      aria-expanded="false">Pages</NavLink>
                     <ul className="dropdown-menu">
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/">Home</NavLink>
+                      </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="business">Members</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="/singleproduct/3">Product Reviwes</NavLink>
                       </li>
+                      {/* <li className="nav-item">
+                        <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
+                      </li> */}
+                      
                       {/* <li className="nav-item">
                         <NavLink className="nav-link" to="checkout.html">Product Checkout</NavLink>
                       </li>
@@ -53,9 +60,9 @@ const Navbar = ()=>{
                       </li> */}
                     </ul>
                   </li>
-                  <li className="nav-item submenu dropdown">
-                    <NavLink to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Blog</NavLink>
+                  {/* <li className="nav-item submenu dropdown"> */}
+                    {/* <NavLink to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">Blog</NavLink> */}
                     {/* <ul className="dropdown-menu">
                       <li className="nav-item">
                         <NavLink className="nav-link" to="blog.html">Blog</NavLink>
@@ -64,7 +71,7 @@ const Navbar = ()=>{
                         <NavLink className="nav-link" to="single-blog.html">Blog Details</NavLink>
                       </li>
                     </ul> */}
-                  </li>
+                  {/* </li> */}
                   {/* <li className="nav-item submenu dropdown">
                     <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                       aria-expanded="false">Pages</NavLink>
@@ -103,7 +110,7 @@ const Navbar = ()=>{
                 </NavLink>
                  <ul className="dropdown-menu">
                    <li className="nav-item">
-                     <NavLink className="nav-link" to="tracking.html">Accout</NavLink>
+                     <NavLink className="nav-link" to="/userprofile/:id">Accout</NavLink>
                    </li>
                    <li className="nav-item">
                      <NavLink onClick={logOut} className="nav-link" to="/">Logout</NavLink>

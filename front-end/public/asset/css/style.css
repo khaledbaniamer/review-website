@@ -2858,6 +2858,12 @@ h6 {
   background: transparent;
   color: #71cd14;
 }
+.qut:hover{
+  transform: scale(1.1);
+  transition: 0.7s ease;
+
+
+}
 .main_btn2 {
   display: inline-block;
   background: #71cd14;
@@ -3016,7 +3022,7 @@ h6 {
 .single-product .product-btm {
   padding: 22px 25px 18px;
   border: 1px solid #f0f2f1;
-  text-align: left;
+  text-align: center;
 }
 .single-product .product-btm h4 {
   color: #4a4a4a;
