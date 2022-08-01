@@ -23,7 +23,7 @@ class CommentController extends Controller
         }else {
             $overall = 0;
         };
-        // return $overall;
+        // return $ratingCount;
         if($reviews){
             return response()->json([
                 'product'=> $product,
@@ -65,8 +65,8 @@ class CommentController extends Controller
             $review->save();
             // return $review;
             $reviewAdd = Comment::where('comments.id', $review->id)->join('users', 'comments.user_id', '=', 'users.id')->select(['users.user_name','users.user_image','comments.*'])->first();
-            $ratingSum = Comment::pluck('comment_rate')->sum();
-            $ratingCount = Comment::pluck('comment_rate')->count();
+            $ratingSum = Comment::where('comments.product_id', $request->product_id)->pluck('comment_rate')->sum();
+            $ratingCount = Comment::where('comments.product_id', $request->product_id)->pluck('comment_rate')->count();
             $overall = $ratingSum/$ratingCount;
             return response()->json([
                 'status' => 200,
@@ -93,15 +93,15 @@ class CommentController extends Controller
 
         }else {
             // return $request->all();
-
+            // return $comment->product_id;
             $comment->comment_body = $request->review_body_edit;
             $comment->comment_rate = $request->review_rate_edit;
             $comment->update();
             // return $comment->id;
             $reviewUpdate = Comment::where('comments.id', $comment->id)->join('users', 'comments.user_id', '=', 'users.id')->select(['users.user_name','users.user_image','comments.*'])->first();
             // return $reviewUpdate;
-            $ratingSum = Comment::pluck('comment_rate')->sum();
-            $ratingCount = Comment::pluck('comment_rate')->count();
+            $ratingSum = Comment::where('comments.product_id', $comment->product_id)->pluck('comment_rate')->sum();
+            $ratingCount = Comment::where('comments.product_id', $comment->product_id)->pluck('comment_rate')->count();
             $overall = $ratingSum/$ratingCount;
             return response()->json([
                 'status' => 200,
@@ -117,8 +117,8 @@ class CommentController extends Controller
     public function destroy(Comment $comment){
         $reviewDeleted = $comment;
         $comment->delete();
-        $ratingSum = Comment::pluck('comment_rate')->sum()?? 0;
-        $ratingCount = Comment::pluck('comment_rate')->count()?? 0;
+        $ratingSum = Comment::where('comments.product_id', $comment->product_id)->pluck('comment_rate')->sum()?? 0;
+        $ratingCount = Comment::where('comments.product_id', $comment->product_id)->pluck('comment_rate')->count()?? 0;
         if (!Comment::exists()) {
             $overall = 0;
             $ratingCount =0;

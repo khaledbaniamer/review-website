@@ -407,7 +407,7 @@ const SingleProduct = () => {
                           </div>
                           <div className="media-body">
                             <h4>{review.user_name}</h4>
-                            <h5>{review.updated_at}</h5>
+                            <h5>{(new Date(review.updated_at)).toLocaleString()}</h5>
                             {
                               (() => {
                                 const stars = [];
