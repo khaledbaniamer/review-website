@@ -42,9 +42,20 @@ class CategoryController extends Controller
     {
         $category =Category::find($id);
         $category->category_name = $request->category_name;
-        $category->category_image = $request->category_image;
+        if($request->has('category_image')) {
+            $image= $request->file('category_image');
+            $filename =time().'.'.$image->getClientOriginalExtension();
+            $image->move('category_image/', $filename);
+            $category->category_image = $filename;
+            }
 
         $category->save();
+    }
+    public function singlecategory($id)
+    {
+        $category =Category::find($id);
+
+        return $category;
     }
     public function deletecategory($id)
     {

@@ -6,6 +6,8 @@ import {BrowserRouter , Route , Routes} from 'react-router-dom'
 import Products from "./components/products";
 import Users from "./components/users";
 import Business from "./components/business";
+import Categories from "./components/categories";
+import Singlecategory from "./components/singlecategories";
 function App() {
   return (
     <>
@@ -26,6 +28,9 @@ function App() {
       <Route path="/products" element={<Products />} />
       <Route path="/users" element={<Users />} />
       <Route path="/business" element={<Business />} />
+      <Route path="/singlecategory/:id" element={<Singlecategory />} />
+
+      <Route path="/categories" element={<Categories />} />
 
       {/* <Route path="contact" element={<Contact />}/>
       <Route path="about" element={<About />}/>

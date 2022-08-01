@@ -3,24 +3,76 @@ import { useDispatch, useSelector } from "react-redux";
 
 import React, { useEffect } from 'react'
 import { getCategory } from '../Store/Slices/categorySlice';
+import { indexProducts } from '../Store/Slices/businessSlice';
 
 function Index() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategory())
+    dispatch(indexProducts());
+  }, [dispatch]);
+
+
+
+  useEffect(() => {
+    
   }, [dispatch])
+  
 
   const categories = useSelector(state=>state.category);
-  console.log(categories.categories)
+  const singleBusiness = useSelector(state=>state.business.products);
+  const avaRate = useSelector(state=>state.business.ava_rate);
+  // console.log(categories.categories)
+  console.log(singleBusiness)
+  console.log(avaRate)
+
+  const indexproducts = singleBusiness.map((product , index)=>{
+    return(
+      <div className="col-lg-4 col-md-6">
+          <div className="single-blog">
+            <div className="thumb">
+             <Link to='business'><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
+            </div>
+            <div className="short_details">
+              <Link to='business'><h3>{product.product_name}</h3></Link>  
+              <div className="text-wrap">
+                <p>
+                  {product.product_description}
+                </p>
+              </div>
+              <div className="small-ratings mt-3">
+        {
+        (() => {
+
+            if(avaRate[index] != null){
+            if (product.id == avaRate[index].prod_id) {
+              const stars = [];
+              for (let i = 1; i <= Math.round(avaRate[index].ava_rate); i++) {
+                stars.push(
+                      <i className="fa fa-star"></i>
+                  );
+              }
+              return stars;
+          }
+        }
+          })()}
+          </div>
+              <Link to={"/singleproduct/"+product.id} className="blog_btn">Continue reading <span className="ml-2 ti-arrow-right"></span></Link>
+            </div>
+          </div>
+        </div>
+    )
+  })
+
   const allcategory = categories.categories.map(category=>{
     return (
     <div className="col-lg-4 col-md-6">
       <div className="single-product">
         <div className="product-img">
-          <img className="img-fluid w-100" src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
+          <img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
         </div>
         <div className="product-btm">
-          <Link to="#" className="d-block">
+          <Link to="business" className="d-block">
             <h3>{category.category_name}</h3>
           </Link>
         </div>
@@ -34,12 +86,12 @@ function Index() {
     <body>
 
   {/* <!--================Home Banner Area =================--> */}
-  <section className="home_banner_area mb-40">
+  <section className="home_banner_area mb-40 techno">
     <div className="banner_inner d-flex align-items-center">
       <div className="container">
         <div className="banner_content row">
           <div className="col-lg-12">
-            <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>men Collection</h3></p>
+            <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>Reivew Collection</h3></p>
             {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
             <h4>Fowl saw dry which a above together place.</h4>
             <Link className="main_btn mt-40" to="#">View Collection</Link>
@@ -99,7 +151,7 @@ function Index() {
   {/* <!-- End feature Area --> */}
 
   {/* <!--================ Feature Product Area =================--> */}
-  <section className="feature_product_area section_gap_bottom_custom">
+  <section className="feature_product_area section_gap_bottom_custom mb-5">
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-lg-12">
@@ -117,413 +169,7 @@ function Index() {
       </div>
     </div>
   </section>
-  {/* <!--================ End Feature Product Area =================--> */}
-
-  {/* <!--================ Offer Area =================--> */}
-  {/* <section className="offer_area">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="offset-lg-4 col-lg-6 text-center">
-          <div className="offer_content">
-            <h3 className="text-uppercase mb-40">all men’s collection</h3>
-            <h2 className="text-uppercase">50% off</h2>
-            <Link to="#" className="main_btn mb-20 mt-5">Discover Now</Link>
-            <p>Limited Time Offer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> */}
-  {/* <!--================ End Offer Area =================--> */}
-
-  {/* <!--================ New Product Area =================--> */}
-  {/* <section className="new_product_area section_gap_top section_gap_bottom_custom">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <div className="main_title">
-            <h2><span>new products</span></h2>
-            <p>Bring called seed first of third give itself now ment</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-lg-6">
-          <div className="new_product">
-            <h5 className="text-uppercase">collection of 2019</h5>
-            <h3 className="text-uppercase">Men’s summer t-shirt</h3>
-            <div className="product-img">
-              <img className="img-fluid" src="asset/img/product/new-product/new-product1.png" alt="" />
-            </div>
-            <h4>$120.70</h4>
-            <Link to="#" className="main_btn">Add to cart</Link>
-          </div>
-        </div>
-
-        <div className="col-lg-6 mt-5 mt-lg-0">
-          <div className="row">
-            <div className="col-lg-6 col-md-6">
-              <div className="single-product">
-                <div className="product-img">
-                  <img className="img-fluid w-100" src="asset/img/product/new-product/n1.jpg" alt="" />
-                  <div className="p_icon">
-                    <Link to="#">
-                      <i className="ti-eye"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-heart"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-shopping-cart"></i>
-                    </Link>
-                  </div>
-                </div>
-                <div className="product-btm">
-                  <Link to="#" className="d-block">
-                    <h4>Nike latest sneaker</h4>
-                  </Link>
-                  <div className="mt-3">
-                    <span className="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6">
-              <div className="single-product">
-                <div className="product-img">
-                  <img className="img-fluid w-100" src="asset/img/product/new-product/n2.jpg" alt="" />
-                  <div className="p_icon">
-                    <Link to="#">
-                      <i className="ti-eye"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-heart"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-shopping-cart"></i>
-                    </Link>
-                  </div>
-                </div>
-                <div className="product-btm">
-                  <Link to="#" className="d-block">
-                    <h4>Men’s denim jeans</h4>
-                  </Link>
-                  <div className="mt-3">
-                    <span className="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6">
-              <div className="single-product">
-                <div className="product-img">
-                  <img className="img-fluid w-100" src="asset/img/product/new-product/n3.jpg" alt="" />
-                  <div className="p_icon">
-                    <Link to="#">
-                      <i className="ti-eye"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-heart"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-shopping-cart"></i>
-                    </Link>
-                  </div>
-                </div>
-                <div className="product-btm">
-                  <Link to="#" className="d-block">
-                    <h4>quartz hand watch</h4>
-                  </Link>
-                  <div className="mt-3">
-                    <span className="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6">
-              <div className="single-product">
-                <div className="product-img">
-                  <img className="img-fluid w-100" src="asset/img/product/new-product/n4.jpg" alt="" />
-                  <div className="p_icon">
-                    <Link to="#">
-                      <i className="ti-eye"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-heart"></i>
-                    </Link>
-                    <Link to="#">
-                      <i className="ti-shopping-cart"></i>
-                    </Link>
-                  </div>
-                </div>
-                <div className="product-btm">
-                  <Link to="#" className="d-block">
-                    <h4>adidas sport shoe</h4>
-                  </Link>
-                  <div className="mt-3">
-                    <span className="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> */}
-  {/* <!--================ End New Product Area =================--> */}
-
-  {/* <!--================ Inspired Product Area =================--> */}
-  <br/><br/><br/><br/><br/>
-  {/* <section className="inspired_product_area section_gap_bottom_custom">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <div className="main_title">
-            <h2><span>Recent products</span></h2>
-            <p>This is the recent product </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i1.jpg" alt="" /> */}
-              {/* <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div> */}
-            {/* </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link> */}
-              {/* <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div> */}
-            {/* </div>
-          </div> */}
-        {/* </div> */}
-
-        {/* <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i2.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i3.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i4.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i5.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i6.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i7.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-product">
-            <div className="product-img">
-              <img className="img-fluid w-100" src="asset/img/product/inspired-product/i8.jpg" alt="" />
-              <div className="p_icon">
-                <Link to="#">
-                  <i className="ti-eye"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-heart"></i>
-                </Link>
-                <Link to="#">
-                  <i className="ti-shopping-cart"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="product-btm">
-              <Link to="#" className="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </Link>
-              <div className="mt-3">
-                <span className="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
-  {/* </section> */}
-  {/* <!--================ End Inspired Product Area =================--> */}
-
-  {/* <!--================ Start Blog Area =================--> */}
+ 
   <section className="blog-area section-gap">
     <div className="container">
       <div className="row justify-content-center">
@@ -536,79 +182,7 @@ function Index() {
       </div>
 
       <div className="row">
-        <div className="col-lg-4 col-md-6">
-          <div className="single-blog">
-            <div className="thumb">
-              <img className="img-fluid" src="asset/img/b1.jpg" alt=""/>
-            </div>
-            <div className="short_details">
-              <div className="meta-top d-flex">
-                <Link to="#">By Admin</Link>
-                <Link to="#"><i className="ti-comments-smiley"></i>2 Comments</Link>
-              </div>
-              <Link className="d-block" to="single-blog.html">
-               
-              </Link>
-              <div className="text-wrap">
-                <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
-                </p>
-              </div>
-              <Link to="#" className="blog_btn">Continue reading <span className="ml-2 ti-arrow-right"></span></Link>
-            </div>
-          </div>
-        </div>
-        
-        <div className="col-lg-4 col-md-6">
-          <div className="single-blog">
-            <div className="thumb">
-              <img className="img-fluid" src="asset/img/b2.jpg" alt=""/>
-            </div>
-            <div className="short_details">
-              <div className="meta-top d-flex">
-                <Link to="#">By Admin</Link>
-                <Link to="#"><i className="ti-comments-smiley"></i>2 Comments</Link>
-              </div>
-              <Link className="d-block" to="single-blog.html">
-                <h4>Ford clever bed stops your sleeping
-                  partner hogging the whole</h4>
-              </Link>
-              <div className="text-wrap">
-                <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
-                </p>
-              </div>
-              <Link to="#" className="blog_btn">Learn More <span className="ml-2 ti-arrow-right"></span></Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6">
-          <div className="single-blog">
-            <div className="thumb">
-              <img className="img-fluid" src="asset/img/b3.jpg" alt=""/>
-            </div>
-            <div className="short_details">
-              <div className="meta-top d-flex">
-                <Link to="#">By Admin</Link>
-                <Link to="#"><i className="ti-comments-smiley"></i>2 Comments</Link>
-              </div>
-              <Link className="d-block" to="single-blog.html">
-                <h4>Ford clever bed stops your sleeping
-                  partner hogging the whole</h4>
-              </Link>
-              <div className="text-wrap">
-                <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
-                </p>
-              </div>
-              <Link to="#" className="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></Link>
-            </div>
-          </div>
-        </div>
+        {indexproducts}
       </div>
     </div>
   </section>

@@ -36,7 +36,7 @@ function App() {
       <Route path="bussnisRegister" element={<BussnisRegister />}/>
       <Route path="business" element={<Business />}/>
 
-      <Route path="userprofile" element={<UserProfile />}/>
+      {<Route path="/userprofile/:id" element={localStorage.getItem('user-info') ?<UserProfile /> : <Login />}/>}
 
       <Route path="business_profile/:id" element={<Business_profile />}/>
       <Route path="products" element={<Products />}/>

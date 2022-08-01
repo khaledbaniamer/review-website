@@ -15,42 +15,58 @@ const Business_profile = ()=>{
     
   }, [dispatch])
   const singleBusiness = useSelector(state=>state.business.products);
-  // dispatch(getProductsForSingleBusiness(id))
-  
+  const avaRate = useSelector(state=>state.business.ava_rate);
 
+
+
+//  console.log(avaRate)
  console.log(singleBusiness)
   
 const allProducts = singleBusiness.map((product , index)=>{
   return(
     
-    <div key={index} class="col-lg-4 col-md-6">
-    <div class="single-product">
-      <div class="product-img">
+    <div key={index} className="col-lg-4 col-md-6">
+    <div className="single-product">
+      <div className="product-img">
         <img
-          class="card-img"
+          className="card-img"
           src={"http://localhost:8000/category_image/" + product.product_image}
           alt=""
         />
       </div>
-      <div class="product-btm">
-        <a href="#" class="d-block">
+      <div className="product-btm">
+        <a href="#" className="d-block">
           <span>{product.product_name}</span>
         </a>
-        <div class="mt-3">
-          <h4 class="mr-4">{product.product_description}</h4>
+        <div className="mt-3">
+          <h4 className="mr-4">{product.product_description}</h4>
           
         </div>
-        <div class="review_item">
-      <div class="media">
+        <div className="review_item">
+      <div className="media">
 
       </div>
-        <div class="mt-1 d-flex justify-content-between align-items-center">
-        <div class="small-ratings mt-3">
-              <i class="fa fa-star rating-color"></i>
-              <i class="fa fa-star rating-color"></i>
-              <i class="fa fa-star rating-color"></i>
-              <i class="fa fa-star rating-color"></i>
-              <i class="fa fa-star"></i>
+        <div className="mt-1 d-flex justify-content-between align-items-center">
+        <div className="small-ratings mt-3">
+        {
+        (() => {
+          console.log(index)
+
+            // console.log(avaRate[j])
+            if(avaRate[index]){
+
+            
+            if (product.prodID == avaRate[index].prod_id) {
+              const stars = [];
+              for (let i = 1; i <= Math.round(avaRate[index].ava_rate); i++) {
+                stars.push(
+                      <i className="fa fa-star"></i>
+                  );
+              }
+              return stars;
+          }
+        }
+          })()}
           </div>
           </div>
       </div>
@@ -121,12 +137,12 @@ const allProducts = singleBusiness.map((product , index)=>{
                 <div className="mb-5">
                     <h3 className="mb-0 text-center">Products</h3>
                 </div>
-<section class="cat_product_area">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="latest_product_inner">
-              <div class="row">
+<section className="cat_product_area">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="latest_product_inner">
+              <div className="row">
 
               {allProducts}
                
