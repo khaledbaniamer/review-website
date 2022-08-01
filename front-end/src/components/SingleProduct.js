@@ -156,7 +156,7 @@ const SingleProduct = () => {
                     class="active"
                   >
                     <img
-                      src={"http://localhost:8000/product_image/" + product.product_image}
+                      src={"http://localhost:8000/business_image/" + product.product_image}
                       alt=""
                       width="60"
                       height="60"
@@ -190,7 +190,7 @@ const SingleProduct = () => {
                     <div className="carousel-item active">
                       <img
                         className="d-block w-100"
-                        src={"http://localhost:8000/product_image/" + product.product_image}
+                        src={"http://localhost:8000/business_image/" + product.product_image}
                         alt="First slide"
                       />
                     </div>

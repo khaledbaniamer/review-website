@@ -15,9 +15,15 @@ class CommentController extends Controller
         // return $product;
         if(Comment::exists()){
               $reviews = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.product_id', $id)->get(['users.user_name','users.user_image','comments.*']);
-        $ratingSum = Comment::pluck('comment_rate')->where('comments.product_id', $id)->sum();
-        $ratingCount = Comment::pluck('comment_rate')->where('comments.product_id', $id)->count();
-        $overall = $ratingSum/$ratingCount;
+        $ratingSum = Comment::where('comments.product_id', $id)->pluck('comment_rate')->sum();
+        $ratingCount = Comment::where('comments.product_id', $id)->pluck('comment_rate')->count();
+        // $overall = $ratingSum/$ratingCount;
+        if (count($reviews) > 0) {
+            $overall = $ratingSum/$ratingCount;
+        }else {
+            $overall = 0;
+        };
+        // return $overall;
         if($reviews){
             return response()->json([
                 'product'=> $product,
