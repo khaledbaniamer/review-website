@@ -30,8 +30,8 @@ const Navbar = ()=>{
                 <ul className="nav navbar-nav center_nav pull-right">
                 <li className="nav-item mt-3">
                   <div class="logo-4">
-                    <a href="">
-                      <h3 title="Home">Logo</h3>
+                    <a href="/">
+                      <h3 title="Home"> REV</h3>
                     </a>
                   </div>
                 </li>
@@ -40,32 +40,32 @@ const Navbar = ()=>{
                       aria-expanded="false">Shop</NavLink>
                     <ul className="dropdown-menu">
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="business">Shop Category</NavLink>
+                        <NavLink className="nav-link" to="business">Members</NavLink>
                       </li>
                       <li className="nav-item">
-                        <NavLink className="nav-link" to="/singleproduct/3">Product Details</NavLink>
+                        <NavLink className="nav-link" to="/singleproduct/3">Product Reviwes</NavLink>
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <NavLink className="nav-link" to="checkout.html">Product Checkout</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="cart.html">Shopping Cart</NavLink>
-                      </li>
+                      </li> */}
                     </ul>
                   </li>
                   <li className="nav-item submenu dropdown">
-                    <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <NavLink to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                       aria-expanded="false">Blog</NavLink>
-                    <ul className="dropdown-menu">
+                    {/* <ul className="dropdown-menu">
                       <li className="nav-item">
                         <NavLink className="nav-link" to="blog.html">Blog</NavLink>
                       </li>
                       <li className="nav-item">
                         <NavLink className="nav-link" to="single-blog.html">Blog Details</NavLink>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
-                  <li className="nav-item submenu dropdown">
+                  {/* <li className="nav-item submenu dropdown">
                     <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                       aria-expanded="false">Pages</NavLink>
                     <ul className="dropdown-menu">
@@ -76,12 +76,12 @@ const Navbar = ()=>{
                         <NavLink className="nav-link" to="">Elements</NavLink>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <NavLink className="nav-link" to="contact">Contact</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="add">ADD</NavLink>
+                    <NavLink className="nav-link" to="add">Add Product</NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="about">About</NavLink>

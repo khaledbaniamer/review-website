@@ -31,10 +31,10 @@ function Index() {
       <div className="col-lg-4 col-md-6">
           <div className="single-blog">
             <div className="thumb">
-              <img className="img-fluid" style={{ width: '325px', height : '300px' }} src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/>
+             <Link to='business'><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
             </div>
             <div className="short_details">
-                <h3>{product.product_name}</h3>
+              <Link to='business'><h3>{product.product_name}</h3></Link>  
               <div className="text-wrap">
                 <p>
                   {product.product_description}
@@ -72,7 +72,7 @@ function Index() {
           <img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
         </div>
         <div className="product-btm">
-          <Link to="#" className="d-block">
+          <Link to="business" className="d-block">
             <h3>{category.category_name}</h3>
           </Link>
         </div>
@@ -91,7 +91,7 @@ function Index() {
       <div className="container">
         <div className="banner_content row">
           <div className="col-lg-12">
-            <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>men Collection</h3></p>
+            <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>Reivew Collection</h3></p>
             {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
             <h4>Fowl saw dry which a above together place.</h4>
             <Link className="main_btn mt-40" to="#">View Collection</Link>
