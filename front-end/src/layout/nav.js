@@ -61,9 +61,10 @@ const Navbar = ()=>{
                   </>
                 :
                 <>
-                <li className="nav-item">
+                {JSON.parse(localStorage.getItem('user-info')).user_role ?"" :<li className="nav-item">
                 <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
-              </li>
+              </li>}
+
               <li className="nav-item">
                 <NavLink className="nav-link" to="add">Add Product</NavLink>
               </li>

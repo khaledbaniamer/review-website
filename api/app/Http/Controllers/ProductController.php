@@ -109,8 +109,10 @@ class ProductController extends Controller
     public function deleteproduct($id)
     {
         $Product =Product::find($id);
-
+        $deleted = $Product;
         $Product->delete();
+
+        return $deleted;
     }
 
 
@@ -131,5 +133,12 @@ class ProductController extends Controller
 
         }
         return [$products , $comment_array];
+    }
+
+    public function business_products($id)
+    {
+        $products = Product::where('business_id' , $id)->get();
+
+        return $products;
     }
 }

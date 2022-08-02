@@ -83,3 +83,10 @@ Route::get('businessSingleCategory/{id}' , [BusinessController::class , 'single_
 
 
 Route::get('lastest_products' , [ProductController::class , 'getLastesProducts']);
+
+
+//users 
+Route::post('update_role/{id}' , [UserController::class , 'update_role']);
+
+//business products 
+Route::get('business_products/{id}' , [ProductController::class , 'business_products']);
