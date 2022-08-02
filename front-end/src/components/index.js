@@ -72,7 +72,7 @@ function Index() {
         <Link to='business'><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
         </div>
         <div className="product-btm">
-          <Link to="business" className="d-block">
+          <Link to={"business/"+category.id} className="d-block">
             <h3>{category.category_name}</h3>
           </Link>
         </div>
@@ -103,52 +103,55 @@ function Index() {
   {/* <!--================End Home Banner Area =================--> */}
 
   {/* <!-- Start feature Area --> */}
-  <section className="feature-area section_gap_bottom_custom">
+  {/* <section className="feature-area section_gap_bottom_custom">
     <div className="container">
       <div className="row">
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
-              <i className="flaticon-money"></i>
-              <h3>Money back gurantee</h3>
-            </Link>
-            <p>Shall open divide a one</p>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
+  
+        <div className="col-lg-4 col-md-6">
+          <div className="single-feature">  
               <i className="flaticon-truck"></i>
               <h3>Free Delivery</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-support"></i>
               <h3>Alway support</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-blockchain"></i>
               <h3>Secure payment</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* <!-- End feature Area --> */}
+
+  
+  <section className="blog-area section-gap">
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-lg-12">
+          <div className="main_title">
+            <h2><span>latest product reviews</span></h2>
+            <p>This section show the latest product reviewed</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        {indexproducts}
+      </div>
+    </div>
+  </section>
 
   {/* <!--================ Feature Product Area =================--> */}
   <section className="feature_product_area section_gap_bottom_custom mb-5">
@@ -170,22 +173,6 @@ function Index() {
     </div>
   </section>
  
-  <section className="blog-area section-gap">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <div className="main_title">
-            <h2><span>latest product reviews</span></h2>
-            <p>This section show the latest product reviewed</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        {indexproducts}
-      </div>
-    </div>
-  </section>
   {/* <!--================ End Blog Area =================--> */}
   
   </body>

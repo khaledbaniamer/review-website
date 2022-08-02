@@ -5,13 +5,7 @@ import Swal from "sweetalert2";
 export const addProducts = createAsyncThunk(
   "product/addProducts", 
   async (args) => {
-  // console.log(args.get('product_name'))
-  // console.log(args.get('product_image'))
-  // console.log(args.get('product_image1'))
-  // console.log(args.get('product_image2'))
-  // console.log(args.get('product_description'))
-  // console.log(args.get('catrgory_id'))
-  // console.log(args.get('business_id'))
+
   const api = await axios.post("http://127.0.0.1:8000/api/add_product", args);
   console.log(api.data);
 
@@ -24,6 +18,31 @@ export const addProducts = createAsyncThunk(
 }
     
 });
+export const business_products = createAsyncThunk(
+  'product/business_products',
+  async (id)=>{
+     const api =await fetch(`http://127.0.0.1:8000/api/business_products/${id}`);
+     const response = await api.json();
+
+     return response;
+    }
+)
+
+export const deleteProduct = createAsyncThunk(
+  'product/deleteProduct',
+  async(id) =>{
+    const api = await fetch(`http://127.0.0.1:8000/api/deleteproductt/${id}`);
+    const response =await api.json();
+
+    if(response.ok){
+        Swal.fire({
+            title: "Product",
+            text: "Has been Deleted Successfully",
+            type: "success"
+        });
+  }
+  return response;
+})
 
 const productSlice = createSlice({
   name:"product",
@@ -41,6 +60,30 @@ const productSlice = createSlice({
       state.status = "pending send data";
     },
     [addProducts.rejected]: (state) => {
+      state.status = "rejected send data";
+    },
+
+    [business_products.fulfilled]: (state, action) => {
+      state.status = "success send data";
+      state.products = action.payload;
+    },
+    [business_products.pending]: (state) => {
+      state.status = "pending send data";
+    },
+    [business_products.rejected]: (state) => {
+      state.status = "rejected send data";
+    },
+
+    //delete products 
+    [deleteProduct.fulfilled]: (state, action) => {
+      state.status = "success send data";
+      const {id} = action.payload;
+      state.products = state.products.filter((item)=>item.id != id);
+    },
+    [deleteProduct.pending]: (state) => {
+      state.status = "pending send data";
+    },
+    [deleteProduct.rejected]: (state) => {
       state.status = "rejected send data";
     },
   },

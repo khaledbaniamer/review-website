@@ -4151,7 +4151,7 @@ h6 {
 }
 
 .product_description_area .nav.nav-tabs li a.active {
-  background: #71cd14;
+  /* background: #71cd14; */
   color: #fff;
   border-color: #71cd14;
 }
@@ -5376,9 +5376,23 @@ h6 {
 }
 
 .logo-4 h3 {
+<<<<<<< HEAD
   color: #71cd14;
   font-weight: 300;
   font-size: 50px;
   line-height: 0.65;
   font-family: 'Lobster', cursive;
+=======
+    color: #71cd14;
+    font-weight: 300;
+    font-size: 50px;
+    line-height: 0.65;
+    font-family: 'Lobster', cursive;
+}
+
+
+
+.active {
+  color: #71cd14 !important;
+>>>>>>> bd314c3f6f6e159341af99f73a183ca9ed26e815
 }

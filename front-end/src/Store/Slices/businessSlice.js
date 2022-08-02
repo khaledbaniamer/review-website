@@ -43,6 +43,10 @@ export const addBusiness = createAsyncThunk(
        console.log(response)
        
         if (response.data.status == 200) {
+
+            const business = await response.data;
+            return business;
+        }else if(response.status){
             console.log(response)
             Swal.fire({
                 position: 'top-end',
@@ -76,6 +80,13 @@ export const indexProducts = createAsyncThunk(
         return response;
     }
 );
+
+export const update_role = createAsyncThunk(
+    'business/update_role',
+    async(id)=>{
+        const response = await axios.post(`http://127.0.0.1:8000/api/update_role/${id}`);
+    }
+)
 
 
 const businessSlice = createSlice({
@@ -122,7 +133,7 @@ const businessSlice = createSlice({
 
         //get products for single business
         [getProductsForSingleBusiness.fulfilled]:(state , action)=>{
-            // console.log(action)
+            console.log(action)
             state.products = action.payload[0];
             state.ava_rate = action.payload[1];
             state.status = true
@@ -136,7 +147,7 @@ const businessSlice = createSlice({
 
         //get index products with rate
         [indexProducts.fulfilled]:(state , action)=>{
-            console.log(action)
+            // console.log(action)
             state.products = action.payload[0];
             state.ava_rate = action.payload[1];
             state.status = true

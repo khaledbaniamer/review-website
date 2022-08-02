@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "../Store/Slices/categorySlice";
-import { addBusiness } from "../Store/Slices/businessSlice";
+import { addBusiness, update_role } from "../Store/Slices/businessSlice";
 import { useNavigate } from "react-router-dom";
 
 function BussnisRegister() {
-
+    const user_id = JSON.parse(localStorage.getItem('user-info')).id;
     const dispatch = useDispatch();
     const Navigate = useNavigate()
     const errors = useSelector(state=>state.business.errors)
-    console.log(errors)
+    // console.log(user_id)
     useEffect(() => {
     
     dispatch(getCategory())
@@ -67,7 +67,9 @@ function BussnisRegister() {
 
         dispatch(addBusiness(formData));
 
-        // Navigate('/business')
+        dispatch(update_role(user_id));
+
+        Navigate('/business')
     }
     // console.log(business)
 
