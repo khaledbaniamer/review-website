@@ -129,7 +129,7 @@ function Categories() {
             </div>
           </div>
           
-          <div className="col-12">
+          {/* <div className="col-12">
             <div className="bg-secondary rounded h-100 p-4">
               <h6 className="mb-4">Responsive Table</h6>
               <div className="table-responsive">
@@ -177,7 +177,7 @@ function Categories() {
                 </table>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
