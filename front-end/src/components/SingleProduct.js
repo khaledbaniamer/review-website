@@ -127,11 +127,11 @@ const SingleProduct = () => {
                 <div className="banner_content d-md-flex justify-content-between align-items-center">
                   <div className="mb-3 mb-md-0">
                     <h2>Product Details</h2>
-                    <p>Very us move be blessed multiply night</p>
+                    {/* <p>Very us move be blessed multiply night</p> */}
                   </div>
                   <div className="page_link">
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to={`/singleproduct/${+id}`}>
+                    <NavLink style={{fontWeight: 900 , color: 'black'}} to="/">Home</NavLink>
+                    <NavLink style={{fontWeight: 900 , color: 'black'}} to={`/singleproduct/${+id}`}>
                       Product Details
                     </NavLink>
                   </div>

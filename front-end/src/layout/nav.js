@@ -32,7 +32,7 @@ const Navbar = ()=>{
                 <li className="nav-item mt-3">
                   <div class="logo-4">
                     <a href="/">
-                      <h3 title="Home"> REV</h3>
+                      <h3 title="Home">REV</h3>
                     </a>
                   </div>
                 </li>
