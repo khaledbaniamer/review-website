@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ()=>{
-
+  const naviagte = useNavigate();
     function refreshPage() {
       window.location.reload(false);
     }
 
     function logOut() {
     localStorage.clear();
+    naviagte('/');
     refreshPage();
     }
 
@@ -61,13 +63,15 @@ const Navbar = ()=>{
                   </>
                 :
                 <>
-                {JSON.parse(localStorage.getItem('user-info')).user_role ?"" :<li className="nav-item">
-                <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
-              </li>}
+                {JSON.parse(localStorage.getItem('user-info')).user_role == null ?
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
+                </li>
+                :
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="add">Add Product</NavLink>
+                </li> }
 
-              <li className="nav-item">
-                <NavLink className="nav-link" to="add">Add Product</NavLink>
-              </li>
                  <li className="nav-item submenu dropdown">
                  <NavLink to="#" className="icons mt-2">
                     <i className="ti-user fa-2x" aria-hidden="true"></i>

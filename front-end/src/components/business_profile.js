@@ -42,7 +42,7 @@ if(singleBusiness.length >0){
         />
       </div>
       <div className="product-btm">
-        <a href="#" className="d-block">
+        <a href={`/singleproduct/${product.prodID}`} className="d-block">
           <span>{product.product_name}</span>
         </a>
         <div className="mt-3">
@@ -118,10 +118,10 @@ if(singleBusiness.length >0){
             <div class="row mt-2" style={{marginTop:"0px"}}>
             <div class="col-md-8 p-2" style={{float:"right"}}>
               <h2>Business Name : 
-                <strong>
+                <span>
                   {singleBusiness[0] && singleBusiness[0].owner_name}
                   {singleBusiness && singleBusiness.owner_name}
-                </strong>
+                </span>
               </h2>
             </div>
     
@@ -130,7 +130,7 @@ if(singleBusiness.length >0){
               {/* <div class="button" >
                 <a href="/edit_assoc/{{$assoc->id}}" class="btn btn-primary">Edit Profile</a>
               </div> */}
-              {JSON.parse(localStorage.getItem('user-info')).user_role ? <a href= {`/products/${id}`}className="main_btn float-right text-dark" >Products</a> :""}
+              {localStorage.getItem('user-info') && JSON.parse(localStorage.getItem('user-info')).user_role ? <a href= {`/products/${id}`}className="main_btn float-right text-dark" >Products</a> :<></>}
             </div>
     
             </div>
@@ -138,20 +138,28 @@ if(singleBusiness.length >0){
     
           <div class="row" style={{marginTop:"20px"}}>
             <div class="col-md-3"> 
-              <a href="#"> <img class="rounded-circle" src="https://static.remove.bg/remove-bg-web/36b50c4385f75bb65509f63b1e81f99fe2b334fc/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" alt="Kamal" style={{width:"200px",height:"200px"}} /></a>
+              <a href="#"> 
+              {singleBusiness[0]&&<img class="rounded-circle" src={"http://localhost:8000/profile_photo/"+singleBusiness[0].profile_photo} alt="Kamal" style={{width:"200px",height:"200px"}} />}
+              {singleBusiness && <img class="rounded-circle" src={"http://localhost:8000/profile_photo/"+singleBusiness.profile_photo} alt="Kamal" style={{width:"200px",height:"200px"}} />}
+              </a>
             </div>
     
-            <div class="col-md-3 my-auto"> 
-              <h3  >Catrgory : <span>test</span></h3>
+            <div class="col-md-2 my-auto"> 
+              <h3  >Catrgory : 
+                <span>
+                {singleBusiness[0] && singleBusiness[0].category_name} 
+                {singleBusiness && singleBusiness.category_name} 
+                </span>
+              </h3>
 
             </div>
-            <div class="col-md-3 my-auto"> 
+            <div class="col-md-4 my-auto"> 
 
               <h3> Address  : 
-                <strong>
+                <span>
                 {singleBusiness[0] && singleBusiness[0].address} 
                 {singleBusiness && singleBusiness.address} 
-                </strong> 
+                </span> 
               </h3>
   
             </div>
