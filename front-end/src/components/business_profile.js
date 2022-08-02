@@ -35,9 +35,9 @@ if(singleBusiness.length >0){
     <div key={index} className="col-lg-4 col-md-6">
     <div className="single-product">
       <div className="product-img">
-        <img
+        <img width = '200px' height = '300px'
           className="card-img"
-          src={"http://localhost:8000/category_image/" + product.product_image}
+          src={"http://localhost:8000/product_image/" + product.product_image}
           alt=""
         />
       </div>

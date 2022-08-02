@@ -4602,5 +4602,5 @@ h6 {
 
 
 .active {
-  color: #71cd14;
+  color: #71cd14 !important;
 }
