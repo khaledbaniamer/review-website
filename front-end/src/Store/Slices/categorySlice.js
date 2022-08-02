@@ -84,12 +84,22 @@ export const deleteCategory = createAsyncThunk(
         
     }
 )
+export const singleCategory = createAsyncThunk(
+    'category/singleCategory',
+    async (id)=>{
+        
+        const api = await fetch(`http://127.0.0.1:8000/api/businessSingleCategory/${id}`);
+        const response = await api.json();
+        
+        return response;
+    }
+)
 
 
 
 const categorySlice = createSlice({
     name:'category',
-    initialState:{categories:[]},
+    initialState:{categories:[] , business:[]},
     extraReducers:{
         //get all Category
         [getCategory.fulfilled]:(state , action)=>{
@@ -163,6 +173,21 @@ const categorySlice = createSlice({
             
         },
         [getSingleCategory.rejected]:(state )=>{
+            state.status = 'rejected get getSingleCategory';
+        },
+
+        //get business for single category 
+        [singleCategory.fulfilled]:(state , action)=>{
+            state.status = 'success get getSingleCategory';
+            // console.log(action)
+            state.business = action.payload
+            
+        },
+        [singleCategory.pending]:(state  )=>{
+            state.status = 'pending get getSingleCategory';
+            
+        },
+        [singleCategory.rejected]:(state )=>{
             state.status = 'rejected get getSingleCategory';
         },
 

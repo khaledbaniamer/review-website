@@ -1,29 +1,36 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { getBusinesses } from "../Store/Slices/businessSlice";
-import { getCategory } from "../Store/Slices/categorySlice";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { getCategory, singleCategory } from "../Store/Slices/categorySlice";
 
 
-const Business = ()=>{
+
+const BusinessCategory = ()=>{
+  const {id} = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getBusinesses())
+    dispatch(singleCategory(id))
     dispatch(getCategory())
+    
   }, [dispatch])
-  const categories = useSelector(state=>state.category.categories)
-  const businesses = useSelector(state=>state.business);
 
-const allCategory = categories.map(category=>{
+  const businesses = useSelector(state=>state.category.business);
+  const categories = useSelector(state=>state.category.categories)
+  
+console.log(businesses)
+  const allCategory = categories.map(category=>{
   return(
     <li>
-      <NavLink to={"/business/"+category.id}>{category.category_name}</NavLink>
+      <a  href={`/business/${category.id}`}>{category.category_name}</a>
     </li>
   )
 })
 
 
-  const allBusiness = businesses.businesses.map(business=>{
+
+
+  const allBusiness = businesses.map(business=>{
     return(
       <div key={business.id} className="card mb-3" style={{maxWidth: "100%"}}>
         <div className="row g-0">
@@ -81,7 +88,7 @@ const allCategory = categories.map(category=>{
           <div className="col-lg-9">
             <div className="product_top_bar">
               <div className="left_dorp">
-                <h4>Businesses</h4>
+              <h4>Business</h4>
               </div>
             </div>
             
@@ -98,7 +105,7 @@ const allCategory = categories.map(category=>{
                 </div>
                 <div className="widgets_inner">
                   <ul className="list">
-                      {allCategory}
+                  {allCategory}
                   </ul>
                 </div>
               </aside>
@@ -115,4 +122,4 @@ const allCategory = categories.map(category=>{
     )
 }
 
-export default Business;
+export default BusinessCategory;

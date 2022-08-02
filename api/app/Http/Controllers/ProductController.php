@@ -62,6 +62,12 @@ class ProductController extends Controller
         // $assoc = Association::select('associations.*', 'managers.manager_name')
         // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
         $products = Product::select('products.*' ,'products.id as prodID', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
+       
+        if(count($products)==0){
+            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
+
+            return $business;
+        }
 
         $comment_product = Product::where('business_id' , $id)->get();
 
@@ -76,11 +82,7 @@ class ProductController extends Controller
 
         }
 
-        if(count($products)==0){
-            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
 
-            return $business;
-        }
 
         return [$products , $comment_array];
     }

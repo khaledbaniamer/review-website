@@ -13,6 +13,7 @@ import UserProfile from "./components/userProfile";
 import BussnisRegister from "./components/bussnisRegister";
 import Products from "./components/products";
 import Bussines_addForm from "./components/Bussines_addForm";
+import BusinessCategory from "./components/business_category";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Route path="register" element={<Register />}/>
       <Route path="bussnisRegister" element={<BussnisRegister />}/>
       <Route path="business" element={<Business />}/>
+      <Route path="business/:id" element={<BusinessCategory />}/>
 
       {<Route path="/userprofile/:id" element={localStorage.getItem('user-info') ?<UserProfile /> : <Login />}/>}
 

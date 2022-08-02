@@ -61,6 +61,13 @@ class BusinessController extends Controller
             }
         $business->save();
     }
+
+    public function single_business_category($id)
+    {
+        $business = Business::where('catrgory_id' , $id)->get();
+
+        return $business;
+    }
     
 
 }
