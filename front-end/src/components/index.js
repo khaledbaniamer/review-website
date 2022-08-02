@@ -72,7 +72,7 @@ function Index() {
         <Link to='business'><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
         </div>
         <div className="product-btm">
-          <Link to="business" className="d-block">
+          <Link to={"business/"+category.id} className="d-block">
             <h3>{category.category_name}</h3>
           </Link>
         </div>

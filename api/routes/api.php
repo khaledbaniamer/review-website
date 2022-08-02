@@ -14,6 +14,8 @@ use App\Http\Controllers\ProfileController;
 
 
 use App\Http\Controllers\UserController;
+use App\Models\Business;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -76,6 +78,8 @@ Route::get('deleteUser/{id}' , [ProfileController::class , 'deleteUser']);
 
 Route::get('deletecategory/{id}' , [CategoryController::class , 'deletecategory']);
 Route::get('singlecategory/{id}' , [CategoryController::class , 'single_category']);
+
+Route::get('businessSingleCategory/{id}' , [BusinessController::class , 'single_business_category']);
 
 
 Route::get('lastest_products' , [ProductController::class , 'getLastesProducts']);
