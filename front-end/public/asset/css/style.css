@@ -3495,7 +3495,7 @@ h6 {
   font-weight: normal;
 }
 .product_description_area .nav.nav-tabs li a.active {
-  background: #71cd14;
+  /* background: #71cd14; */
   color: #fff;
   border-color: #71cd14;
 }
