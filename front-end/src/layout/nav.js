@@ -27,12 +27,12 @@ const Navbar = ()=>{
        
           <div className="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
             <div className="row w-100 mr-0">
-              <div className="col-lg-8 pr-0">
+              <div className="col-lg-10 pr-0">
                 <ul className="nav navbar-nav center_nav pull-right">
                 <li className="nav-item mt-3">
                   <div class="logo-4">
                     <a href="/">
-                      <h3 title="Home">REV</h3>
+                      <h3 title="Home"> REVS</h3>
                     </a>
                   </div>
                 </li>
@@ -86,16 +86,16 @@ const Navbar = ()=>{
                     </ul>
                   </li> */}
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="contact">Contact</NavLink>
+                    <NavLink className="nav-link" to="bussnisRegister">For Business</NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="add">Add Product</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="about">About</NavLink>
+                    <NavLink className="nav-link" to="contact">Contact</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="bussnisRegister">For Business</NavLink>
+                    <NavLink className="nav-link" to="about">About</NavLink>
                   </li>
                  {
                   (!localStorage.getItem('user-info'))?

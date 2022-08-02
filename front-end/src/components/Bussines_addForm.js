@@ -74,12 +74,7 @@ function Bussines_addForm() {
           <div class="container">
             <div class="banner_content d-md-flex justify-content-between align-items-center">
               <div class="mb-3 mb-md-0">
-                <h2>Add product</h2>
-                {/* <p>Very us move be blessed multiply night</p> */}
-              </div>
-              <div class="page_link">
-                <a  style={{fontWeight: 900 , color: 'black'}} href="/">Home</a>
-                <a style={{fontWeight: 900 , color: 'black'}} href="/">Add product</a>
+                <h1>Add product</h1>
               </div>
             </div>
           </div>

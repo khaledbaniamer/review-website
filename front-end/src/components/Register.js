@@ -70,12 +70,9 @@ function Register() {
                     <div className="banner_content d-md-flex justify-content-between align-items-center">
                         <div className="mb-3 mb-md-0">
                         <h1 >Register</h1>
-                        <p>Create an account in our website</p>
+                        <h2><p>Create an account in our website</p></h2>
                         </div>
-                        <div className="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="contact.html">Contact Us</a>
-                        </div>
+                       
                     </div>
                     </div>
                 </div>

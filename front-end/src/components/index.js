@@ -93,8 +93,8 @@ function Index() {
           <div className="col-lg-12">
             <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>Reivew Collection</h3></p>
             {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
-            <h4>Fowl saw dry which a above together place.</h4>
-            <Link className="main_btn mt-40" to="#">View Collection</Link>
+            <h4 style={{ color: 'black' }}>Fowl saw dry which a above together place.</h4>
+            <Link  className="main_btn mt-40" to="#">View Collection</Link>
           </div>
         </div>
       </div>
