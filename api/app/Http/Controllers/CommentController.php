@@ -142,4 +142,26 @@ class CommentController extends Controller
             ]);
         }
     }
+//Admin Comments
+public function ShowallComments(){
+
+    return Comment::join('users', 'comments.user_id', '=', 'users.id')
+    ->join('products', 'comments.product_id', '=', 'products.id')
+    ->get(['comments.*', 'users.user_name','product_name']);
+
+
+
+    // return Comment::all();
+
+}
+
+public function deleteComment($id){
+
+    $user = Comment::find($id);
+    $user->delete($id);
+
+
+}
+
+
 }

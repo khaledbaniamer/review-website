@@ -34,6 +34,8 @@ Route::get('/comments/{id}', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
 Route::put('/comments/{comment}' , [CommentController::class , 'update']);
 Route::delete('/comments/{comment}' , [CommentController::class , 'destroy']);
+Route::get('/ShowallComments', [CommentController::class, 'ShowallComments']);
+Route::get('deleteComment/{id}' , [CommentController::class , 'deleteComment']);
 
 
 
@@ -53,6 +55,8 @@ Route::get('business' , [BusinessController::class ,'getBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
 Route::get('deleteproductt/{id}' , [ProductController::class , 'deleteproduct']);
+Route::get('avtiveBusniss/{id}' , [BusinessController::class , 'active']);
+Route::get('notavtiveBusniss/{id}' , [BusinessController::class , 'notactive']);
 
 Route::get('allproducts' , [ProductController::class ,'allProducts']);
 
@@ -72,6 +76,7 @@ Route::get('singlecategory/{id}' , [CategoryController::class , 'singlecategory'
 // user profile
 Route::get('alluser',[ProfileController::class,'allUser']);
 Route::get('deleteUser/{id}' , [ProfileController::class , 'deleteUser']);
+Route::get('allcount',[ProfileController::class,'count']);
 
 // Route::post('/getUser/{id}',[UserController::class,'getUser']);
 
@@ -85,8 +90,8 @@ Route::get('businessSingleCategory/{id}' , [BusinessController::class , 'single_
 Route::get('lastest_products' , [ProductController::class , 'getLastesProducts']);
 
 
-//users 
+//users
 Route::post('update_role/{id}' , [UserController::class , 'update_role']);
 
-//business products 
+//business products
 Route::get('business_products/{id}' , [ProductController::class , 'business_products']);

@@ -1,39 +1,42 @@
+import { NavLink } from "react-router-dom";
+
 function Sidebar(){
 return (
 <>
      <div className="sidebar pe-4 pb-3">
      <nav className="navbar bg-secondary navbar-dark">
-       <a href="index.html" className="navbar-brand mx-4 mb-3">
-         <h3 className="text-primary"><i className="fa fa-user-edit me-2" />DarkPan</h3>
+       <a href="/" className="navbar-brand mx-4 mb-3">
+         <h3 className="text-primary">Rev</h3>
        </a>
        <div className="d-flex align-items-center ms-4 mb-4">
          <div className="position-relative">
-           <img className="rounded-circle" src="img/user.jpg" alt="" style={{width: '40px', height: '40px'}} />
+           {/* <img className="rounded-circle" src="img/user.jpg" alt="" style={{width: '40px', height: '40px'}} /> */}
            <div className="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1" />
          </div>
          <div className="ms-3">
-           <h6 className="mb-0">Jhon Doe</h6>
+           {/* <h6 className="mb-0">Jhon Doe</h6> */}
            <span>Admin</span>
          </div>
        </div>
        <div className="navbar-nav w-100">
-         <a href="/" className="nav-item nav-link active"><i className="fa fa-tachometer-alt me-2" />Dashboard</a>
+         <NavLink to="/" className="nav-item nav-link "><i className="fa fa-tachometer-alt me-2" />Dashboard</NavLink>
       
-         <a href="products" className="nav-item nav-link"><i className="fa fa-list-alt me-2" />Products</a>
-         <a href="categories" className="nav-item nav-link"><i className="fa fa-list-alt me-2" />Categories</a>
+         <NavLink to="products" className="nav-item nav-link"><i className="fa fa-list-alt me-2" />Products</NavLink>
+         <NavLink to="categories" className="nav-item nav-link"><i className="fa fa-list-alt me-2" /> Categories</NavLink>
+         <NavLink to="comments" className="nav-item nav-link"><i class="fa fa-comments" aria-hidden="true"></i>Comments</NavLink>
 
-         <a href="users" className="nav-item nav-link"><i className="fa fa-users me-2" />Users</a>
-         <a href="business" className="nav-item nav-link"><i className="fa fa-table me-2" />Business </a>
+         <NavLink to="users" className="nav-item nav-link"><i className="fa fa-users me-2" />Users</NavLink>
+         <NavLink to="business" className="nav-item nav-link"><i className="fa fa-table me-2" />Business </NavLink>
         
          <div className="nav-item dropdown">
            <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i className="far fa-file-alt me-2" />Pages</a>
            <div className="dropdown-menu bg-transparent border-0">
              <a href="signin.html" className="dropdown-item">Sign In</a>
-             <a href="signup.html" className="dropdown-item">Sign Up</a>
+             {/* <a href="signup.html" className="dropdown-item">Sign Up</a>
              <a href="404.html" className="dropdown-item">404 Error</a>
              <a href="blank.html" className="dropdown-item">Blank Page</a>
              <a href="#" className="dropdown-item">My Profile</a>
-          <a href="#" className="dropdown-item">Settings</a>
+          <a href="#" className="dropdown-item">Settings</a> */}
           <a href="#" className="dropdown-item">Log Out</a>
            </div>
          </div>
@@ -49,10 +52,10 @@ return (
     <a href="#" className="sidebar-toggler flex-shrink-0">
       <i className="fa fa-bars" style={{color:"#113F67"}}/>
     </a>
-    <form className="d-none d-md-flex ms-4">
+    {/* <form className="d-none d-md-flex ms-4">
       <input className="form-control bg-dark border-0" type="search" placeholder="Search" />
-    </form>
-    <div className="navbar-nav align-items-center ms-auto">
+    </form> */}
+    {/* <div className="navbar-nav align-items-center ms-auto">
       <div className="nav-item dropdown">
         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
           <i className="fa fa-envelope me-lg-2" />
@@ -127,7 +130,7 @@ return (
           <a href="#" className="dropdown-item">Log Out</a>
         </div>
       </div>
-    </div>
+    </div> */}
   </nav>
  </>
 );

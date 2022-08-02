@@ -18,7 +18,7 @@ class BusinessController extends Controller
         $singleBusiness = Business::find($id);
         return $singleBusiness;
     }
-    
+
     public function addBusiness(Request $request)
     {
         // return $request->all();
@@ -68,6 +68,22 @@ class BusinessController extends Controller
 
         return $business;
     }
-    
+
+    public function active($id){
+
+      return  Business::where('id', $id)->update(['business_status'=>1]);
+
+        // $busines->save();
+
+// return $busines;
+    }
+    public function notactive($id){
+
+        return  Business::where('id', $id)->update(['business_status'=>0]);
+
+          // $busines->save();
+
+  // return $busines;
+      }
 
 }

@@ -8,6 +8,7 @@ import Users from "./components/users";
 import Business from "./components/business";
 import Categories from "./components/categories";
 import Singlecategory from "./components/singlecategories";
+import Comments from "./components/comments";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
       <Route path="/products" element={<Products />} />
       <Route path="/users" element={<Users />} />
       <Route path="/business" element={<Business />} />
+      <Route path="/comments" element={<Comments />} />
       <Route path="/singlecategory/:id" element={<Singlecategory />} />
 
       <Route path="/categories" element={<Categories />} />
