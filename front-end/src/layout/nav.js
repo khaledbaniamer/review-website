@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const Navbar = ()=>{
 
@@ -27,70 +26,23 @@ const Navbar = ()=>{
        
           <div className="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
             <div className="row w-100 mr-0">
-              <div className="col-lg-10 pr-0">
-                <ul className="nav navbar-nav center_nav pull-right">
-                <li className="nav-item mt-3">
+            <div className="col-lg-2">
+            <li className="nav-item mt-3" style={{listStyle:"none"}} >
                   <div class="logo-4">
-                    <a href="/">
-                      <h3 title="Home"> REVS</h3>
-                    </a>
+                      <NavLink className="nav-link" to="/"> <h3 title="Home"> REVS</h3></NavLink>
                   </div>
                 </li>
-                  <li className="nav-item submenu dropdown">
-                    <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Pages</NavLink>
-                    <ul className="dropdown-menu">
-                    <li className="nav-item">
+                </div>
+              <div className="col-lg-10">
+                <ul className="nav navbar-nav center_nav">
+                
+                <li className="nav-item">
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="business">Members</NavLink>
-                      </li>
-                      {/* <li className="nav-item">
-                        <NavLink className="nav-link" to="/singleproduct/3">Product Reviwes</NavLink>
-                      </li> */}
-                      {/* <li className="nav-item">
-                        <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
-                      </li> */}
-                      
-                      {/* <li className="nav-item">
-                        <NavLink className="nav-link" to="checkout.html">Product Checkout</NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="cart.html">Shopping Cart</NavLink>
-                      </li> */}
-                    </ul>
-                  </li>
-                  {/* <li className="nav-item submenu dropdown"> */}
-                    {/* <NavLink to="/" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Blog</NavLink> */}
-                    {/* <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="blog.html">Blog</NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="single-blog.html">Blog Details</NavLink>
-                      </li>
-                    </ul> */}
-                  {/* </li> */}
-                  {/* <li className="nav-item submenu dropdown">
-                    <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Pages</NavLink>
-                    <ul className="dropdown-menu">
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="">Tracking</NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to="">Elements</NavLink>
-                      </li>
-                    </ul>
-                  </li> */}
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="bussnisRegister">For Business</NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="add">Add Product</NavLink>
-                  </li>
+                </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link" to="business">Businesses</NavLink>
+              </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="contact">Contact</NavLink>
                   </li>
@@ -100,14 +52,21 @@ const Navbar = ()=>{
                  {
                   (!localStorage.getItem('user-info'))?
                   <>
-                  <li className="nav-item">
+                  <li className="nav-item pull-right">
                   <NavLink className="nav-link" to="login">Login</NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item pull-right">
                   <NavLink className="nav-link" to="register">Register</NavLink>
                 </li>
                   </>
                 :
+                <>
+                <li className="nav-item">
+                <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="add">Add Product</NavLink>
+              </li>
                  <li className="nav-item submenu dropdown">
                  <NavLink to="#" className="icons mt-2">
                     <i className="ti-user fa-2x" aria-hidden="true"></i>
@@ -121,6 +80,7 @@ const Navbar = ()=>{
                    </li>
                  </ul>
                </li>
+               </>
                  }
                 </ul>
               </div>

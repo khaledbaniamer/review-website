@@ -117,9 +117,7 @@ ul {
   color: #797979;
   margin-bottom: 0px;
 }
-.active {
-  color: #71cd14;
-}
+
 .header_area {
   position: relative;
   width: 100%;
@@ -4599,4 +4597,10 @@ h6 {
     font-size: 50px;
     line-height: 0.65;
     font-family: 'Lobster', cursive;
+}
+
+
+
+.active {
+  color: #71cd14 !important;
 }

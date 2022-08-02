@@ -67,9 +67,7 @@ function BussnisRegister() {
 
         dispatch(addBusiness(formData));
 
-        
-
-        // Navigate('/business')
+        Navigate('/business')
     }
     // console.log(business)
 
