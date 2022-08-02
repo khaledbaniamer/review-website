@@ -130,7 +130,7 @@ if(singleBusiness.length >0){
               {/* <div class="button" >
                 <a href="/edit_assoc/{{$assoc->id}}" class="btn btn-primary">Edit Profile</a>
               </div> */}
-              {JSON.parse(localStorage.getItem('user-info')).user_role ? <a href= {`/products/${id}`}className="main_btn float-right text-dark" >Products</a> :""}
+              {localStorage.getItem('user-info') && JSON.parse(localStorage.getItem('user-info')).user_role ? <a href= {`/products/${id}`}className="main_btn float-right text-dark" >Products</a> :<></>}
             </div>
     
             </div>
