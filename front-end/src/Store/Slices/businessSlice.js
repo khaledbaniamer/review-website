@@ -85,6 +85,8 @@ export const update_role = createAsyncThunk(
     'business/update_role',
     async(id)=>{
         const response = await axios.post(`http://127.0.0.1:8000/api/update_role/${id}`);
+        localStorage.setItem('user-info',JSON.stringify(response.data))
+        window.location.reload(false);
     }
 )
 
