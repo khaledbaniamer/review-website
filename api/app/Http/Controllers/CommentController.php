@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
     //
     public function index($id){
-        $product = Product::where('products.id', $id)->join('categories', 'products.catrgory_id', '=', 'categories.id')->get(['categories.category_name','products.*'])->first();
+        $product = Product::where('products.id', $id)->join('categories', 'products.catrgory_id', '=', 'categories.id')->join('businesses', 'products.business_id', '=', 'businesses.id')->get(['categories.category_name','businesses.owner_name','products.*'])->first();
         // return $product;
         if(Comment::exists()){
               $reviews = Comment::join('users', 'comments.user_id', '=', 'users.id')->where('comments.product_id', $id)->get(['users.user_name','users.user_image','comments.*']);

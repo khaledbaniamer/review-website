@@ -222,6 +222,11 @@ const SingleProduct = () => {
                       <span>Category:</span>{product.category_name}
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink className="active" to={`/business_profile/${product.business_id}`}>
+                      <span>Business:</span>{product.owner_name}
+                    </NavLink>
+                  </li>
                 </ul>
                 <p>
                  {product.product_description}
