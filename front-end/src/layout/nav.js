@@ -65,12 +65,13 @@ const Navbar = ()=>{
                 <>
                 {JSON.parse(localStorage.getItem('user-info')).user_role ?
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="add">Add Product</NavLink>
-                </li> 
+                  <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
+                </li>
                 :
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="bussnisRegister">Business Register</NavLink>
-                </li>}
+                  <NavLink className="nav-link" to="add">Add Product</NavLink>
+                </li> 
+                  }
 
                  <li className="nav-item submenu dropdown">
                  <NavLink to="#" className="icons mt-2">
