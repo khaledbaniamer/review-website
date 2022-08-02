@@ -103,7 +103,7 @@ function Index() {
   {/* <!--================End Home Banner Area =================--> */}
 
   {/* <!-- Start feature Area --> */}
-  <section className="feature-area section_gap_bottom_custom">
+  {/* <section className="feature-area section_gap_bottom_custom">
     <div className="container">
       <div className="row">
   
@@ -132,8 +132,26 @@ function Index() {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* <!-- End feature Area --> */}
+
+  
+  <section className="blog-area section-gap">
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-lg-12">
+          <div className="main_title">
+            <h2><span>latest product reviews</span></h2>
+            <p>This section show the latest product reviewed</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        {indexproducts}
+      </div>
+    </div>
+  </section>
 
   {/* <!--================ Feature Product Area =================--> */}
   <section className="feature_product_area section_gap_bottom_custom mb-5">
@@ -155,22 +173,6 @@ function Index() {
     </div>
   </section>
  
-  <section className="blog-area section-gap">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <div className="main_title">
-            <h2><span>latest product reviews</span></h2>
-            <p>This section show the latest product reviewed</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        {indexproducts}
-      </div>
-    </div>
-  </section>
   {/* <!--================ End Blog Area =================--> */}
   
   </body>
