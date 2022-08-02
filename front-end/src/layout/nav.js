@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ()=>{
-
+  const naviagte = useNavigate();
     function refreshPage() {
       window.location.reload(false);
     }
 
     function logOut() {
     localStorage.clear();
+    naviagte('/');
     refreshPage();
     }
 
