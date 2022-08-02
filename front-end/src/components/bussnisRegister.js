@@ -67,7 +67,7 @@ function BussnisRegister() {
 
         dispatch(addBusiness(formData));
 
-        // Navigate('/business')
+        Navigate('/business')
     }
     // console.log(business)
 
@@ -78,12 +78,11 @@ function BussnisRegister() {
                     <div className="container">
                     <div className="banner_content d-md-flex justify-content-between align-items-center">
                         <div className="mb-3 mb-md-0">
-                        <h1 >Register For Owner</h1>
-                        <p>Create an account in our website</p>
+                        <h1 >Register </h1>
+                        <h2><p>Create an account in our website</p></h2>
                         </div>
                         <div className="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="contact.html">Contact Us</a>
+                       
                         </div>
                     </div>
                     </div>

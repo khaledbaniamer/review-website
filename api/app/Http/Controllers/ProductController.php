@@ -19,9 +19,9 @@ class ProductController extends Controller
             'product_description'=>'required',
             'catrgory_id'=>'required',
             'business_id'=>'required',
-            'product_image'=>'required|image|max:2048',
-            'product_image1'=>'required|image|max:2048',
-            'product_image2'=>'required|image|max:2048',
+            'product_image'=>'required|image',
+            'product_image1'=>'required|image',
+            'product_image2'=>'required|image',
 
     ]);
 
@@ -37,19 +37,19 @@ class ProductController extends Controller
 
         if($request->has('product_image')) {
             $image= $request->file('product_image');
-            $filename =time().'.'.$image->getClientOriginalExtension();
+            $filename =time().'1.'.$image->getClientOriginalExtension();
             $image->move('product_image', $filename);
             $product->product_image = $filename;
             }
         if($request->has('product_image1')) {
             $image= $request->file('product_image1');
-            $filename =time().'.'.$image->getClientOriginalExtension();
+            $filename =time().'2.'.$image->getClientOriginalExtension();
             $image->move('product_image', $filename);
             $product->product_image1 = $filename;
             }
         if($request->has('product_image2')) {
             $image= $request->file('product_image2');
-            $filename =time().'.'.$image->getClientOriginalExtension();
+            $filename =time().'3.'.$image->getClientOriginalExtension();
             $image->move('product_image', $filename);
             $product->product_image2 = $filename;
             }
@@ -62,6 +62,12 @@ class ProductController extends Controller
         // $assoc = Association::select('associations.*', 'managers.manager_name')
         // ->join('managers', 'managers.id', '=', 'associations.assoc_manager_id')->get();
         $products = Product::select('products.*' ,'products.id as prodID', 'businesses.*' ,'categories.category_name')->join('businesses','businesses.id' , '=' ,'products.business_id')->join('categories','categories.id' , '=' ,'products.catrgory_id')->where('businesses.id' , $id)->get();
+       
+        if(count($products)==0){
+            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
+
+            return $business;
+        }
 
         $comment_product = Product::where('business_id' , $id)->get();
 
@@ -76,11 +82,7 @@ class ProductController extends Controller
 
         }
 
-        if(count($products)==0){
-            $business = Business::select('businesses.*' ,'categories.category_name')->join('categories','categories.id' , '=' ,'businesses.catrgory_id')->where('businesses.id' , $id)->get();
 
-            return $business;
-        }
 
         return [$products , $comment_array];
     }

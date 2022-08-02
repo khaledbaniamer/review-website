@@ -31,10 +31,10 @@ function Index() {
       <div className="col-lg-4 col-md-6">
           <div className="single-blog">
             <div className="thumb">
-             <Link to='business'><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
+             <Link to={"/singleproduct/"+product.id}><img className="img-fluid" style={{ width: '325px', height : '300px' }}  src={"http://127.0.0.1:8000/product_image/"+product.product_image }alt=""/></Link> 
             </div>
             <div className="short_details">
-              <Link to='business'><h3>{product.product_name}</h3></Link>  
+              <Link to={"/singleproduct/"+product.id}><h3>{product.product_name}</h3></Link>  
               <div className="text-wrap">
                 <p>
                   {product.product_description}
@@ -66,13 +66,13 @@ function Index() {
 
   const allcategory = categories.categories.map(category=>{
     return (
-    <div className="col-lg-4 col-md-6">
+    <div className="col-lg-4 col-md-6 qut ">
       <div className="single-product">
-        <div className="product-img">
-          <img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" />
+        <div className="thumb">
+        <Link to='business'><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
         </div>
         <div className="product-btm">
-          <Link to="business" className="d-block">
+          <Link to={"business/"+category.id} className="d-block">
             <h3>{category.category_name}</h3>
           </Link>
         </div>
@@ -93,8 +93,8 @@ function Index() {
           <div className="col-lg-12">
             <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>Reivew Collection</h3></p>
             {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
-            <h4>Fowl saw dry which a above together place.</h4>
-            <Link className="main_btn mt-40" to="#">View Collection</Link>
+            <h4 style={{ color: 'black' }}>Fowl saw dry which a above together place.</h4>
+            <Link  className="main_btn mt-40" to="#">View Collection</Link>
           </div>
         </div>
       </div>
@@ -103,52 +103,55 @@ function Index() {
   {/* <!--================End Home Banner Area =================--> */}
 
   {/* <!-- Start feature Area --> */}
-  <section className="feature-area section_gap_bottom_custom">
+  {/* <section className="feature-area section_gap_bottom_custom">
     <div className="container">
       <div className="row">
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
-              <i className="flaticon-money"></i>
-              <h3>Money back gurantee</h3>
-            </Link>
-            <p>Shall open divide a one</p>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
+  
+        <div className="col-lg-4 col-md-6">
+          <div className="single-feature">  
               <i className="flaticon-truck"></i>
               <h3>Free Delivery</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-support"></i>
               <h3>Alway support</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-blockchain"></i>
               <h3>Secure payment</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* <!-- End feature Area --> */}
+
+  
+  <section className="blog-area section-gap">
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-lg-12">
+          <div className="main_title">
+            <h2><span>latest product reviews</span></h2>
+            <p>This section show the latest product reviewed</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        {indexproducts}
+      </div>
+    </div>
+  </section>
 
   {/* <!--================ Feature Product Area =================--> */}
   <section className="feature_product_area section_gap_bottom_custom mb-5">
@@ -170,22 +173,6 @@ function Index() {
     </div>
   </section>
  
-  <section className="blog-area section-gap">
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <div className="main_title">
-            <h2><span>latest product reviews</span></h2>
-            <p>This section show the latest product reviewed</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        {indexproducts}
-      </div>
-    </div>
-  </section>
   {/* <!--================ End Blog Area =================--> */}
   
   </body>

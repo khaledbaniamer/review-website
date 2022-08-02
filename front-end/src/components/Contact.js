@@ -12,13 +12,10 @@ class Contact extends React.Component {
                     <div class="container">
                     <div class="banner_content d-md-flex justify-content-between align-items-center">
                         <div class="mb-3 mb-md-0">
-                        <h2>Contact Us</h2>
-                        <p>Very us move be blessed multiply night</p>
+                        <h1>Contact Us</h1>
+                        {/* <p>Very us move be blessed multiply night</p> */}
                         </div>
-                        <div class="page_link">
-                        <a href="index.html">Home</a>
-                        <a href="contact.html">Contact Us</a>
-                        </div>
+                       
                     </div>
                     </div>
                 </div>

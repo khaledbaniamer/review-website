@@ -2,15 +2,27 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getBusinesses } from "../Store/Slices/businessSlice";
+import { getCategory } from "../Store/Slices/categorySlice";
 
 
 const Business = ()=>{
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBusinesses())
+    dispatch(getCategory())
   }, [dispatch])
-  
+  const categories = useSelector(state=>state.category.categories)
   const businesses = useSelector(state=>state.business);
+
+const allCategory = categories.map(category=>{
+  return(
+    <li>
+      <NavLink to={"/business/"+category.id}>{category.category_name}</NavLink>
+    </li>
+  )
+})
+
+
   const allBusiness = businesses.businesses.map(business=>{
     return(
       <div key={business.id} className="card mb-3" style={{maxWidth: "100%"}}>
@@ -29,7 +41,7 @@ const Business = ()=>{
                         {business.description}
                         </p>
                         <p className="card-text">
-                        <small className="text-muted">{business.created_at}</small>
+                        <small className="text-muted">{(new Date(business.created_at)).toLocaleString()}</small>
                         </p>
                   </div>
                     <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
@@ -50,13 +62,8 @@ const Business = ()=>{
         <div className="container">
           <div className="banner_content d-md-flex justify-content-between align-items-center">
             <div className="mb-3 mb-md-0">
-              <h2>Business Category</h2>
-              <p>Very us move be blessed multiply night</p>
-            </div>
-            <div className="page_link">
-              <NavLink to="index.html">Home</NavLink>
-              <NavLink to="category.html">Shop</NavLink>
-              <NavLink to="category.html">Women Fashion</NavLink>
+              <h1>Business Category</h1>
+              <h2><p>Very us move be blessed multiply night</p></h2>
             </div>
           </div>
         </div>
@@ -69,16 +76,7 @@ const Business = ()=>{
           <div className="col-lg-9">
             <div className="product_top_bar">
               <div className="left_dorp">
-                <select className="sorting">
-                  <option value="1">Default sorting</option>
-                  <option value="2">Default sorting 01</option>
-                  <option value="4">Default sorting 02</option>
-                </select>
-                <select className="show">
-                  <option value="1">Show 12</option>
-                  <option value="2">Show 14</option>
-                  <option value="4">Show 16</option>
-                </select>
+                <h4>Businesses</h4>
               </div>
             </div>
             
@@ -95,27 +93,7 @@ const Business = ()=>{
                 </div>
                 <div className="widgets_inner">
                   <ul className="list">
-                    <li>
-                      <NavLink to="#">Frozen Fish</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Dried Fish</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Fresh Fish</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Meat Alternatives</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Fresh Fish</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Meat Alternatives</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="#">Meat</NavLink>
-                    </li>
+                      {allCategory}
                   </ul>
                 </div>
               </aside>

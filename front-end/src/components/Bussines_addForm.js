@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCategory } from "../Store/Slices/categorySlice";
 import { addProducts } from "../Store/Slices/productSlice";
+import Swal from "sweetalert2";
 
 function Bussines_addForm() {
   const dispatch = useDispatch();
@@ -59,6 +60,11 @@ function Bussines_addForm() {
     formData.append("business_id", parseInt(productData.business_id));
 
     dispatch(addProducts(formData));
+    Swal.fire({
+      title: "Product",
+      text: "Has been Added Successfully",
+      type: "success"
+  });
   };
 
   return (
@@ -68,12 +74,7 @@ function Bussines_addForm() {
           <div class="container">
             <div class="banner_content d-md-flex justify-content-between align-items-center">
               <div class="mb-3 mb-md-0">
-                <h2>Add product</h2>
-                {/* <p>Very us move be blessed multiply night</p> */}
-              </div>
-              <div class="page_link">
-                <a href="/">Home</a>
-                <a href="/">Add product</a>
+                <h1>Add product</h1>
               </div>
             </div>
           </div>
@@ -93,6 +94,8 @@ function Bussines_addForm() {
                   method="post"
                   id="contactForm"
                   novalidate="novalidate"
+
+
                 >
                   <div class="row">
                     <div class="col-sm-12">
@@ -125,7 +128,7 @@ function Bussines_addForm() {
 
                     <div class="col-sm-12">
                       
-                      <label style={{ color: "black" }}>Enter image :</label>
+                      <label style={{ color: "black" }}>Enter first image :</label>
                       <div class="form-group">
                         <input
                           class="form-control"
@@ -139,7 +142,7 @@ function Bussines_addForm() {
                     </div>
                     <div class="col-sm-12">
                       
-                      <label style={{ color: "black" }}>Enter image:</label>
+                      <label style={{ color: "black" }}>Enter second image:</label>
                       <div class="form-group">
                         <input
                           class="form-control"
@@ -153,7 +156,7 @@ function Bussines_addForm() {
                     </div>
                     <div class="col-sm-12">
                       
-                      <label style={{ color: "black" }}>Enter image:</label>
+                      <label style={{ color: "black" }}>Enter third image:</label>
                       <div class="form-group">
                         <input
                           class="form-control"
