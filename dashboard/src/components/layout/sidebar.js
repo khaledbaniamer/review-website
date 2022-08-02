@@ -47,7 +47,7 @@ return (
       <h2 className="text-primary mb-0"><i className="fa fa-user-edit" /></h2>
     </a>
     <a href="#" className="sidebar-toggler flex-shrink-0">
-      <i className="fa fa-bars" />
+      <i className="fa fa-bars" style={{color:"#113F67"}}/>
     </a>
     <form className="d-none d-md-flex ms-4">
       <input className="form-control bg-dark border-0" type="search" placeholder="Search" />

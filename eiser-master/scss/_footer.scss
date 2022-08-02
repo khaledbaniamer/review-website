@@ -10,7 +10,7 @@
             margin-bottom:30px;
         }
         h4 {
-            color: #ffffff;
+            color: #fff;
             margin-bottom: 35px;
             @media(max-width: 1024px) {
                 font-size: 18px;
@@ -28,7 +28,7 @@
                     @include transition();
                     color: $text-color;
                     &:hover {
-                        color: #ffffff;
+                        color: #fff;
                     }
                 }
             }
@@ -41,8 +41,8 @@
             border: none;
             width: 70% !important;
             font-weight: 300;
-            background: rgba(#ffffff, .15);
-            color: #ffffff;
+            background: rgba(#fff, .15);
+            color: #fff;
             padding-left: 20px;
             border-radius: 0;
             font-size: 14px;
@@ -55,7 +55,7 @@
             font-size: 12px;
             text-transform: uppercase;
             background: $primary-color;
-            color: #ffffff;
+            color: #fff;
             border-radius: 0;
             border-top-left-radius: 0px;
             border-bottom-left-radius: 0px;
@@ -75,7 +75,7 @@
             margin-top: 20px;
         }
         p {
-            color: #ffffff;
+            color: #fff;
         }
         a,
         span {
@@ -91,10 +91,10 @@
                 margin-top: 30px;
             }
             a {
-                background: rgba(#ffffff, .15);
+                background: rgba(#fff, .15);
                 margin-left: 5px;
                 width: 40px;
-                color: #ffffff;
+                color: #fff;
                 display: inline-grid;
                 text-align: center;
                 height: 40px;

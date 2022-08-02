@@ -13,7 +13,8 @@ class UserController extends Controller
         $user = User::create([
             'user_name' => $request->user_name,
             'user_email' => $request->user_email,
-            'user_password' => Hash::make($request->user_password)
+            'user_password' => Hash::make($request->user_password),
+            'user_role' => $request->user_role
         ]);
 
         return $user;
@@ -30,6 +31,13 @@ class UserController extends Controller
        }
 
        return $user;
+    }
+
+    public function update_role($id)
+    {
+        $user = User::find($id);
+        $user->user_role = 1;
+        $user->save();
     }
 
 }

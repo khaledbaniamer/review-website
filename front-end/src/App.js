@@ -41,7 +41,7 @@ function App() {
       {<Route path="/userprofile/:id" element={localStorage.getItem('user-info') ?<UserProfile /> : <Login />}/>}
 
       <Route path="business_profile/:id" element={<Business_profile />}/>
-      <Route path="products" element={<Products />}/>
+      <Route path="products/:id" element={<Products />}/>
     </Routes>
 
     <Footer />

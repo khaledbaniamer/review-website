@@ -38,13 +38,13 @@ function Categories() {
     <div className="content">
       <div className="container-fluid pt-4 px-4">
         <div className="row g-4">
-        <div className="col-sm-12 col-xl-6">
+        <div className="col-sm-12 col-xl-12">
             <div className="bg-secondary rounded h-100 p-4">
               <h6 className="mb-4">Add Category</h6>
               <form>
                 <div className="row mb-4">
                   
-                  <div className="col-sm-10">
+                  <div className="col-sm-5">
                     <label
                     htmlFor="inputEmail3"
                     className="form-label"
@@ -118,8 +118,8 @@ function Categories() {
                             style={{ width: "100px" }}
                           />
                         </td>
-                        <Link  to={`/singlecategory/${category.id}`} className="btn btn-primary mt-auto align-self-start" >Edite</Link>
-                        <Link className="btn btn-primary mt-auto align-self-start" onClick={() =>deleteCategorie(category.id)} to=''> Delete</Link>
+                        <Link  to={`/singlecategory/${category.id}`} className="btn btn-primary mt-auto align-self-start " >Edit</Link>
+                        <Link className="btn btn-primary mt-auto align-self-start" onClick={() =>deleteCategorie(category.id)} to='' > Delete</Link>
                         {/* <td> <Link to={'http://127.0.0.1:8000/api/deletecategory/'+category.id} className="btn btn-primary mt-auto align-self-start">Delete</Link></td>          */}
                                      </tr>
                     );
@@ -129,7 +129,7 @@ function Categories() {
             </div>
           </div>
           
-          <div className="col-12">
+          {/* <div className="col-12">
             <div className="bg-secondary rounded h-100 p-4">
               <h6 className="mb-4">Responsive Table</h6>
               <div className="table-responsive">
@@ -177,7 +177,7 @@ function Categories() {
                 </table>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

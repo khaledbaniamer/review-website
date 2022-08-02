@@ -81,6 +81,13 @@ export const indexProducts = createAsyncThunk(
     }
 );
 
+export const update_role = createAsyncThunk(
+    'business/update_role',
+    async(id)=>{
+        const response = await axios.post(`http://127.0.0.1:8000/api/update_role/${id}`);
+    }
+)
+
 
 const businessSlice = createSlice({
     name:'business',
