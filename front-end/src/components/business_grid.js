@@ -50,13 +50,8 @@ const Business = ()=>{
         <div className="container">
           <div className="banner_content d-md-flex justify-content-between align-items-center">
             <div className="mb-3 mb-md-0">
-              <h2>Business Category</h2>
-              <p>Very us move be blessed multiply night</p>
-            </div>
-            <div className="page_link">
-              <NavLink style={{fontWeight: 900 , color: 'black'}} to="/">Home</NavLink>
-              <NavLink style={{fontWeight: 900 , color: 'black'}} to="">Business profiles</NavLink>
-              {/* <NavLink to="category.html">Women Fashion</NavLink> */}
+              <h1>Business Category</h1>
+              <h2><p>Very us move be blessed multiply night</p></h2>
             </div>
           </div>
         </div>
