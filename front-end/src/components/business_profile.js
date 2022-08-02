@@ -42,7 +42,7 @@ if(singleBusiness.length >0){
         />
       </div>
       <div className="product-btm">
-        <a href="#" className="d-block">
+        <a href={`/singleproduct/${product.id}`} className="d-block">
           <span>{product.product_name}</span>
         </a>
         <div className="mt-3">
