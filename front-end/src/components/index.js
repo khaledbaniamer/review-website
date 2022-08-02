@@ -106,42 +106,27 @@ function Index() {
   <section className="feature-area section_gap_bottom_custom">
     <div className="container">
       <div className="row">
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
-              <i className="flaticon-money"></i>
-              <h3>Money back gurantee</h3>
-            </Link>
-            <p>Shall open divide a one</p>
-          </div>
-        </div>
-
-        <div className="col-lg-3 col-md-6">
-          <div className="single-feature">
-            <Link to="#" className="title">
+  
+        <div className="col-lg-4 col-md-6">
+          <div className="single-feature">  
               <i className="flaticon-truck"></i>
               <h3>Free Delivery</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-support"></i>
               <h3>Alway support</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
 
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-4 col-md-6">
           <div className="single-feature">
-            <Link to="#" className="title">
               <i className="flaticon-blockchain"></i>
               <h3>Secure payment</h3>
-            </Link>
             <p>Shall open divide a one</p>
           </div>
         </div>
