@@ -100,7 +100,7 @@ function Singlecategory() {
                 </fieldset>
                
                 <button onClick={addCategory} className="btn btn-primary">
-                  Sign in
+                 Edit
                 </button>
               </form>
             </div>
