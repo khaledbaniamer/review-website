@@ -155,7 +155,7 @@ const SingleProduct = () => {
                     data-slide-to="0"
                     class="active"
                   >
-                    <img
+                    <img 
                       src={"http://localhost:8000/product_image/" + product.product_image}
                       alt=""
                       width="60"
@@ -188,21 +188,21 @@ const SingleProduct = () => {
                 </ol>
                   <div className="carousel-inner">
                     <div className="carousel-item active">
-                      <img
-                        className="d-block w-100"
+                      <img style={{height: '400px' , width:'400px'}}
+                        className="d-block w-100 "
                         src={"http://localhost:8000/product_image/" + product.product_image}
                         alt="First slide"
                       />
                     </div>
                     <div className="carousel-item">
-                      <img
+                      <img style={{height: '400px' , width:'400px'}}
                         className="d-block w-100"
                         src={"http://localhost:8000/product_image/" + product.product_image1}
                         alt="Second slide"
                       />
                     </div>
                     <div className="carousel-item">
-                      <img
+                      <img style={{height: '400px' , width:'400px'}}
                         className="d-block w-100"
                         src={"http://localhost:8000/product_image/" + product.product_image2}
                         alt="Third slide"
