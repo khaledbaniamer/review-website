@@ -132,8 +132,8 @@ const SingleProduct = () => {
                 <p>Very us move be blessed multiply night</p>
               </div>
               <div className="page_link">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to={`/singleproduct/${+id}`}>Product Details</NavLink>
+                <NavLink style={{fontWeight: 900 , color: 'black'}} to="/">Home</NavLink>
+                <NavLink style={{fontWeight: 900 , color: 'black'}} to={`/singleproduct/${+id}`}>Product Details</NavLink>
               </div>
             </div>
           </div>
