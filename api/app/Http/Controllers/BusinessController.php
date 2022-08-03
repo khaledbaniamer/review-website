@@ -9,7 +9,7 @@ class BusinessController extends Controller
 {
     public function getBusiness()
     {
-        $busniesses = Business::all();
+        $busniesses = Business::where('business_status',1)->get();
         return $busniesses;
     }
 

@@ -92,7 +92,11 @@ const allCategory = categories.map(category=>{
                   <h3>Browse Categories</h3>
                 </div>
                 <div className="widgets_inner">
+                
                   <ul className="list">
+                  <li>
+                <NavLink to={"/business"}>All</NavLink>
+                </li>
                       {allCategory}
                   </ul>
                 </div>

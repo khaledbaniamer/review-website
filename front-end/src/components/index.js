@@ -69,7 +69,7 @@ function Index() {
     <div className="col-lg-4 col-md-6 qut ">
       <div className="single-product">
         <div className="thumb">
-        <Link to='business'><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
+        <Link to={"business/"+category.id}><img className="img-fluid" style={{ width: '350px', height : '380px' }} src={ "http://localhost:8000/category_image/" + category.category_image} alt="" /></Link>  
         </div>
         <div className="product-btm">
           <Link to={"business/"+category.id} className="d-block">
@@ -93,8 +93,8 @@ function Index() {
           <div className="col-lg-12">
             <p className="sub text-uppercase" ><h3 style={{ color: 'black' }}>Reivew Collection</h3></p>
             {/* <h3><span>Show</span> Your <br />Personal <span>Style</span></h3> */}
-            <h4 style={{ color: 'black' }}>Fowl saw dry which a above together place.</h4>
-            <Link  className="main_btn mt-40" to="#">View Collection</Link>
+            <h4 style={{ color: 'black' }}>Revs connects people with great local businesses.</h4>
+            <Link  className="main_btn mt-40" to="business">Business</Link>
           </div>
         </div>
       </div>

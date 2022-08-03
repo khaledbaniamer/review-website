@@ -140,7 +140,7 @@ if(singleBusiness.length >0){
             <div class="col-md-3"> 
               <a href="#"> 
               {singleBusiness[0]&&<img class="rounded-circle" src={"http://localhost:8000/profile_photo/"+singleBusiness[0].profile_photo} alt="Kamal" style={{width:"200px",height:"200px"}} />}
-              {singleBusiness && <img class="rounded-circle" src={"http://localhost:8000/profile_photo/"+singleBusiness.profile_photo} alt="Kamal" style={{width:"200px",height:"200px"}} />}
+              {/* {singleBusiness && <img class="rounded-circle" src={"http://localhost:8000/profile_photo/"+singleBusiness.profile_photo} alt="Kamal" style={{width:"200px",height:"200px"}} />} */}
               </a>
             </div>
     
@@ -223,7 +223,7 @@ if(singleBusiness.length >0){
 </div>
 </div>
 </section>
-        <div className="py-4">
+        {/* <div className="py-4">
             <h5 className="mb-3">Recent posts</h5>
             <div className="p-4 bg-light rounded shadow-sm">
                 <p className="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
@@ -232,7 +232,7 @@ if(singleBusiness.length >0){
                     <li className="list-inline-item"><i className="fa fa-heart-o mr-2"></i>200 Likes</li>
                 </ul>
             </div>
-        </div>
+        </div> */}
     </div>
 </div>
 

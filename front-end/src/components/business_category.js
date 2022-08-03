@@ -105,6 +105,9 @@ console.log(businesses)
                 </div>
                 <div className="widgets_inner">
                   <ul className="list">
+                  <li>
+                <NavLink to={"/business"}>All</NavLink>
+                </li>
                   {allCategory}
                   </ul>
                 </div>
