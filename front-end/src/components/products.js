@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import { business_products, deleteProduct } from "../Store/Slices/productSlice";
 
 
@@ -16,6 +17,27 @@ const Products =()=>{
   console.log(products);
 
 
+  const handelDelete = (id)=>{
+    Swal.fire({
+      title: 'Do you want to delete the review?',
+      showDenyButton: true,
+      // showCancelButton: true,
+      confirmButtonText: 'Delete',
+      confirmButtonColor: '#f00',
+      denyButtonText: `Cancel`,
+      denyButtonColor: `#71cd14`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        dispatch(deleteProduct(id))
+        window.location.reload(false);
+        // Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  }
+
   const allProducts = products.map(product =>{
     return(
       <tr>
@@ -25,7 +47,7 @@ const Products =()=>{
           </td>
           <td className="p-3 text-center align-middle">{product.product_name}</td>
           <td className="p-3 text-center align-middle">
-          <NavLink className="m-3 " onClick={()=>dispatch(deleteProduct(product.id))} to=""><i className="fa-solid fa-trash-can" style={{fontSize: "20px" ,color:"red"}}></i></NavLink>
+          <NavLink className="m-3 " onClick={()=> handelDelete(product.id)} to=""><i className="fa-solid fa-trash-can" style={{fontSize: "20px" ,color:"red"}}></i></NavLink>
           </td>
       </tr>
     )

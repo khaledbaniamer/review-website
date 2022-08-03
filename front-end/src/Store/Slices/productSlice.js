@@ -13,7 +13,7 @@ export const addProducts = createAsyncThunk(
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: response.data.message,
+      title: api.data.message,
       showConfirmButton: false,
       timer: 1500
     })
@@ -36,13 +36,16 @@ export const deleteProduct = createAsyncThunk(
   async(id) =>{
     const api = await fetch(`http://127.0.0.1:8000/api/deleteproductt/${id}`);
     const response =await api.json();
-
-    if(response.ok){
-        Swal.fire({
-            title: "Product",
-            text: "Has been Deleted Successfully",
-            type: "success"
-        });
+    console.log(response)
+    console.log(api)
+    if(api.ok){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500
+      })
   }
   return response;
 })
