@@ -60,6 +60,7 @@ Route::get('avtiveBusniss/{id}' , [BusinessController::class , 'active']);
 Route::get('notavtiveBusniss/{id}' , [BusinessController::class , 'notactive']);
 
 Route::get('allproducts' , [ProductController::class ,'allProducts']);
+Route::get('deletebusiness/{id}' , [BusinessController::class , 'deleteBusiness']);
 
 
 Route::get('singlebusiness_products/{id}' , [ProductController::class, 'products_business']);
