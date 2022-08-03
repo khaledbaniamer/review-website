@@ -22,7 +22,7 @@ class CreateBusinessesTable extends Migration
             $table->string('address');
             $table->string('credential_photo');
             $table->string('profile_photo');
-            $table->tinyInteger('business_status');
+            $table->tinyInteger('business_status')->default(0);
             $table->unsignedBigInteger('catrgory_id');
 
             $table->foreign('catrgory_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
