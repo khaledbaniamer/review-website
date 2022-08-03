@@ -58,7 +58,7 @@ function Users(){
                           
                           <img
                             src={
-                              "http://127.0.0.1:8000/category_image/" +
+                              "http://127.0.0.1:8000/profile_photo/" +
                               product.user_image
                             }
                             alt=""
