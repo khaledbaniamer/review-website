@@ -58,7 +58,7 @@ function Products(){
                           
                           <img
                             src={
-                              "http://127.0.0.1:8000/category_image/" +
+                              "http://127.0.0.1:8000/product_image/" +
                               product.product_image
                             }
                             alt=""
@@ -69,7 +69,7 @@ function Products(){
                           
                           <img
                             src={
-                              "http://127.0.0.1:8000/category_image/" +
+                              "http://127.0.0.1:8000/product_image/" +
                               product.product_image1
                             }
                             alt=""
@@ -80,7 +80,7 @@ function Products(){
                           
                           <img
                             src={
-                              "http://127.0.0.1:8000/category_image/" +
+                              "http://127.0.0.1:8000/product_image/" +
                               product.product_image2
                             }
                             alt=""

@@ -51,7 +51,7 @@ console.log(businesses)
                         <small className="text-muted">{(new Date(business.created_at)).toLocaleString()}</small>
                         </p>
                   </div>
-                    <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+                    <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Read More</NavLink>
               </div>
           </div>
           </div>
@@ -105,6 +105,9 @@ console.log(businesses)
                 </div>
                 <div className="widgets_inner">
                   <ul className="list">
+                  <li>
+                <NavLink to={"/business"}>All</NavLink>
+                </li>
                   {allCategory}
                   </ul>
                 </div>
