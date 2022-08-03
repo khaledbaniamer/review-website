@@ -44,7 +44,7 @@ const allCategory = categories.map(category=>{
                         <small className="text-muted">{(new Date(business.created_at)).toLocaleString()}</small>
                         </p>
                   </div>
-                    <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Red More</NavLink>
+                    <NavLink to={"/business_profile/"+business.id} className="main_btn align-self-end mb-4 mx-2">Read More</NavLink>
               </div>
           </div>
           </div>
@@ -63,7 +63,7 @@ const allCategory = categories.map(category=>{
           <div className="banner_content d-md-flex justify-content-between align-items-center">
             <div className="mb-3 mb-md-0">
               <h1>Business Category</h1>
-              <h2><p>Very us move be blessed multiply night</p></h2>
+              <h2><p>Show our businessgt</p></h2>
             </div>
           </div>
         </div>
