@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 function Bussines_addForm() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
@@ -49,7 +49,7 @@ function Bussines_addForm() {
       ...productData,
     });
 
-    console.log(productData);
+    // console.log(productData);
     const formData = new FormData();
     formData.append("product_name", productData.product_name);
     formData.append("product_image", productData.product_image);
@@ -60,11 +60,7 @@ function Bussines_addForm() {
     formData.append("business_id", parseInt(productData.business_id));
 
     dispatch(addProducts(formData));
-    Swal.fire({
-      title: "Product",
-      text: "Has been Added Successfully",
-      type: "success"
-  });
+    
   };
 
   return (

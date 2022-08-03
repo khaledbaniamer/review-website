@@ -46,7 +46,7 @@ export const addBusiness = createAsyncThunk(
 
             const business = await response.data;
             return business;
-        }else if(response.status){
+        }else if(response.status ==200){
             console.log(response)
             Swal.fire({
                 position: 'top-end',

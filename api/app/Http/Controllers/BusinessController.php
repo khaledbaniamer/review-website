@@ -68,7 +68,7 @@ class BusinessController extends Controller
 
     public function single_business_category($id)
     {
-        $business = Business::where('catrgory_id' , $id)->get();
+        $business = Business::where('catrgory_id' , $id)->where('business_status',1)->get();
 
         return $business;
     }

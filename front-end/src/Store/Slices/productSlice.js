@@ -7,14 +7,17 @@ export const addProducts = createAsyncThunk(
   async (args) => {
 
   const api = await axios.post("http://127.0.0.1:8000/api/add_product", args);
-  console.log(api.data);
+  console.log(api);
 
-  if(api.status ==200){
+  if(api.status ==200 ||api.status ==201){
     Swal.fire({
-        title: "Product",
-        text: "Has been Added Successfully",
-        type: "success"
-    });
+      position: 'top-end',
+      icon: 'success',
+      title: response.data.message,
+      showConfirmButton: false,
+      timer: 1500
+    })
+    window.location.reload(false);
 }
     
 });
