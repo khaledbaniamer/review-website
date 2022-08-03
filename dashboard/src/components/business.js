@@ -21,7 +21,7 @@ function Users(){
     setData(allData);
   }
   const deleteUser=(id)=>{
-    fetch(`http://127.0.0.1:8000/api/deleteUser/${id}`)
+    fetch(`http://127.0.0.1:8000/api/deletebusiness/${id}`)
     
      getData()
      alert("Delete User successfully")
