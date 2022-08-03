@@ -16,7 +16,7 @@ function Users(){
     fetchData();
   }, []);
   async function getData(){
-    const api = await fetch("http://127.0.0.1:8000/api/business");
+    const api = await fetch("http://127.0.0.1:8000/api/allbusiness");
     const allData = await api.json();
     setData(allData);
   }

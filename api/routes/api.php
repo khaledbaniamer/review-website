@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // {  add product form from bussiness owner}
 Route::post('add_product',[ProductController::class ,'ownerAddProduct']);
 Route::get('business' , [BusinessController::class ,'getBusiness']);
+Route::get('allbusiness' , [BusinessController::class ,'getAllBusiness']);
 Route::get('business/{id}' , [BusinessController::class ,'getSingleBusiness']);
 Route::post('addbusiness' , [BusinessController::class , 'addBusiness']);
 Route::get('deleteproductt/{id}' , [ProductController::class , 'deleteproduct']);
