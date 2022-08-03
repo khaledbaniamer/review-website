@@ -63,7 +63,7 @@ const allCategory = categories.map(category=>{
           <div className="banner_content d-md-flex justify-content-between align-items-center">
             <div className="mb-3 mb-md-0">
               <h1>Business Category</h1>
-              <h2><p>Show our businessgt</p></h2>
+              <h2><p>Show our businesses</p></h2>
             </div>
           </div>
         </div>
