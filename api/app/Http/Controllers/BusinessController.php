@@ -75,7 +75,19 @@ class BusinessController extends Controller
 
     public function active($id){
 
-      return  Business::where('id', $id)->update(['business_status'=>1]);
+      $business= Business::find($id);
+           if($business->business_status==0){
+            $bb=Business::where('id', $id)->update(['business_status'=>1]);
+            $dd='Active';
+          return  response()->json([$bb,'s'=>$dd]);
+           }else{
+            $bb=Business::where('id', $id)->update(['business_status'=>0]);
+            $dd='Not Active';
+          return  response()->json([$bb,'s'=>$dd]);
+
+           }
+
+
 
         // $busines->save();
 
