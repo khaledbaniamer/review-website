@@ -90,4 +90,12 @@ class BusinessController extends Controller
   // return $busines;
       }
 
+      public function deleteBusiness($id){
+
+        $user = Business::find($id);
+        $user->delete($id);
+
+
+    }
+
 }
