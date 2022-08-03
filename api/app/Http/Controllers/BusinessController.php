@@ -12,7 +12,11 @@ class BusinessController extends Controller
         $busniesses = Business::where('business_status',1)->get();
         return $busniesses;
     }
-
+    public function getAllBusiness()
+    {
+        $busniesses = Business::all();
+        return $busniesses;
+    }
     public function getSingleBusiness($id)
     {
         $singleBusiness = Business::find($id);
