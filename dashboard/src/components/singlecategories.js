@@ -40,11 +40,13 @@ function Singlecategory() {
         //  console.log(category_name);
 
   return (
+  
     <div className="content">
       <div className="container-fluid pt-4 px-4">
         <div className="row g-4">
           <div class="col-sm-12 col-xl-12">
-           
+          <Link className="btn btn-primary mt-auto align-self-start" style={{backgroundColor: '#0b6d73', color:'white'}}   to='/categories'>           <i class="fa fa-arrow-circle-left" aria-hidden="true"> Back</i>
+</Link> 
           </div>
           <div className="col-sm-12 col-xl-6">
             <div className="bg-secondary rounded h-100 p-4">

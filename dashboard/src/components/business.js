@@ -105,8 +105,8 @@ function Users(){
                           {busniess.business_status}</td>
 
                         
-                          <td><Link className="btn btn-primary mt-auto align-self-start" onClick={() =>active(busniess.id)} to=''> Active</Link> 
-                        <Link className="btn btn-primary mt-auto align-self-start" onClick={() =>notactive(busniess.id)} to=''>Not Active</Link> </td>
+                          <td><Link className="btn btn-primary mt-auto align-self-start" onClick={() =>active(busniess.id)} to=''> Active/not</Link> 
+                         </td>
                        
                        <td> <Link className="btn btn-primary mt-auto align-self-start" onClick={() =>deleteUser(busniess.id)} to=''> Delete</Link> </td>
                         {/* <td> <Link to={'http://127.0.0.1:8000/api/deletecategory/'+category.id} className="btn btn-primary mt-auto align-self-start">Delete</Link></td>          */}
